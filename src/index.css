@@ -1,0 +1,97 @@
+/* src/index.css */
+:root {
+  --bg-black: #050505;
+  --text-white: #ffffff;
+  --accent-neon: #00ff88; /* Vibrant accent for status indicators */
+  --font-main: 'Inter', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-black);
+  color: var(--text-white);
+  font-family: var(--font-main);
+  overflow-x: hidden; /* Prevents mobile horizontal scrolling */
+}
+
+/* Add to src/index.css */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.03; /* Very subtle */
+  z-index: 9999;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/76/1k_Grain_Noise.png');
+}
+
+/* src/index.css */
+section {
+  width: 100%;
+  position: relative;
+  overflow: visible; /* Ensure content isn't clipped */
+}
+
+.hero {
+  min-height: 100vh; /* Takes full screen first */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+/* --- THE ULTIMATE EMERALD GLASS SCROLLER --- */
+
+/* 1. Scrollbar Width & Design */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* 2. Scrollbar Track - Transparent for that 'Floating' look */
+::-webkit-scrollbar-track {
+  background: rgba(3, 3, 4, 0.5); /* Semi-transparent black */
+  backdrop-filter: blur(8px); /* Blurs the content behind the track */
+  border-left: 1px solid rgba(255, 255, 255, 0.05); /* Very thin edge line */
+}
+
+/* 3. The Thumb - Glowing Gradient Capsule */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    #10B981 0%, 
+    #059669 50%, 
+    #064E3B 100%
+  );
+  border-radius: 50px; /* Fully rounded edges */
+  border: 3px solid transparent; /* Padding around the color */
+  background-clip: content-box; /* Thumb color ko border ke andar rakhta hai */
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.2); /* Static subtle glow */
+  transition: all 0.3s ease;
+}
+
+/* 4. Hover State - Pulse Glow Effect */
+::-webkit-scrollbar-thumb:hover {
+  background: #10B981;
+  border: 2px solid transparent; /* Thumb thoda bada ho jayega on hover */
+  background-clip: content-box;
+  box-shadow: 0 0 25px rgba(16, 185, 129, 0.6); /* Intense glow on hover */
+}
+
+/* 5. Corner Fix */
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Firefox compatibility */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #10B981 transparent;
+}

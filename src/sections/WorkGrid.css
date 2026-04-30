@@ -1,0 +1,133 @@
+/* --- WORK GRID SECTION --- */
+.work-grid-section {
+  background-color: #030303;
+  padding: 60px 20px; /* Reduced top padding for a tighter look */
+}
+
+.work-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* --- REFINED HEADING ALIGNMENT --- */
+.work-header {
+  text-align: left;
+  margin-bottom: 40px; /* Space between heading and projects */
+}
+
+.work-title-premium {
+  /* Using your global heading font (Syne) */
+  font-family: var(--font-heading, 'Syne', sans-serif);
+  
+  /* Reduced Size: From 7rem down to 5.5rem max */
+  font-size: clamp(2.5rem, 8vw, 5.5rem); 
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -2px; /* Tighter letter spacing */
+  text-transform: uppercase;
+  line-height: 0.9;
+  margin: 0;
+  
+  /* Flex ensures solid and outline text align perfectly on one line */
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+
+.text-outline {
+  color: transparent;
+  /* Thinner stroke for smaller text size */
+  -webkit-text-stroke: 1.2px rgba(255, 255, 255, 0.3); 
+  margin-left: 12px;
+}
+
+/* --- PROJECTS GRID --- */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.project-card {
+  position: relative;
+  border-radius: 32px;
+  overflow: hidden;
+  cursor: pointer;
+  background: #111;
+  height: 450px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  contain: paint; /* Performance optimization */
+}
+
+.project-card.large {
+  grid-column: span 2;
+  height: 550px;
+}
+
+.card-image-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.card-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform;
+}
+
+.card-vignette {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 60%);
+}
+
+.card-content-overlay {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  z-index: 2;
+}
+
+.category-pill {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  padding: 6px 16px;
+  border-radius: 100px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 15px;
+  letter-spacing: 1.5px;
+}
+
+.project-title-text {
+  color: #fff;
+  /* Scaled down project titles to match header */
+  font-size: clamp(1.5rem, 3vw, 2.2rem); 
+  font-weight: 900;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+/* --- MOBILE ADJUSTMENTS --- */
+@media (max-width: 768px) {
+  .projects-grid { 
+    grid-template-columns: 1fr; 
+  }
+  .project-card.large { 
+    grid-column: span 1; 
+    height: 350px; 
+  }
+  .project-card { 
+    height: 320px; 
+  }
+  .work-title-premium { 
+    letter-spacing: -1px; 
+  }
+  .text-outline { 
+    margin-left: 8px; 
+  }
+}

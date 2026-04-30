@@ -1,0 +1,301 @@
+.hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background: #030304; /* Deep premium black */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* --- BRANDING --- */
+.hero-top-left-brand {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 50;
+}
+
+.brand-dot {
+  width: 8px;
+  height: 8px;
+  background: #00ff88;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #00ff88;
+}
+
+.brand-name {
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+/* --- CINEMATIC OVERLAYS --- */
+.scanline-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.1) 50%);
+  background-size: 100% 4px;
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background: radial-gradient(circle, transparent 40%, rgba(0,0,0,0.8) 100%);
+}
+
+.grain-texture {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+  opacity: 0.05;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* --- DYNAMIC MESH BACKGROUND --- */
+.mesh-gradient-v2 {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  filter: blur(140px);
+  opacity: 0.35;
+}
+
+.blob-v2 {
+  position: absolute;
+  width: 750px;
+  height: 750px;
+  border-radius: 50%;
+  animation: float-blob 22s infinite alternate ease-in-out;
+}
+
+.neon-green-v2 {
+  background: #00ff88;
+  top: -10%;
+  right: -5%;
+}
+
+.midnight-blue-v2 {
+  background: #0033ff;
+  bottom: -15%;
+  left: -5%;
+  animation-delay: -7s;
+}
+
+@keyframes float-blob {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(120px, -60px) scale(1.1); }
+}
+
+/* --- SHIMMER TYPOGRAPHY --- */
+.shimmer-text {
+  background: linear-gradient(to right, #fff 20%, #00ff88 40%, #00ff88 60%, #fff 80%);
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 5.5s linear infinite;
+}
+
+@keyframes shine {
+  to { background-position: 200% center; }
+}
+
+/* --- TECH BRICKS (MAGNETIC CONTACT) --- */
+.skill-overlay-v2 {
+  position: absolute;
+  inset: 0;
+  z-index: 35; /* Sits just above/around the title for a collage effect */
+  pointer-events: none;
+}
+
+.tech-brick-v2 {
+  position: absolute;
+  pointer-events: all;
+  cursor: grab;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  padding: 6px 14px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  will-change: transform, opacity;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.tech-brick-v2:hover {
+  box-shadow: 0 0 20px var(--brick-accent);
+  border-color: var(--brick-accent);
+}
+
+.brick-status-v2 {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--brick-accent);
+  box-shadow: 0 0 8px var(--brick-accent);
+}
+
+.brick-text-v2 {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+/* --- CENTER CONTENT & PILLS --- */
+.hero-content-v2 {
+  position: relative;
+  z-index: 30;
+  text-align: center;
+}
+
+.typo-group-v2 h1 {
+  font-size: clamp(4rem, 12vw, 10.5rem);
+  font-weight: 900;
+  line-height: 0.82; /* Tighter leading to bring skill bricks into contact */
+  margin: 0;
+  letter-spacing: -0.06em;
+}
+
+.h-solid {
+  color: #fff;
+  text-shadow: 0 0 35px rgba(255, 255, 255, 0.1);
+}
+
+.h-outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.4);
+}
+
+.hero-pills-v2 {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 30px; /* Keep this original so layout doesn't shift */
+  will-change: transform, opacity;
+}
+
+.hero-pills-v2 .p-item {
+  animation: float-slow 4s ease-in-out infinite alternate;
+}
+
+@keyframes float-slow {
+  /* This moves the pills 80px down into the empty space */
+  from { transform: translateY(80px); } 
+  /* This keeps them floating slightly lower */
+  to { transform: translateY(70px); }
+}
+
+.p-item {
+  padding: 12px 28px;
+  border-radius: 100px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.white-p {
+  background: #fff;
+  color: #000;
+}
+
+.neon-p {
+  background: #00ff88;
+  color: #000;
+  box-shadow: 0 0 25px rgba(0, 255, 136, 0.3);
+}
+
+/* --- FOOTER STATS --- */
+.hero-stats-v2 {
+  position: absolute;
+  bottom: 60px;
+  display: flex;
+  align-items: center;
+  gap: 45px;
+  z-index: 30;
+}
+
+.s-divider {
+  width: 1px;
+  height: 35px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.s-num {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #fff;
+}
+
+.s-label {
+  font-size: 0.6rem;
+  color: #666;
+  letter-spacing: 2.5px;
+  margin: 0;
+}
+
+
+@media (max-width: 768px) {
+  .hero {
+    padding-top: 120px; /* Pushes content down so name is visible below Navbar */
+    height: auto; /* Allows section to grow with content on small screens */
+    min-height: 100vh;
+  }
+
+  /* Move Branding away from the floating Navbar */
+  .hero-top-left-brand {
+    top: 100px; /* Adjusted to sit below the mobile Navbar glass */
+    left: 100px;
+  }
+
+  /* Scale down the massive typography */
+  .typo-group-v2 h1 {
+    font-size: clamp(3rem, 15vw, 5rem);
+    line-height: 1;
+    letter-spacing: -2px;
+  }
+
+  /* Fix overlapping Pills */
+  .hero-pills-v2 {
+    flex-direction: column; /* Stacks buttons so they don't overlap */
+    align-items: center;
+    gap: 12px;
+    margin-top: 40px;
+    transform: translateY(0); /* Remove the large desktop translate */
+  }
+
+  .p-item {
+    width: 90%; /* Makes them easier to tap on mobile */
+    padding: 14px;
+    text-align: center;
+    font-size: 0.7rem;
+  }
+
+  /* Reposition Tech Bricks for mobile */
+  /* We hide some or bring them closer so they don't cause horizontal overflow */
+  .tech-brick-v2 {
+    padding: 4px 10px;
+    scale: 0.9;
+  }
+  
+  .tech-brick-v2:nth-child(odd) { left: 5% !important; }
+  .tech-brick-v2:nth-child(even) { right: 5% !important; }
+}

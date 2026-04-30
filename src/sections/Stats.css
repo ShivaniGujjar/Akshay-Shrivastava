@@ -1,0 +1,72 @@
+.stats-section {
+  background: #030303;
+  padding: 80px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.stats-container {
+  max-width: 1100px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: rgba(255, 255, 255, 0.02);
+  padding: 60px 40px;
+  border-radius: 32px;
+  border: 1px solid rgba(16, 185, 129, 0.1); /* Subtle Emerald Border */
+  backdrop-filter: blur(10px);
+}
+
+.stat-card {
+  text-align: center;
+  flex: 1;
+}
+
+.stat-number {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 10px;
+  /* Applying the professional green shine */
+  background: linear-gradient(135deg, #fff 30%, #10B981 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+/* --- VERTICAL DIVIDER --- */
+.stat-divider {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, transparent, rgba(16, 185, 129, 0.3), transparent);
+  margin: 0 20px;
+}
+
+@media (max-width: 768px) {
+  .stats-container {
+    flex-direction: column;
+    gap: 50px;
+    padding: 60px 20px;
+  }
+  
+  .stat-divider {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(16, 185, 129, 0.3), transparent);
+    margin: 0;
+  }
+
+  .stat-number {
+    font-size: 3.5rem;
+  }
+}
+

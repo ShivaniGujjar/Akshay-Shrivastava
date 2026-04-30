@@ -1,0 +1,123 @@
+.experience-section {
+  background: #030303;
+  padding: 80px 20px 250px 20px;
+  position: relative;
+}
+
+.exp-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* --- HEADING MATCHING FEATURED WORK --- */
+.exp-title-premium {
+  font-size: clamp(3.5rem, 10vw, 7rem);
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 80px;
+  letter-spacing: -2px;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+  margin-left: 4px;
+}
+
+/* --- STACKING ENGINE --- */
+.stack-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12vh;
+}
+
+.stack-card {
+  position: sticky;
+  width: 100%;
+}
+
+.card-inner {
+  background: linear-gradient(145deg, rgba(25, 25, 30, 0.95) 0%, rgba(10, 10, 12, 0.98) 100%);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 28px;
+  padding: 40px 50px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 -20px 50px rgba(0, 0, 0, 0.9);
+  transition: transform 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.stack-card:hover .card-inner {
+  transform: translateY(-10px);
+  border-color: var(--card-accent);
+}
+
+/* --- DOT & PERIOD ALIGNMENT --- */
+.period-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.accent-glow-dot {
+  width: 10px;
+  height: 10px;
+  background: var(--card-accent);
+  border-radius: 50%;
+  box-shadow: 0 0 15px 3px var(--card-accent);
+  flex-shrink: 0;
+}
+
+.card-period {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--card-accent);
+  letter-spacing: 2px;
+}
+
+.card-company {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 6px;
+  letter-spacing: -1px;
+}
+
+.card-role {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--card-accent);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.card-description {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 680px;
+}
+
+/* --- NEON LIGHT LEAK --- */
+.card-light-leak {
+  position: absolute;
+  bottom: -30%;
+  right: -10%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, var(--card-accent) 0%, transparent 70%);
+  filter: blur(80px);
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .card-inner { padding: 30px 20px; }
+  .card-company { font-size: 1.8rem; }
+}

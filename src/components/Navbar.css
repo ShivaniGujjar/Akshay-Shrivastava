@@ -1,0 +1,79 @@
+/* src/components/Navbar.css */
+.navbar {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2000;
+  width: 90%; /* Mobile width */
+  max-width: 400px; /* Keep it tight */
+}
+
+.nav-blur-bg {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 100px;
+}
+
+.nav-links {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+  padding: 10px 20px;
+  margin: 0;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+}
+
+.nav-links a:hover {
+  opacity: 1;
+}
+
+.nav-cta a {
+  background: #fff;
+  color: #000 !important;
+  padding: 8px 15px;
+  border-radius: 100px;
+  font-weight: 700;
+  opacity: 1 !important;
+}
+
+
+
+/* Update src/components/Navbar.css */
+.nav-links li {
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.nav-links li:hover {
+  transform: scale(1.2);
+}
+
+.nav-cta {
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+  animation: glow 3s infinite alternate;
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 10px rgba(0, 255, 136, 0.2); }
+  to { box-shadow: 0 0 30px rgba(0, 255, 136, 0.6); }
+}
+/* Tablet & Desktop */
+@media (min-width: 768px) {
+  .navbar {
+    max-width: 500px;
+  }
+}
