@@ -8,11 +8,11 @@ const projects = [
     title: "Master's Union Masterclass",
     category: "EDUTAINMENT / YT",
     image: "akshay-profile.jpeg",
-    videoId: "dQw4w9WgXcQ", // YouTube URL ka 'v=' ke baad wala part
+    videoId: "dQw4w9WgXcQ",
     description: "Lead editor for the flagship edutainment series at Master's Union.",
     size: "large" 
   },
-  // Baaki projects mein bhi videoId add karein...
+  // Add more projects here...
 ];
 
 const WorkGrid = ({ onProjectClick }) => {
@@ -20,7 +20,6 @@ const WorkGrid = ({ onProjectClick }) => {
     <section className="work-grid-section" id="work">
       <div className="work-container">
         <header className="work-header">
-          {/* Matches the 'EXP' + 'ERIENCE' logic from image_6fc5ee.png */}
           <h2 className="work-title-premium">
             FEATURED <span className="text-outline">WORK</span>
           </h2>
@@ -31,19 +30,14 @@ const WorkGrid = ({ onProjectClick }) => {
             <motion.div
               key={project.id}
               className={`project-card ${project.size}`}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              whileHover={{ y: -10 }}
+              whileTap={{ scale: 0.98 }} // Mobile friendly interaction
               onClick={() => onProjectClick(project)}
             >
               <div className="card-image-container">
-                <motion.img 
-                  src={project.image} 
-                  alt={project.title} 
-                  whileHover={{ scale: 1.08 }}
-                  transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                />
+                <img src={project.image} alt={project.title} />
                 <div className="card-vignette"></div>
               </div>
               

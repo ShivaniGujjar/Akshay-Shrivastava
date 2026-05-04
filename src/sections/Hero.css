@@ -1,301 +1,337 @@
-.hero {
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@500;800&display=swap');
+
+/* --- Reset & Base Section --- */
+.hero-studio-red {
+  
+  padding-top: 50px; /* Navbar se thoda aur niche push kiya */
+  background: #FFFFFF;
   position: relative;
-  height: 100vh;
-  width: 100%;
-  background: #030304; /* Deep premium black */
+  overflow: hidden;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-height: auto; /* Change from 100vh to auto */
+  padding-bottom: 0
+}
+
+/* --- Atmospheric Backgrounds --- */
+.grain-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.vfx-dots {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+/* --- Floating Tool Icons --- */
+.tool-palette {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 0, 0, 0.1);
+  padding: 12px;
+  width: 70px; 
+  height: 100px;
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: space-between;
+  z-index: 20;
+  backdrop-filter: blur(10px);
+  box-shadow: 12px 12px 0px rgba(255, 0, 0, 0.03);
+}
+
+.tool-image-actual { width: 35px; height: 35px; object-fit: contain; }
+.tool-label-mini { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 800; }
+.tool-line { width: 100%; height: 2px; background: #FF0000; }
+
+/* Positions Adjusted to be out of the way */
+.tp-1 { top: 22%; left: 5%; }
+.tp-2 { top: 20%; right: 5%; }
+.tp-3 { top: 52%; left: 4%; }
+.tp-4 { top: 50%; right: 4%; }
+
+/* --- Main Typography Container --- */
+.hero-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-}
-
-/* --- BRANDING --- */
-.hero-top-left-brand {
-  position: absolute;
-  top: 40px;
-  left: 40px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  z-index: 50;
-}
-
-.brand-dot {
-  width: 8px;
-  height: 8px;
-  background: #00ff88;
-  border-radius: 50%;
-  box-shadow: 0 0 10px #00ff88;
-}
-
-.brand-name {
-  color: #fff;
-  font-weight: 800;
-  font-size: 0.75rem;
-  letter-spacing: 2px;
-  margin: 0;
-}
-
-/* --- CINEMATIC OVERLAYS --- */
-.scanline-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 4;
-  pointer-events: none;
-  background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.1) 50%);
-  background-size: 100% 4px;
-}
-
-.vignette {
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  pointer-events: none;
-  background: radial-gradient(circle, transparent 40%, rgba(0,0,0,0.8) 100%);
-}
-
-.grain-texture {
-  position: absolute;
-  inset: 0;
-  background-image: url('https://grainy-gradients.vercel.app/noise.svg');
-  opacity: 0.05;
-  z-index: 2;
-  pointer-events: none;
-}
-
-/* --- DYNAMIC MESH BACKGROUND --- */
-.mesh-gradient-v2 {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  filter: blur(140px);
-  opacity: 0.35;
-}
-
-.blob-v2 {
-  position: absolute;
-  width: 750px;
-  height: 750px;
-  border-radius: 50%;
-  animation: float-blob 22s infinite alternate ease-in-out;
-}
-
-.neon-green-v2 {
-  background: #00ff88;
-  top: -10%;
-  right: -5%;
-}
-
-.midnight-blue-v2 {
-  background: #0033ff;
-  bottom: -15%;
-  left: -5%;
-  animation-delay: -7s;
-}
-
-@keyframes float-blob {
-  from { transform: translate(0, 0) scale(1); }
-  to { transform: translate(120px, -60px) scale(1.1); }
-}
-
-/* --- SHIMMER TYPOGRAPHY --- */
-.shimmer-text {
-  background: linear-gradient(to right, #fff 20%, #00ff88 40%, #00ff88 60%, #fff 80%);
-  background-size: 200% auto;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shine 5.5s linear infinite;
-}
-
-@keyframes shine {
-  to { background-position: 200% center; }
-}
-
-/* --- TECH BRICKS (MAGNETIC CONTACT) --- */
-.skill-overlay-v2 {
-  position: absolute;
-  inset: 0;
-  z-index: 35; /* Sits just above/around the title for a collage effect */
-  pointer-events: none;
-}
-
-.tech-brick-v2 {
-  position: absolute;
-  pointer-events: all;
-  cursor: grab;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(8px);
-  padding: 6px 14px;
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  will-change: transform, opacity;
-  transition: box-shadow 0.3s ease, border-color 0.3s ease;
-}
-
-.tech-brick-v2:hover {
-  box-shadow: 0 0 20px var(--brick-accent);
-  border-color: var(--brick-accent);
-}
-
-.brick-status-v2 {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--brick-accent);
-  box-shadow: 0 0 8px var(--brick-accent);
-}
-
-.brick-text-v2 {
-  font-size: 0.65rem;
-  font-weight: 700;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-}
-
-/* --- CENTER CONTENT & PILLS --- */
-.hero-content-v2 {
-  position: relative;
+  width: 100%;
   z-index: 30;
+  min-height: 100vh;
+}
+
+.hero-main-title {
+  
+  font-weight: 300; 
+  color: #000; 
+  text-align: center;
+  margin-bottom: 5px;
+  font-family: var(--primary-font);
+  font-size: clamp(4rem, 8vw, 10rem);
+  line-height: 0.85;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  margin-top: 1.5rem;
+}
+
+/* FIX: Added padding-top and adjusted line-height to prevent clipping */
+.line-hider { 
+  overflow: hidden; 
+  padding-top: 0.1em; 
+  padding-bottom: 0.1em;
+  margin-top: -0.05em;
+}
+
+.line-hider span { 
+  display: block; 
+  will-change: transform;
+}
+
+.red-text { color: #FF0000; }
+
+.hero-sub {
+  font-family: var(--mono-font); /* JetBrains Mono applied */
+  font-size: clamp(10px, 1.2vw, 13px);
+  letter-spacing: 4px;
+  font-weight: 800; 
+  margin: 15px 0 30px 0;
+  color: #64748b; 
+  text-transform: uppercase;
   text-align: center;
 }
 
-.typo-group-v2 h1 {
-  font-size: clamp(4rem, 12vw, 10.5rem);
-  font-weight: 900;
-  line-height: 0.82; /* Tighter leading to bring skill bricks into contact */
-  margin: 0;
-  letter-spacing: -0.06em;
+/* --- Action Button --- */
+.hero-footer-cta {
+  z-index: 40;
 }
 
-.h-solid {
-  color: #fff;
-  text-shadow: 0 0 35px rgba(255, 255, 255, 0.1);
+.hero-primary-btn.hero-roll {
+  background: #FF0000; 
+  border: none; 
+  height: 60px; 
+  padding: 0 45px;
+  display: block; 
+  overflow: hidden;
+  clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
+  cursor: pointer; 
+  transition: background 0.3s ease;
 }
 
-.h-outline {
-  color: transparent;
-  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.4);
+.hero-roll:hover { background: #000; }
+
+.hero-roll .roll-container {
+  display: flex; 
+  flex-direction: column;
+  transition: transform 0.4s cubic-bezier(0.76, 0, 0.24, 1);
 }
 
-.hero-pills-v2 {
+.hero-roll:hover .roll-container { transform: translateY(-50%); }
+
+.roll-text {
+  height: 60px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  font-weight: 900; 
+  color: white; 
+  letter-spacing: 2px; 
+  font-size: 13px;
+}
+
+.roll-text.secondary { color: #FF0000; }
+
+/* --- PERMANENT BOTTOM TIMELINE --- */
+.permanent-timeline {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.01);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  margin-top: 2rem; 
+  position: relative;
+  overflow: hidden;
+}
+
+.infinite-reel-container {
+  width: 100%;
+  padding: 20px 0;
+  mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+}
+
+.reel-track {
   display: flex;
   gap: 15px;
-  justify-content: center;
-  margin-top: 30px; /* Keep this original so layout doesn't shift */
-  will-change: transform, opacity;
 }
 
-.hero-pills-v2 .p-item {
-  animation: float-slow 4s ease-in-out infinite alternate;
+.reel-item {
+  min-width: 280px;
+  height: 155px;
+  background: #000;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+  overflow: hidden;
 }
 
-@keyframes float-slow {
-  /* This moves the pills 80px down into the empty space */
-  from { transform: translateY(80px); } 
-  /* This keeps them floating slightly lower */
-  to { transform: translateY(70px); }
+.reel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.85;
 }
 
-.p-item {
-  padding: 12px 28px;
-  border-radius: 100px;
-  font-size: 0.75rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: box-shadow 0.3s ease, background 0.3s ease;
-}
-
-.white-p {
-  background: #fff;
-  color: #000;
-}
-
-.neon-p {
-  background: #00ff88;
-  color: #000;
-  box-shadow: 0 0 25px rgba(0, 255, 136, 0.3);
-}
-
-/* --- FOOTER STATS --- */
-.hero-stats-v2 {
+.scrubber-line {
   position: absolute;
-  bottom: 60px;
-  display: flex;
-  align-items: center;
-  gap: 45px;
-  z-index: 30;
+  left: 20%;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: #FF0000;
+  z-index: 50;
 }
 
-.s-divider {
-  width: 1px;
-  height: 35px;
-  background: rgba(255, 255, 255, 0.15);
+/* --- Status Bar --- */
+.studio-status-bar {
+  position: absolute; 
+  bottom: 10px; 
+  right: 30px;
+  display: flex; 
+  align-items: center; 
+  gap: 8px;
+  font-family: 'JetBrains Mono', monospace; 
+  font-size: 8px; 
+  color: rgba(0, 0, 0, 0.3);
+  z-index: 60;
 }
 
-.s-num {
-  display: block;
-  font-size: 1.8rem;
-  font-weight: 900;
-  color: #fff;
-}
+.status-dot { width: 5px; height: 5px; background: #FF0000; border-radius: 50%; animation: pulse 1.5s infinite; }
 
-.s-label {
-  font-size: 0.6rem;
-  color: #666;
-  letter-spacing: 2.5px;
-  margin: 0;
-}
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
+.framer-corner { position: absolute; width: 40px; height: 40px; border: 1px solid #FF0000; opacity: 0.1; }
+.tl { top: 20px; left: 20px; border-right: 0; border-bottom: 0; }
+.tr { top: 20px; right: 20px; border-left: 0; border-bottom: 0; }
+.bl { bottom: 20px; left: 20px; border-right: 0; border-top: 0; }
+.br { bottom: 20px; right: 20px; border-left: 0; border-top: 0; }
+
+/* --- Responsive Fixes: Tablet & Mobile --- */
+@media (max-width: 1024px) {
+  .hero-studio-red {
+    padding-top: 70px;
+  }
+  .hero-main-title {
+    font-size: clamp(2.2rem, 6vw, 5rem);
+    line-height: 1.05;
+    padding: 0 10px;
+  }
+  .hero-container {
+    padding: 0 10px;
+  }
+  .tool-palette {
+    width: 55px;
+    height: 80px;
+    padding: 8px;
+  }
+  .tool-image-actual {
+    width: 25px;
+    height: 25px;
+  }
+  .reel-item {
+    min-width: 180px;
+    height: 100px;
+  }
+  .permanent-timeline {
+    margin-top: 20px;
+  }
+}
 
 @media (max-width: 768px) {
-  .hero {
-    padding-top: 120px; /* Pushes content down so name is visible below Navbar */
-    height: auto; /* Allows section to grow with content on small screens */
-    min-height: 100vh;
+  .hero-studio-red {
+    padding-top: 50px;
   }
+  .hero-main-title {
+    font-size: 2.3rem;
+    line-height: 1.1;
+    padding: 0 5px;
+  }
+  .hero-sub {
+    font-size: 10px;
+    letter-spacing: 2px;
+    margin: 10px 0 20px 0;
+  }
+  .hero-container {
+    padding: 0 5px;
+  }
+  .tp-1, .tp-2, .tp-3, .tp-4 {
+    display: none;
+  }
+  .reel-item {
+    min-width: 120px;
+    height: 70px;
+  }
+  .infinite-reel-container {
+    padding: 10px 0;
+  }
+  .studio-status-bar {
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 5px;
+    font-size: 7px;
+  }
+  .framer-corner {
+    width: 22px;
+    height: 22px;
+    opacity: 0.08;
+  }
+}
 
-  /* Move Branding away from the floating Navbar */
-  .hero-top-left-brand {
-    top: 100px; /* Adjusted to sit below the mobile Navbar glass */
-    left: 100px;
+@media (max-width: 480px) {
+  .hero-studio-red {
+    padding-top: 30px;
   }
-
-  /* Scale down the massive typography */
-  .typo-group-v2 h1 {
-    font-size: clamp(3rem, 15vw, 5rem);
-    line-height: 1;
-    letter-spacing: -2px;
+  .hero-main-title {
+    font-size: 1.3rem;
+    line-height: 1.15;
+    padding: 0 2px;
   }
-
-  /* Fix overlapping Pills */
-  .hero-pills-v2 {
-    flex-direction: column; /* Stacks buttons so they don't overlap */
-    align-items: center;
-    gap: 12px;
-    margin-top: 40px;
-    transform: translateY(0); /* Remove the large desktop translate */
+  .hero-sub {
+    font-size: 8px;
+    letter-spacing: 1px;
+    margin: 8px 0 15px 0;
   }
-
-  .p-item {
-    width: 90%; /* Makes them easier to tap on mobile */
-    padding: 14px;
-    text-align: center;
-    font-size: 0.7rem;
+  .hero-primary-btn.hero-roll {
+    height: 44px;
+    padding: 0 18px;
+    font-size: 11px;
   }
-
-  /* Reposition Tech Bricks for mobile */
-  /* We hide some or bring them closer so they don't cause horizontal overflow */
-  .tech-brick-v2 {
-    padding: 4px 10px;
-    scale: 0.9;
+  .roll-text {
+    height: 44px;
+    font-size: 11px;
   }
-  
-  .tech-brick-v2:nth-child(odd) { left: 5% !important; }
-  .tech-brick-v2:nth-child(even) { right: 5% !important; }
+  .permanent-timeline {
+    margin-top: 10px;
+  }
+  .reel-item {
+    min-width: 80px;
+    height: 40px;
+  }
+  .studio-status-bar {
+    font-size: 6px;
+    gap: 4px;
+  }
+  .framer-corner {
+    width: 12px;
+    height: 12px;
+  }
 }
