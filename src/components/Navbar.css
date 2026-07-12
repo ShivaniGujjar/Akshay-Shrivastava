@@ -1,122 +1,83 @@
-/* --- BASE NAVBAR --- */
-.studio-nav {
-  position: fixed;
-  top: 0; width: 100%; z-index: 10000;
-  padding: 20px 0;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
-}
-
-.studio-nav.scrolled { padding: 12px 0; }
-
-.nav-inner {
-  width: 90%; max-width: 1400px;
-  margin: 0 auto;
-  display: flex; justify-content: space-between; align-items: center;
-  position: relative; height: 60px;
-}
-
-/* Corners */
-.nav-frame-corner {
-  position: absolute; width: 15px; height: 15px;
-  border: 1.5px solid #FF0000; pointer-events: none;
-}
-.nav-frame-corner.tl { top: -5px; left: -10px; border-right: 0; border-bottom: 0; }
-.nav-frame-corner.tr { top: -5px; right: -10px; border-left: 0; border-bottom: 0; }
-.nav-frame-corner.bl { bottom: -5px; left: -10px; border-right: 0; border-top: 0; }
-.nav-frame-corner.br { bottom: -5px; right: -10px; border-left: 0; border-top: 0; }
-
-/* Logo */
-.logo-main { font-weight: 800; font-size: 1.1rem; letter-spacing: 2px; color: #0F172A; white-space: nowrap; }
-.logo-tag { font-size: 0.6rem; color: #FF0000; font-weight: 700; letter-spacing: 1px; display: block; }
-
-/* --- NORMAL LINKS (Hover Only) --- */
-.nav-link-standard {
-  text-decoration: none;
-  font-size: 12px;
-  font-weight: 700;
-  color: #0F172A;
-  letter-spacing: 1.5px;
-  transition: color 0.3s ease;
-  text-transform: uppercase;
-}
-
-.nav-link-standard:hover {
-  color: #FF0000; /* Simple Red Hover */
-}
-
-/* --- BUTTON ROLLING ANIMATION --- */
-.talk-btn.roll-link {
-  background: #FF0000;
-  padding: 0 28px;
-  height: 45px;
-  text-decoration: none;
-  overflow: hidden;
-  display: block;
-  transition: background 0.3s ease;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.roll-container {
+/* ==========================================================================
+   FIXED NAVBAR TOP OVERLAY
+   ========================================================================== */
+.portfolio-navbar-fixed {
+  position: absolute;
+  top: 1.75rem; /* Pushes it slightly down from the top edge beautifully */
+  left: 0;
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  transition: transform 0.45s cubic-bezier(0.76, 0, 0.24, 1);
+  justify-content: center;
+  align-items: center;
+  z-index: 100; /* Stays above all columns and textures safely */
+  padding: 0 1rem;
 }
 
-.talk-btn.roll-link:hover .roll-container {
-  transform: translateY(-50%);
-}
-
-.talk-btn .roll-text {
-  height: 45px; /* Must match parent height */
+/* ==========================================================================
+   THE BANGER DUSTY CHARCOAL CAPSULE PILL
+   ========================================================================== */
+.navbar-pill-capsule {
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  white-space: nowrap;
+  background-color: #121214; /* Perfectly matched to your bottom footer charcoal hue */
+  padding: 0.65rem 2rem;
+  border-radius: 9999px; /* Smooth professional capsule edges */
+  
+  /* High-end industrial shadow depth & subtle micro fiber border */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.85), 
+              inset 0 1px 1px rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  
+  position: relative;
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.talk-btn .roll-text.primary { color: #FFFFFF; }
-.talk-btn .roll-text.secondary { color: #FF0000; }
-
-.talk-btn:hover { background: #000000; }
-
-/* --- MOBILE TOGGLE --- */
-.menu-toggle {
-  display: none; background: none; border: none; cursor: pointer;
-  width: 30px; height: 20px; position: relative; z-index: 10001;
-  outline: none; -webkit-tap-highlight-color: transparent;
+.navbar-pill-capsule:hover {
+  transform: translateY(1px) scale(1.01);
 }
 
-.bar { width: 100%; height: 2px; background: #0F172A; position: absolute; transition: 0.4s ease; }
-.top { top: 0; } .mid { top: 50%; transform: translateY(-50%); } .bot { bottom: 0; }
-
-.menu-toggle.open .bar { background: #FFFFFF; }
-.menu-toggle.open .top { transform: translateY(9px) rotate(45deg); }
-.menu-toggle.open .mid { opacity: 0; }
-.menu-toggle.open .bot { transform: translateY(-9px) rotate(-45deg); }
-
-/* --- MOBILE OVERLAY --- */
-.mobile-overlay {
-  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-  background: #0F172A; display: flex; justify-content: center; align-items: center;
-  z-index: 9999; -webkit-tap-highlight-color: transparent;
+/* ==========================================================================
+   NAVIGATION TYPOGRAPHY & LINKS TRACK
+   ========================================================================== */
+.navbar-links-track {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  font-family: "Comic Sans MS", "Chalkboard SE", sans-serif; /* Preserving your creative font link */
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
 }
 
-.mobile-content { display: flex; flex-direction: column; gap: 35px; text-align: center; }
-.mobile-content a { font-size: 2.2rem; font-weight: 900; color: white; text-decoration: none; text-transform: uppercase; letter-spacing: 4px; }
-.mobile-content a:hover { color: #FF0000; }
-.mobile-cta { color: #FF0000 !important; border: 1.5px solid #FF0000 !important; padding: 12px 30px !important; margin: 0 auto; }
+.nav-capsule-item {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  transition: color 0.25s ease, text-shadow 0.25s ease;
+  position: relative;
+  padding: 0.2rem 0.1rem;
+}
 
-/* --- RESPONSIVE --- */
-.nav-links { display: flex; align-items: center; gap: 45px; }
+/* Premium Amber Glow on Item Hover */
+.nav-capsule-item:hover {
+  color: #fbbf24; 
+  text-shadow: 0 0 8px rgba(251, 191, 36, 0.35);
+}
 
-@media (max-width: 1024px) {
-  .desktop-only { display: none; }
-  .menu-toggle { display: block; }
+/* Golden Accent Dots Segments Divider */
+.nav-accent-divider {
+  color: #fbbf24;
+  font-size: 0.75rem;
+  user-select: none;
+  opacity: 0.85;
+}
+
+/* Responsive Scaling for smaller laptop frames */
+@media (max-width: 480px) {
+  .navbar-pill-capsule {
+    padding: 0.5rem 1.25rem;
+  }
+  .navbar-links-track {
+    gap: 0.5rem;
+    font-size: 0.75rem;
+  }
 }

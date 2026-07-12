@@ -1,216 +1,53 @@
-.footer-section {
-  background: #030303;
-  padding: 160px 20px 100px 20px;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-}
-
-.footer-container {
-  max-width: 1200px;
-  width: 100%;
-  z-index: 2;
-}
-
-.cta-wrapper {
-  text-align: center;
-  margin-bottom: 140px;
-}
-
-.footer-title {
-  font-size: clamp(3.5rem, 11vw, 8rem);
-  font-weight: 900;
-  color: #fff;
-  line-height: 0.85;
-  text-transform: uppercase;
-  letter-spacing: -4px;
-}
-
-/* --- PROFESSIONAL EMERALD GRADIENT --- */
-.text-outline-gradient {
-  display: block;
-  color: transparent;
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.15);
-  background: linear-gradient(
-    to right, 
-    rgba(255,255,255,0.1) 10%, 
-    #10B981 30%, 
-    #D1FAE5 50%, 
-    #059669 70%, 
-    rgba(255,255,255,0.1) 90%
-  );
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  animation: liquidFlow 10s linear infinite;
-}
-
-@keyframes liquidFlow {
-  to { background-position: 200% center; }
-}
-
-.contact-btn-wrapper {
-  position: relative;
-  display: inline-block;
-  margin-top: 40px;
-  padding-bottom: 50px;
-}
-
-.big-contact-link {
-  font-size: 1.1rem;
-  font-weight: 800;
-  color: #fff;
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  position: relative;
-  padding: 12px 0;
-  display: block;
-}
-
-.link-underline {
+.portfolio-footer {
   position: absolute;
-  bottom: 0;
+  bottom: 1.5rem; /* Pushes it slightly up from the screen bottom boundary line */
   left: 0;
   width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #374151, #9ca3af, #374151, transparent);
-  transform: scaleX(0.4);
-  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.big-contact-link:hover .link-underline {
-  transform: scaleX(1);
-  background: linear-gradient(90deg, transparent, #10B981, #D1FAE5, #10B981, transparent);
-  box-shadow: 0 0 25px rgba(16, 185, 129, 0.3);
-}
-
-.copy-feedback-text {
-  font-size: 0.7rem;
-  font-weight: 800;
-  color: #10B981; 
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  white-space: nowrap;
-  padding-top: 15px;
-}
-
-.footer-bottom {
+  padding: 0 1rem;
+  z-index: 70;
+  pointer-events: none;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 50px;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  justify-content: center; /* Absolutely centers the children container horizontally */
 }
 
-.copyright-text {
-  font-size: 0.7rem;
-  font-weight: 700;
-  color: rgba(255, 255, 255, 0.2);
-  letter-spacing: 2px;
-}
-
-/* --- REFINED SOCIAL BUTTONS --- */
-.social-icons-wrapper {
+.footer-content-wrapper {
   display: flex;
-  gap: 15px;
-  align-items: center;
-}
-
-.social-icon-box {
-  position: relative;
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 50%;
-  color: rgba(255, 255, 255, 0.3);
-  font-size: 1.2rem;
+  align-items: center;
+  width: auto;
+}
+
+.footer-social-zone {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  font-family: "Comic Sans MS", "Chalkboard SE", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  pointer-events: auto; /* Restores element interactivity inside the capsule */
+  background-color: #121214; /* Smooth signature charcoal dark integration */
+  padding: 0.6rem 1.75rem;
+  border-radius: 9999px; /* Turns into a premium dynamic control pill */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.footer-social-link {
+  color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  overflow: hidden;
-  z-index: 1;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  transition: color 0.2s ease, transform 0.2s ease;
 }
 
-/* Internal Glow Overlay */
-.social-icon-box::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle, rgba(16, 185, 129, 0.4) 0%, transparent 70%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: -1;
+.footer-social-link:hover {
+  color: #fbbf24; /* Mapped amber click feedback */
+  transform: translateY(-1px);
 }
 
-.social-icon-box:hover {
-  color: #10B981;
-  border-color: rgba(16, 185, 129, 0.5);
-  transform: translateY(-5px);
-  background: rgba(16, 185, 129, 0.05);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-}
-
-.social-icon-box:hover::before {
-  opacity: 1;
-}
-
-.social-icon-box svg {
-  transition: transform 0.3s ease;
-}
-
-.social-icon-box:hover svg {
-  transform: scale(1.1);
-}
-
-.footer-ambient-glow {
-  position: absolute;
-  bottom: -20%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60vw;
-  height: 30vw;
-  background: radial-gradient(circle, rgba(16, 185, 129, 0.03) 0%, transparent 70%);
-  filter: blur(120px);
-  z-index: 1;
-}
-
-
-@media (max-width: 768px) {
-  .footer-section {
-    padding: 80px 20px 40px 20px;
-  }
-
-  .cta-wrapper {
-    margin-bottom: 80px;
-  }
-
-  /* Stack the copyright and icons vertically */
-  .footer-bottom {
-    flex-direction: column-reverse; /* Icons on top, copyright on bottom */
-    gap: 30px;
-    text-align: center;
-    padding-top: 40px;
-  }
-
-  /* Center the social icons */
-  .social-icons-wrapper {
-    justify-content: center;
-    width: 100%;
-  }
-
-  /* Adjust typography for smaller screens */
-  .footer-title {
-    letter-spacing: -2px;
-    font-size: clamp(2.5rem, 12vw, 4rem);
-  }
-
-  .copyright-text {
-    font-size: 0.6rem;
-    opacity: 0.5; /* Matured, subtle look */
-  }
+.footer-dot-separator {
+  color: #fbbf24;
+  font-size: 0.75rem;
+  user-select: none;
 }

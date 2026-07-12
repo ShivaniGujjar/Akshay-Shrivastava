@@ -1,0 +1,355 @@
+.inner-editorial-page {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: #ffffff;
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-bottom: 8rem;
+}
+
+.inner-hero-banner {
+  position: relative;
+  width: 100%;
+  height: 50vh;
+  background-size: cover;
+  background-position: center;
+  background-color: #0c0c0e;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.inner-hero-banner.editing-bg { background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200'); }
+.inner-hero-banner.motion-bg { background-image: url('https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?w=1200'); }
+.inner-hero-banner.direction-bg { background-image: url('https://images.unsplash.com/photo-1485846234645-a62644f84728?w=1200'); }
+.inner-hero-banner.about-bg { background-image: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200'); }
+
+.inner-hero-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.45);
+}
+
+.back-home-pill-btn {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  z-index: 25;
+  background-color: rgba(18, 18, 20, 0.95);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0.5rem 1.25rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.25s ease;
+}
+
+.back-home-pill-btn:hover {
+  transform: translateX(-3px);
+}
+
+.inner-banner-title {
+  position: relative;
+  z-index: 10;
+  color: #ffffff;
+  font-family: "Comic Sans MS", sans-serif;
+  font-size: 3.5rem;
+  font-weight: 950;
+}
+
+.inner-banner-torn-divider {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  z-index: 15;
+  background-image: url('/bottom.png');
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+  background-position: bottom center;
+}
+
+.inner-white-canvas-body {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 1.5rem 1.5rem; /* 🌟 Added more breathing top space */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inner-white-canvas-body.clear-top-padding {
+  padding-top: 0rem !important;
+  margin-top: 2rem;
+}
+
+.canvas-welcome-headline {
+  font-family: "Comic Sans MS", sans-serif;
+  color: #2b6cb0;
+  font-size: 2.25rem;
+  font-weight: 900;
+  margin-bottom: 0.75rem;
+}
+
+.canvas-intro-narrative {
+  color: #4a5568;
+  text-align: center;
+  max-width: 600px;
+  margin-bottom: 3.5rem; /* 🌟 Added more space below introduction */
+  font-family: sans-serif;
+}
+
+.canvas-feature-box-media {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background-color: #cbd5e0;
+  border-radius: 12px;
+  margin-bottom: 3rem;
+}
+
+.segment-micro-title {
+  font-family: "Comic Sans MS", sans-serif;
+  color: #2b6cb0;
+  font-size: 1.65rem;
+  font-weight: 900;
+  margin: 0;
+}
+
+.segment-micro-title.font-blue {
+  color: #2b6cb0;
+  text-align: center;
+}
+
+.center-text-adjust {
+  text-align: center;
+}
+
+.segment-sub-info {
+  color: #718096;
+  font-size: 0.95rem;
+  margin: 0.4rem 0 1.5rem 0; /* 🌟 Spaced titles nicely from row tracks */
+  font-family: sans-serif;
+}
+
+/* ==========================================================================
+   🎬 BULLETPROOF HORIZONTAL AUTOMATIC TICKER TRACK LOGIC
+   ========================================================================== */
+.ticker-editorial-segment-isolated {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  position: relative;
+  overflow: hidden !important;
+  margin: 4rem 0; /* 🌟 Increased clean vertical space between rows */
+}
+
+.extra-vertical-space {
+  margin: 5rem 0 6rem 0 !important; /* 🌟 Distinct separation for brand logs block */
+}
+
+.ticker-heading-wrapper {
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.ticker-wrapper-container {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  overflow: hidden !important;
+  padding: 1.25rem 0; /* 🌟 Added vertical padding within tracking container */
+  margin-left: calc(-50vw + 50%);
+  display: block;
+}
+
+.full-width-blue-override {
+  margin-left: 0 !important;
+  padding: 2rem 0; /* 🌟 Extra padding internally for testimonial slots */
+}
+
+.margin-bottom-lg {
+  margin-bottom: 2.5rem; /* 🌟 Extra breathing space between Short Form row lines */
+}
+
+.margin-top-tweak {
+  margin-top: 1.5rem;
+}
+
+.ticker-track-moving {
+  display: inline-flex !important;
+  white-space: nowrap !important;
+  gap: 3.5rem; /* 🌟 IMP: Gap increased from 1.5rem to 3.5rem for absolute clean card space */
+  width: max-content;
+  will-change: transform;
+}
+
+/* ⬅ {Right to Left} Track Move */
+.move-left {
+  animation: smoothMarqueeLeft 40s linear infinite !important;
+}
+
+/* ➡️ {Left to Right} Track Move */
+.move-right {
+  animation: smoothMarqueeRight 40s linear infinite !important;
+}
+
+.ticker-wrapper-container:hover .ticker-track-moving {
+  animation-play-state: paused !important;
+}
+
+@keyframes smoothMarqueeLeft {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-25%, 0, 0); }
+}
+
+@keyframes smoothMarqueeRight {
+  0% { transform: translate3d(-25%, 0, 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+
+.placeholder-grey-box {
+  background-color: #cbd5e0;
+  border-radius: 10px;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0 !important;
+  box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.placeholder-grey-box.wide-box {
+  width: 340px !important;
+  height: 195px !important;
+}
+
+.placeholder-grey-box.tall-box {
+  width: 230px !important;
+  height: 320px !important;
+}
+
+.box-inner-tag-label {
+  font-family: "Comic Sans MS", sans-serif;
+  color: #4a5568;
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+/* 🌟 LOGO BOX STUBS TICKER INTEGRATION */
+.logo-box-stub {
+  width: 180px !important; /* Slightly expanded */
+  height: 60px !important;
+  background-color: #cbd5e0;
+  border-radius: 8px;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0 !important;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.05);
+}
+
+.brand-stub-text {
+  font-family: "Comic Sans MS", sans-serif;
+  color: #2b6cb0;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   DYNAMIC BLUE TESTIMONIAL SEGMENT HULL WITH SCROLLING INTEGRATION
+   ========================================================================== */
+.inner-blue-testimonial-zone {
+  width: 100%;
+  background-color: #2b6cb0;
+  position: relative;
+  padding: 7rem 0; /* 🌟 Padding added for full aesthetic breathing weight */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  margin-top: 2rem;
+}
+
+.inner-banner-torn-divider-top-blue {
+  position: absolute;
+  top: -2px;
+  left: 0;
+  width: 100%;
+  height: 45px;
+  z-index: 12;
+  background-image: url('/bottom.png');
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+  transform: scaleY(-1);
+}
+
+.inner-banner-torn-divider-bottom-blue {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 45px;
+  z-index: 12;
+  background-image: url('/bottom.png');
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+}
+
+.testimonial-section-headline {
+  font-family: "Comic Sans MS", sans-serif;
+  color: #ffffff;
+  font-size: 2.25rem;
+  font-weight: 900;
+  margin-bottom: 2rem; /* 🌟 Increased gap below headline */
+  position: relative;
+  z-index: 15;
+}
+
+/* 🌟 WHITE TESTIMONIAL CARD STUBS OVERRIDE FOR MARQUEE RENDER */
+.testimonial-card-white-stub {
+  background-color: #ffffff;
+  width: 350px !important;
+  height: 170px !important;
+  border-radius: 12px;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  flex-shrink: 0 !important;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+  white-space: normal !important;
+}
+
+.testimonial-card-quote {
+  font-family: "Comic Sans MS", sans-serif;
+  color: #2b6cb0;
+  font-weight: 700;
+  font-size: 1rem;
+  text-align: center;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.canvas-contact-zone {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6rem 0 3rem 0; /* 🌟 Better breathing top-bottom footers */
+}
+
+.contact-capsule-links-pill {
+  margin-top: 1.5rem;
+  background-color: #e2e8f0;
+  padding: 0.65rem 2.25rem;
+  border-radius: 9999px;
+  font-family: "Comic Sans MS", sans-serif;
+  color: #2b6cb0;
+  font-weight: 700;
+}

@@ -1,337 +1,104 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@500;800&display=swap');
-
-/* --- Reset & Base Section --- */
-.hero-studio-red {
-  
-  padding-top: 50px; /* Navbar se thoda aur niche push kiya */
-  background: #FFFFFF;
-  position: relative;
+/* ==========================================================================
+   HERO CONTAINER LAYOUT (FULL SCREEN FULL BLEED)
+   ========================================================================== */
+.hero-split-container {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000000;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  min-height: auto; /* Change from 100vh to auto */
-  padding-bottom: 0
+  position: relative;
+  margin: 0;
+  padding: 0;
 }
 
-/* --- Atmospheric Backgrounds --- */
-.grain-overlay {
-  position: absolute;
-  inset: 0;
-  width: 100%; height: 100%;
-  background-image: url('https://grainy-gradients.vercel.app/noise.svg');
-  opacity: 0.04;
-  pointer-events: none;
-  z-index: 5;
-}
-
-.vfx-dots {
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px);
-  background-size: 40px 40px;
-  pointer-events: none;
-}
-
-/* --- Floating Tool Icons --- */
-.tool-palette {
-  position: absolute;
-  background: rgba(255, 255, 255, 0.95);
-  border: 1px solid rgba(255, 0, 0, 0.1);
-  padding: 12px;
-  width: 70px; 
-  height: 100px;
-  display: flex; 
-  flex-direction: column; 
-  align-items: center; 
-  justify-content: space-between;
-  z-index: 20;
-  backdrop-filter: blur(10px);
-  box-shadow: 12px 12px 0px rgba(255, 0, 0, 0.03);
-}
-
-.tool-image-actual { width: 35px; height: 35px; object-fit: contain; }
-.tool-label-mini { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 800; }
-.tool-line { width: 100%; height: 2px; background: #FF0000; }
-
-/* Positions Adjusted to be out of the way */
-.tp-1 { top: 22%; left: 5%; }
-.tp-2 { top: 20%; right: 5%; }
-.tp-3 { top: 52%; left: 4%; }
-.tp-4 { top: 50%; right: 4%; }
-
-/* --- Main Typography Container --- */
-.hero-container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  z-index: 30;
-  min-height: 100vh;
-}
-
-.hero-main-title {
-  
-  font-weight: 300; 
-  color: #000; 
-  text-align: center;
-  margin-bottom: 5px;
-  font-family: var(--primary-font);
-  font-size: clamp(4rem, 8vw, 10rem);
-  line-height: 0.85;
-  letter-spacing: -1px;
-  text-transform: uppercase;
-  margin-top: 1.5rem;
-}
-
-/* FIX: Added padding-top and adjusted line-height to prevent clipping */
-.line-hider { 
+.hero-split-column {
+  position: relative;
+  height: 100%;
+  flex-shrink: 0;
+  min-width: 0;
   overflow: hidden; 
-  padding-top: 0.1em; 
-  padding-bottom: 0.1em;
-  margin-top: -0.05em;
+  transition: width 0.75s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.line-hider span { 
-  display: block; 
-  will-change: transform;
-}
-
-.red-text { color: #FF0000; }
-
-.hero-sub {
-  font-family: var(--mono-font); /* JetBrains Mono applied */
-  font-size: clamp(10px, 1.2vw, 13px);
-  letter-spacing: 4px;
-  font-weight: 800; 
-  margin: 15px 0 30px 0;
-  color: #64748b; 
-  text-transform: uppercase;
-  text-align: center;
-}
-
-/* --- Action Button --- */
-.hero-footer-cta {
-  z-index: 40;
-}
-
-.hero-primary-btn.hero-roll {
-  background: #FF0000; 
-  border: none; 
-  height: 60px; 
-  padding: 0 45px;
-  display: block; 
-  overflow: hidden;
-  clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
-  cursor: pointer; 
-  transition: background 0.3s ease;
-}
-
-.hero-roll:hover { background: #000; }
-
-.hero-roll .roll-container {
-  display: flex; 
-  flex-direction: column;
-  transition: transform 0.4s cubic-bezier(0.76, 0, 0.24, 1);
-}
-
-.hero-roll:hover .roll-container { transform: translateY(-50%); }
-
-.roll-text {
-  height: 60px; 
-  display: flex; 
-  align-items: center; 
-  justify-content: center;
-  font-weight: 900; 
-  color: white; 
-  letter-spacing: 2px; 
-  font-size: 13px;
-}
-
-.roll-text.secondary { color: #FF0000; }
-
-/* --- PERMANENT BOTTOM TIMELINE --- */
-.permanent-timeline {
-  width: 100%;
-  background: rgba(255, 255, 255, 0.01);
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
-  margin-top: 2rem; 
-  position: relative;
-  overflow: hidden;
-}
-
-.infinite-reel-container {
-  width: 100%;
-  padding: 20px 0;
-  mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-}
-
-.reel-track {
-  display: flex;
-  gap: 15px;
-}
-
-.reel-item {
-  min-width: 280px;
-  height: 155px;
-  background: #000;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  border-radius: 4px;
-  overflow: hidden;
-}
-
-.reel-item img {
+/* ==========================================================================
+   BACKGROUND VIDEO LOOP SETTINGS
+   ========================================================================== */
+.column-video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.85;
+  filter: brightness(0.45) contrast(1.1);
+  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), filter 0.6s ease;
 }
 
-.scrubber-line {
+.hero-split-column:hover .column-video-bg {
+  transform: scale(1.04);
+  filter: brightness(0.55) contrast(1.05);
+}
+
+/* ==========================================================================
+   TYPOGRAPHY CONTENT OVERLAY
+   ========================================================================== */
+.column-text-overlay {
   position: absolute;
-  left: 20%;
-  top: 0;
-  width: 2px;
-  height: 100%;
-  background: #FF0000;
-  z-index: 50;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 22;
+  padding: 0 1rem;
 }
 
-/* --- Status Bar --- */
-.studio-status-bar {
-  position: absolute; 
-  bottom: 10px; 
-  right: 30px;
-  display: flex; 
-  align-items: center; 
-  gap: 8px;
-  font-family: 'JetBrains Mono', monospace; 
-  font-size: 8px; 
-  color: rgba(0, 0, 0, 0.3);
+.column-title-link {
+  color: #ffffff;
+  font-size: 2.25rem;
+  font-weight: 950;
+  text-decoration: none;
+  text-align: center;
+  white-space: nowrap;
+  transition: transform 0.4s ease, color 0.3s ease;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.95));
+  font-family: "Comic Sans MS", "Chalkboard SE", sans-serif;
+}
+
+@media (min-width: 768px) {
+  .column-title-link {
+    font-size: 3.25rem;
+  }
+}
+
+.hero-split-column:hover .column-title-link {
+  transform: scale(1.06);
+  color: #fbbf24;
+}
+
+/* ==========================================================================
+   ✂️ 🔥 THE REAL IMAGE-BASED TORN TEXTURE OVERLAY (FIXED POSITION & SHIFTED UP)
+   ========================================================================== */
+/* ==========================================================================
+   ✂️ 🔥 THE REAL IMAGE-BASED TORN TEXTURE OVERLAY (MAX VISIBILITY SHIFT UP)
+   ========================================================================== */
+.scraped-paper-bottom-mask-dark {
+  position: absolute;
+  bottom: 0; /* Base locked tightly to 0 to stop background leaks */
+  left: 0;
+  width: 100%;
+  height: 195px; /* 🌟 Height bumped to 195px to pull the torn asset deep into sight */
   z-index: 60;
-}
-
-.status-dot { width: 5px; height: 5px; background: #FF0000; border-radius: 50%; animation: pulse 1.5s infinite; }
-
-@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-
-.framer-corner { position: absolute; width: 40px; height: 40px; border: 1px solid #FF0000; opacity: 0.1; }
-.tl { top: 20px; left: 20px; border-right: 0; border-bottom: 0; }
-.tr { top: 20px; right: 20px; border-left: 0; border-bottom: 0; }
-.bl { bottom: 20px; left: 20px; border-right: 0; border-top: 0; }
-.br { bottom: 20px; right: 20px; border-left: 0; border-top: 0; }
-
-/* --- Responsive Fixes: Tablet & Mobile --- */
-@media (max-width: 1024px) {
-  .hero-studio-red {
-    padding-top: 70px;
-  }
-  .hero-main-title {
-    font-size: clamp(2.2rem, 6vw, 5rem);
-    line-height: 1.05;
-    padding: 0 10px;
-  }
-  .hero-container {
-    padding: 0 10px;
-  }
-  .tool-palette {
-    width: 55px;
-    height: 80px;
-    padding: 8px;
-  }
-  .tool-image-actual {
-    width: 25px;
-    height: 25px;
-  }
-  .reel-item {
-    min-width: 180px;
-    height: 100px;
-  }
-  .permanent-timeline {
-    margin-top: 20px;
-  }
-}
-
-@media (max-width: 768px) {
-  .hero-studio-red {
-    padding-top: 50px;
-  }
-  .hero-main-title {
-    font-size: 2.3rem;
-    line-height: 1.1;
-    padding: 0 5px;
-  }
-  .hero-sub {
-    font-size: 10px;
-    letter-spacing: 2px;
-    margin: 10px 0 20px 0;
-  }
-  .hero-container {
-    padding: 0 5px;
-  }
-  .tp-1, .tp-2, .tp-3, .tp-4 {
-    display: none;
-  }
-  .reel-item {
-    min-width: 120px;
-    height: 70px;
-  }
-  .infinite-reel-container {
-    padding: 10px 0;
-  }
-  .studio-status-bar {
-    right: auto;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 5px;
-    font-size: 7px;
-  }
-  .framer-corner {
-    width: 22px;
-    height: 22px;
-    opacity: 0.08;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-studio-red {
-    padding-top: 30px;
-  }
-  .hero-main-title {
-    font-size: 1.3rem;
-    line-height: 1.15;
-    padding: 0 2px;
-  }
-  .hero-sub {
-    font-size: 8px;
-    letter-spacing: 1px;
-    margin: 8px 0 15px 0;
-  }
-  .hero-primary-btn.hero-roll {
-    height: 44px;
-    padding: 0 18px;
-    font-size: 11px;
-  }
-  .roll-text {
-    height: 44px;
-    font-size: 11px;
-  }
-  .permanent-timeline {
-    margin-top: 10px;
-  }
-  .reel-item {
-    min-width: 80px;
-    height: 40px;
-  }
-  .studio-status-bar {
-    font-size: 6px;
-    gap: 4px;
-  }
-  .framer-corner {
-    width: 12px;
-    height: 12px;
-  }
+  pointer-events: none;
+  
+  /* Mapped direct public root reference to your bottom.png asset */
+  background-image: url('/bottom.png');
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+  background-position: bottom center;
+  
+  /* Deep shadow profile to pop the sheet edges off the screen */
+  filter: drop-shadow(0px -12px 16px rgba(0, 0, 0, 0.55));
 }

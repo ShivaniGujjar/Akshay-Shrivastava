@@ -1,64 +1,46 @@
+import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './sections/Hero';
-import Stats from './sections/Stats'; //
-import WorkGrid from './sections/WorkGrid';
-import Experience from './sections/Experience';
-import ClientTicker from './components/ClientTicker';
 import Footer from './sections/Footer';
-import CinemaModal from './components/CinemaModal';
 
-import Lenis from '@studio-freight/lenis'
-import { useEffect, useState } from 'react'
+// Importing the four clean independent layout components
+import Editing from './sections/Editing';
+import MotionDesign from './sections/MotionDesign';
+import Direction from './sections/Direction';
+import AboutMe from './sections/AboutMe';
+import './App.css';
 
-function App() {
-  const [selectedProject, setSelectedProject] = useState(null);
+export default function App() {
+  const [activeSection, setActiveSection] = useState('home');
 
-  useEffect(() => {
-    const lenis = new Lenis()
-    function raf(time) {
-      lenis.raf(time)
-      requestAnimationFrame(raf)
-    }
-    requestAnimationFrame(raf)
-    
-    return () => lenis.destroy();
-  }, [])
-
-  const handleOpenProject = (project) => {
-    setSelectedProject(project);
+  const handleNavigate = (sectionId) => {
+    setActiveSection(sectionId);
   };
 
-  const handleCloseProject = () => {
-    setSelectedProject(null);
+  const renderActiveSection = () => {
+    switch (activeSection) {
+      case 'editing':
+        return <Editing onBack={() => setActiveSection('home')} />;
+      case 'motion':
+        return <MotionDesign onBack={() => setActiveSection('home')} />;
+      case 'direction':
+        return <Direction onBack={() => setActiveSection('home')} />;
+      case 'about':
+        return <AboutMe onBack={() => setActiveSection('home')} />;
+      default:
+        return <Hero onColumnClick={handleNavigate} />;
+    }
   };
 
   return (
-    <main>
-      <Navbar />
-      <Hero />
+    <div className="app-container">
+      <Navbar onNavigate={handleNavigate} activeSection={activeSection} />
+      
+      <main className="main-viewport-holder">
+        {renderActiveSection()}
+      </main>
 
-      {/* The Big Emerald Stat Cards Section */}
-      <Stats /> {/* */}
-      
-      <div id="work">
-        <WorkGrid onProjectClick={handleOpenProject} />
-      </div>
-      
-      <div id="experience">
-        <Experience />
-      </div>
-      
-      <ClientTicker />
       <Footer />
-
-      {selectedProject && (
-        <CinemaModal 
-          project={selectedProject} 
-          onClose={handleCloseProject} 
-        />
-      )}
-    </main>
+    </div>
   );
 }
-
-export default App;
