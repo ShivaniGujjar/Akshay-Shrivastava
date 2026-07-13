@@ -1,67 +1,78 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import './Hero.css';
 
 const COLUMNS = [
   { id: 'editing', title: 'Editing', videoUrl: '/editing.mp4' },
-  { id: 'motion', title: 'Motion Design', videoUrl: '/motion.mp4' },
   { id: 'direction', title: 'Direction', videoUrl: '/direction.mp4' },
+  { id: 'motion', title: 'Motion Design', videoUrl: '/motion.mp4' },
+  
   { id: 'about', title: 'About me', videoUrl: '/about.mp4' }
 ];
 
 export default function Hero({ onColumnClick }) {
-  const [hoveredId, setHoveredId] = useState(null);
+  const videoRefs = useRef([]);
+
+  const handleMouseEnter = (index) => {
+    const video = videoRefs.current[index];
+    if (video) {
+      video.play().catch((err) => console.log("Playback interrupted:", err));
+    }
+  };
+
+  const handleMouseLeave = (index) => {
+    const video = videoRefs.current[index];
+    if (video) {
+      video.pause();
+    }
+  };
 
   return (
     <section className="hero-split-container">
-      {COLUMNS.map((col, index) => {
-        const isAnyHovered = hoveredId !== null;
-        const isCurrentHovered = hoveredId === col.id;
+      {/* STATIC ROUGH SHADER MATRIX */}
+      <svg className="scribble-hidden-filter-engine" xmlns="http://www.w3.org/2000/svg">
+        <filter id="static-pencil-tear">
+          <feTurbulence type="fractalNoise" baseFrequency="0.12" numOctaves="4" result="noise" />
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+      </svg>
 
-        let flexWidth = '25%';
-        if (isAnyHovered) {
-          flexWidth = isCurrentHovered ? '35%' : '21.66%';
-        }
-
-        return (
-          <div
-            key={col.id}
-            className="hero-split-column"
-            style={{ 
-              width: flexWidth,
-              zIndex: index + 1,
-              cursor: 'pointer' /* Explicit indicator for active links click functionality */
-            }}
-            onMouseEnter={() => setHoveredId(col.id)}
-            onMouseLeave={() => setHoveredId(null)}
-            onClick={() => {
-              if (onColumnClick) onColumnClick(col.id); /* 🔥 Fires immediate route standard switch */
-            }}
-          >
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="auto"
-              className="column-video-bg"
+      <div className="hero-split-grid-wrapper">
+        {COLUMNS.map((col, index) => {
+          return (
+            <div
+              key={col.id}
+              className={`hero-split-column col-index-${index}`}
+              onMouseEnter={() => handleMouseEnter(index)}
+              onMouseLeave={() => handleMouseLeave(index)}
+              onClick={() => {
+                if (onColumnClick) onColumnClick(col.id);
+              }}
             >
-              <source src={col.videoUrl} type="video/mp4" />
-            </video>
+              {/* Background Cinematic Video Loop */}
+              <video
+                ref={(el) => (videoRefs.current[index] = el)}
+                loop
+                muted
+                playsInline
+                preload="auto"
+                className="column-video-bg"
+              >
+                <source src={col.videoUrl} type="video/mp4" />
+              </video>
 
-            <div className="column-text-overlay">
-              <span className="column-title-link">
-                {col.title}
-              </span>
+              {/* 🌟 THE GRANULAR NOISE LAYER OVERLAY */}
+              <div className="column-noise-overlay" />
+
+              {/* Typography Content Link Overlay */}
+              <div className="column-text-overlay">
+                <h1 className="column-title-link">
+                  {col.title}
+                </h1>
+              </div>
             </div>
-
-            {index < COLUMNS.length - 1 && (
-              <div className="premium-vertical-rip-dark" />
-            )}
-          </div>
-        );
-      })}
-
-      <div className="scraped-paper-bottom-mask-dark" />
+          );
+        })}
+      </div>
     </section>
   );
 }
