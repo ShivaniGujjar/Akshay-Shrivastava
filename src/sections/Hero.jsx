@@ -2,10 +2,10 @@ import React, { useRef } from 'react';
 import './Hero.css';
 
 const COLUMNS = [
-  { id: 'editing', title: 'Editing', videoUrl: 'https://drive.google.com/uc?export=download&id=1IivmECAzjstDQPuZGz' },
-  { id: 'direction', title: 'Direction', videoUrl: 'https://drive.google.com/uc?export=download&id=1anhyVjXBIQzmbrLt9lRXgHDK4yYeC_Hc' },
-  { id: 'motion', title: 'Motion Design', videoUrl: 'https://drive.google.com/uc?export=download&id=1X2RwpgHZ3rmyqHYH_NayyKAyP2dBjd3N' },
-  { id: 'about', title: 'About me', videoUrl: 'https://drive.google.com/uc?export=download&id=1AB8PKAbprnm64ZVNnNkRYgNNauv1ESTk' }
+  { id: 'editing', title: 'Editing', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1784024888/editing_chxs37.mp4' },
+  { id: 'direction', title: 'Direction', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1784024826/direction_w7iumq.mp4' },
+  { id: 'motion', title: 'Motion Design', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1784024845/motion_gqgmye.mp4' },
+  { id: 'about', title: 'About me', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1784024815/about_cdtl6w.mp4' }
 ];
 
 export default function Hero({ onColumnClick }) {
