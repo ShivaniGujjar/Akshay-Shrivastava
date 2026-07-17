@@ -4,9 +4,25 @@ import './InnerPagesShared.css';
 export default function AboutMe({ onBack }) {
   return (
     <div className="inner-editorial-page">
+      {/* HERO BANNER WITH FULLSCREEN VIDEO BACKGROUND (100VH) */}
       <div className="inner-hero-banner about-bg">
-        <button className="back-home-pill-btn" onClick={onBack}>← Back to Home</button>
-        <h1 className="inner-banner-title">About Me</h1>
+        <video 
+          className="banner-video-bg" 
+          autoPlay 
+          loop 
+          muted 
+          playsInline
+        >
+          <source src="https://res.cloudinary.com/n1mfkfh4/video/upload/v1784318460/Learn_AE_in_a_single_day_1_vwktvg.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+
+        {/* Content layer positioned perfectly over the video track */}
+        <div className="banner-content">
+          <button className="back-home-pill-btn" onClick={onBack}>← Back to Home</button>
+          <h1 className="inner-banner-title">About Me</h1>
+        </div>
+        
         <div className="inner-banner-torn-divider" />
       </div>
 

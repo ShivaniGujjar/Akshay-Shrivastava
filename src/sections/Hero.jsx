@@ -2,10 +2,10 @@ import React, { useRef } from 'react';
 import './Hero.css';
 
 const COLUMNS = [
-  { id: 'editing', title: 'Editing', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1784024888/editing_chxs37.mp4' },
+  { id: 'editing', title: 'Editing', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1784312262/editing_ra4d0j.mp4' },
   { id: 'direction', title: 'Direction', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1784024826/direction_w7iumq.mp4' },
   { id: 'motion', title: 'Motion Design', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1784024845/motion_gqgmye.mp4' },
-  { id: 'about', title: 'About me', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1784024815/about_cdtl6w.mp4' }
+  { id: 'about', title: 'About me', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1784318460/Learn_AE_in_a_single_day_1_vwktvg.mp4' }
 ];
 
 export default function Hero({ onColumnClick }) {

@@ -4,9 +4,25 @@ import './InnerPagesShared.css';
 export default function MotionDesign({ onBack }) {
   return (
     <div className="inner-editorial-page">
+      {/* HERO BANNER WITH VIDEO BACKGROUND */}
       <div className="inner-hero-banner motion-bg">
-        <button className="back-home-pill-btn" onClick={onBack}>← Back to Home</button>
-        <h1 className="inner-banner-title">Motion Design</h1>
+        <video 
+          className="banner-video-bg" 
+          autoPlay 
+          loop 
+          muted 
+          playsInline
+        >
+          <source src="/motion.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+
+        {/* Text content overlaying the video */}
+        <div className="banner-content">
+          <button className="back-home-pill-btn" onClick={onBack}>← Back to Home</button>
+          <h1 className="inner-banner-title">Motion Design</h1>
+        </div>
+        
         <div className="inner-banner-torn-divider" />
       </div>
 

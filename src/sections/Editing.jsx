@@ -1,5 +1,6 @@
 import React from 'react';
-import './Editing.css'
+import './InnerPagesShared.css'; // 🌟 FIXED: Change import to the shared CSS file
+
 export default function Editing({ onBack }) {
   const longFormsData = ["Podcasts", "Masterclass Loops", "Talking Head", "Campus Documentaries"];
   const shortFormsRow1 = ["UGC Ads", "Retention Hooks", "Podcast Shorts", "Reels Edit"];
@@ -23,41 +24,23 @@ export default function Editing({ onBack }) {
   };
 
   return (
-    <div className="inner-editorial-page" style={{ backgroundColor: '#ffffff' }}>
+    <div className="inner-editorial-page">
       
       {/* 🎬 FULL-SCREEN FLUID HERO VIDEO BANNER */}
-      <div className="inner-hero-banner" style={{ 
-        position: 'relative', 
-        width: '100%', 
-        height: '100vh', /* Take full viewport height just like the reference */
-        overflow: 'hidden',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#000'
-      }}>
+      {/* 🌟 FIXED: Inline style wraps removed to let shared.css run height & layout properties */}
+      <div className="inner-hero-banner editing-bg"> 
         
         {/* 🌟 100% VISUAL RAW BACKGROUND VIDEO LOOP */}
         <video 
-          src="/editing.mp4" /* Public folder ka path match kar lena bhai */
+          src="https://res.cloudinary.com/n1mfkfh4/video/upload/v1784312262/editing_ra4d0j.mp4" 
           autoPlay 
           loop 
           muted 
           playsInline 
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            zIndex: 0,
-            pointerEvents: 'none'
-          }}
+          className="banner-video-bg"
         />
 
-        {/* Smooth Aesthetic Gradient Overlay Sheet (Matches image presence) */}
+        {/* Smooth Aesthetic Gradient Overlay Sheet */}
         <div style={{
           position: 'absolute',
           top: 0,
@@ -68,70 +51,27 @@ export default function Editing({ onBack }) {
           zIndex: 1
         }} />
 
-        {/* Top Left Navigation Back Control (Like your site logo/back track location) */}
-        <button 
-          className="back-home-pill-btn" 
-          onClick={onBack}
-          style={{
-            position: 'absolute',
-            top: '1.25rem',
-            left: '1.5rem',
-            zIndex: 20
-          }}
-        >
+        {/* Top Left Navigation Back Control */}
+        <button className="back-home-pill-btn" onClick={onBack}>
           ← Back to Home
         </button>
         
-        {/* CENTERED TITLES AREA (Exact match to Filmkid 16 style layout) */}
-        <div style={{
-          position: 'relative',
-          zIndex: 10,
-          textAlign: 'center',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          padding: '0 1rem',
-          marginTop: '-2rem' /* Subtle center balancing tweak */
-        }}>
-          <h1 className="inner-banner-title" style={{ 
-            fontSize: 'calc(2.5rem + 2vw)', 
-            fontWeight: 950, 
-            color: '#ffffff',
-            textShadow: '0 4px 12px rgba(0,0,0,0.35)',
-            margin: '0 0 1rem 0'
-          }}>
+        {/* CENTERED TITLES AREA */}
+        <div className="banner-content">
+          {/* 🌟 FIXED: Removed inline font-size & textShadow to unlock dark-red strokes + cinematic underline */}
+          <h1 className="inner-banner-title">
             Editing Work
           </h1>
           
-          <button style={{
-            backgroundColor: '#2B66E3', /* Clean punchy red color matching user preferences */
-            color: '#ffffff',
-            fontFamily: '"Comic Sans MS", sans-serif',
-            fontWeight: 900,
-            textTransform: 'uppercase',
-            fontSize: '1rem',
-            letterSpacing: '1px',
-            padding: '0.75rem 2.25rem',
-            borderRadius: '9999px',
-            border: 'none',
-            cursor: 'pointer',
-            boxShadow: '0 6px 16px rgba(0,0,0,0.3)',
-            transition: 'transform 0.2s ease'
-          }}
-          onMouseEnter={(e) => e.target.style.transform = 'scale(1.04)'}
-          onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
-          >
-            Explore Reels
-          </button>
+          
         </div>
 
         {/* Bottom Jagged/Torn Border Canvas Separator Layer */}
-        <div className="inner-banner-torn-divider" style={{ zIndex: 5 }} />
+        <div className="inner-banner-torn-divider" />
       </div>
 
       {/* CORE SHOWCASE CANVAS BODY */}
-      <div className="inner-white-canvas-body" style={{ padding: '5rem 2rem 3rem 2rem' }}>
+      <div className="inner-white-canvas-body">
         <h2 className="canvas-welcome-headline">Welcome to Editing Section</h2>
         <p className="canvas-intro-narrative">
           I craft high-retention visual storytelling, high-fidelity edutainment loops, and performance-driven UGC ads, having scaled brand presence across startups and digital networks.
@@ -143,7 +83,7 @@ export default function Editing({ onBack }) {
             src="/showreel.mp4" 
             poster="/showreel-thumbnail.jpg" 
             controls 
-            className="w-full h-full object-cover rounded-lg"
+            style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px' }}
             playsInline
           />
         </div>

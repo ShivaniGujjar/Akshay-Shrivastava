@@ -1,3 +1,6 @@
+/* ==========================================================================
+   🎬 GLOBAL FRAMEWORK & MAIN VIEWPORT PANELS
+   ========================================================================== */
 .inner-editorial-page {
   width: 100vw;
   min-height: 100vh;
@@ -8,10 +11,11 @@
   padding-bottom: 8rem;
 }
 
+/* 🌟 UNIVERSAL 100VH VIEWPORT BLOCK FOR HERO BACKGROUND VIDEOS */
 .inner-hero-banner {
   position: relative;
   width: 100%;
-  height: 50vh;
+  height: 95vh !important; /* Global locked uniformity across all panels */
   background-size: cover;
   background-position: center;
   background-color: #0c0c0e;
@@ -19,24 +23,52 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
-.inner-hero-banner.editing-bg { background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200'); }
-.inner-hero-banner.motion-bg { background-image: url('https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?w=1200'); }
+/* Background fallback images when video stream isn't active */
+.inner-hero-banner.editing-bg   { background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200'); }
+.inner-hero-banner.motion-bg    { background-image: url('https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?w=1200'); }
 .inner-hero-banner.direction-bg { background-image: url('https://images.unsplash.com/photo-1485846234645-a62644f84728?w=1200'); }
-.inner-hero-banner.about-bg { background-image: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200'); }
+.inner-hero-banner.about-bg     { background-image: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200'); }
 
 .inner-hero-banner::before {
   content: '';
   position: absolute;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.45);
+  z-index: 1;
 }
 
+/* Absolute raw background fluid track container */
+.banner-video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+/* Center balance container engine */
+.banner-content {
+  position: relative;
+  z-index: 2; 
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* Absolute lock navigation pill button */
 .back-home-pill-btn {
   position: absolute;
-  top: 1.5rem;
-  left: 1.5rem;
+  top: 30px;
+  left: 30px;
   z-index: 25;
   background-color: rgba(18, 18, 20, 0.95);
   color: #ffffff;
@@ -52,32 +84,69 @@
   transform: translateX(-3px);
 }
 
+/* ==========================================================================
+   ⚡️ UNIFIED COMPACT STROKE TYPOGRAPHY & ASYMMETRIC SLANTED UNDERLINE
+   ========================================================================== */
 .inner-banner-title {
   position: relative;
   z-index: 10;
   color: #ffffff;
   font-family: "Comic Sans MS", sans-serif;
-  font-size: 3.5rem;
+  font-size: 5.5rem; /* Upgraded premium scale */
   font-weight: 950;
+  margin: 0;
+  letter-spacing: -1px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  /* Sophisticated Dark Crimson Red Multi-Layer Stroke */
+  text-shadow: 
+    -2px -2px 0 #b91c1c,  
+     2px -2px 0 #b91c1c,
+    -2px  2px 0 #b91c1c,
+     2px  2px 0 #b91c1c,
+    -2px  0px 0 #b91c1c,
+     2px  0px 0 #b91c1c,
+     0px -2px 0 #b91c1c,
+     0px  2px 0 #b91c1c,
+     4px  4px 0px #000000;
 }
 
+/* Modern Cinematic Asymmetric Underline */
+.inner-banner-title::after {
+  content: '';
+  display: block;
+  width: 90px;
+  height: 5px;
+  background: #b91c1c;
+  margin-top: 12px;
+  border-radius: 2px;
+  transform: skewX(-15deg);
+  box-shadow: 2px 2px 0px #000000;
+}
+
+/* Base structural boundary torn paper anchor */
 .inner-banner-torn-divider {
   position: absolute;
   bottom: -2px;
   left: 0;
   width: 100%;
   height: 70px;
-  z-index: 15;
+  z-index: 3;
   background-image: url('/bottom.png');
   background-repeat: repeat-x;
   background-size: auto 100%;
   background-position: bottom center;
 }
 
+/* ==========================================================================
+   🏛️ MAIN CONTENT CANVAS DISPLAY & 80% SCREEN VIDEO SHOWCASE PLAYER
+   ========================================================================== */
 .inner-white-canvas-body {
-  max-width: 1100px;
+  max-width: 1200px; /* Expanded space boundary window */
   margin: 0 auto;
-  padding: 4rem 1.5rem 1.5rem 1.5rem; /* 🌟 Added more breathing top space */
+  padding: 4rem 1.5rem 1.5rem 1.5rem; 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -100,18 +169,32 @@
   color: #4a5568;
   text-align: center;
   max-width: 600px;
-  margin-bottom: 3.5rem; /* 🌟 Added more space below introduction */
+  margin-bottom: 3.5rem; 
   font-family: sans-serif;
 }
 
+/* 🌟 CINEMATIC REDESIGN: FORCES THE CORE PLAYER TO TAKE ~80% OF VISUAL SCREEN HEIGHT */
 .canvas-feature-box-media {
   width: 100%;
-  aspect-ratio: 16/9;
+  height: 80vh !important; /* Perfect 80% screen proportion lock */
   background-color: #cbd5e0;
-  border-radius: 12px;
-  margin-bottom: 3rem;
+  border-radius: 16px;
+  margin-bottom: 4rem;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
+.canvas-feature-box-media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+/* ==========================================================================
+   🛠️ SEGMENTS & TEXT RUN LABELS
+   ========================================================================== */
 .segment-micro-title {
   font-family: "Comic Sans MS", sans-serif;
   color: #2b6cb0;
@@ -132,23 +215,23 @@
 .segment-sub-info {
   color: #718096;
   font-size: 0.95rem;
-  margin: 0.4rem 0 1.5rem 0; /* 🌟 Spaced titles nicely from row tracks */
+  margin: 0.4rem 0 1.5rem 0; 
   font-family: sans-serif;
 }
 
 /* ==========================================================================
-   🎬 BULLETPROOF HORIZONTAL AUTOMATIC TICKER TRACK LOGIC
+   🔄 HORIZONTAL AUTOMATIC MARQUEE LOOP TICKER RUNNERS
    ========================================================================== */
 .ticker-editorial-segment-isolated {
   width: 100vw !important;
   max-width: 100vw !important;
   position: relative;
   overflow: hidden !important;
-  margin: 4rem 0; /* 🌟 Increased clean vertical space between rows */
+  margin: 4rem 0; 
 }
 
 .extra-vertical-space {
-  margin: 5rem 0 6rem 0 !important; /* 🌟 Distinct separation for brand logs block */
+  margin: 5rem 0 6rem 0 !important; 
 }
 
 .ticker-heading-wrapper {
@@ -162,18 +245,18 @@
   width: 100vw !important;
   max-width: 100vw !important;
   overflow: hidden !important;
-  padding: 1.25rem 0; /* 🌟 Added vertical padding within tracking container */
+  padding: 1.25rem 0; 
   margin-left: calc(-50vw + 50%);
   display: block;
 }
 
 .full-width-blue-override {
   margin-left: 0 !important;
-  padding: 2rem 0; /* 🌟 Extra padding internally for testimonial slots */
+  padding: 2rem 0; 
 }
 
 .margin-bottom-lg {
-  margin-bottom: 2.5rem; /* 🌟 Extra breathing space between Short Form row lines */
+  margin-bottom: 2.5rem; 
 }
 
 .margin-top-tweak {
@@ -183,17 +266,15 @@
 .ticker-track-moving {
   display: inline-flex !important;
   white-space: nowrap !important;
-  gap: 3.5rem; /* 🌟 IMP: Gap increased from 1.5rem to 3.5rem for absolute clean card space */
+  gap: 3.5rem; 
   width: max-content;
   will-change: transform;
 }
 
-/* ⬅ {Right to Left} Track Move */
 .move-left {
   animation: smoothMarqueeLeft 40s linear infinite !important;
 }
 
-/* ➡️ {Left to Right} Track Move */
 .move-right {
   animation: smoothMarqueeRight 40s linear infinite !important;
 }
@@ -240,9 +321,8 @@
   font-size: 1.1rem;
 }
 
-/* 🌟 LOGO BOX STUBS TICKER INTEGRATION */
 .logo-box-stub {
-  width: 180px !important; /* Slightly expanded */
+  width: 180px !important; 
   height: 60px !important;
   background-color: #cbd5e0;
   border-radius: 8px;
@@ -261,13 +341,13 @@
 }
 
 /* ==========================================================================
-   DYNAMIC BLUE TESTIMONIAL SEGMENT HULL WITH SCROLLING INTEGRATION
+   🔷 BLUE TESTIMONIAL PANEL SECTION
    ========================================================================== */
 .inner-blue-testimonial-zone {
   width: 100%;
   background-color: #2b6cb0;
   position: relative;
-  padding: 7rem 0; /* 🌟 Padding added for full aesthetic breathing weight */
+  padding: 7rem 0; 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -305,12 +385,11 @@
   color: #ffffff;
   font-size: 2.25rem;
   font-weight: 900;
-  margin-bottom: 2rem; /* 🌟 Increased gap below headline */
+  margin-bottom: 2rem; 
   position: relative;
   z-index: 15;
 }
 
-/* 🌟 WHITE TESTIMONIAL CARD STUBS OVERRIDE FOR MARQUEE RENDER */
 .testimonial-card-white-stub {
   background-color: #ffffff;
   width: 350px !important;
@@ -336,12 +415,15 @@
   margin: 0;
 }
 
+/* ==========================================================================
+   ✉️ FOOTER CONTACT LAYOUTS
+   ========================================================================== */
 .canvas-contact-zone {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 6rem 0 3rem 0; /* 🌟 Better breathing top-bottom footers */
+  padding: 6rem 0 3rem 0; 
 }
 
 .contact-capsule-links-pill {

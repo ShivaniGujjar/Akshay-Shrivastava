@@ -3,8 +3,9 @@ import './Navbar.css';
 
 const NAV_ITEMS = [
   { label: 'Editing', id: 'editing' },
-  { label: 'Motion design', id: 'motion' },
+  
   { label: 'Direction', id: 'direction' },
+  { label: 'Motion design', id: 'motion' },
   { label: 'About me', id: 'about' }
 ];
 
@@ -12,34 +13,21 @@ export default function Navbar({ onNavigate, activeSection }) {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    // 1. Mouse wheel handler (For desktop)
     const handleWheel = (e) => {
-      if (e.deltaY > 5) {
-        setIsVisible(false); // User scrolled down -> Hide
-      } else if (e.deltaY < -5) {
-        setIsVisible(true);  // User scrolled up -> Show
-      }
+      if (e.deltaY > 5) setIsVisible(false);
+      else if (e.deltaY < -5) setIsVisible(true);
     };
 
-    // 2. Touch movement handler (For mobile)
     let touchStart = 0;
-    const handleTouchStart = (e) => {
-      touchStart = e.touches[0].clientY;
-    };
-
+    const handleTouchStart = (e) => { touchStart = e.touches[0].clientY; };
     const handleTouchMove = (e) => {
       const touchEnd = e.touches[0].clientY;
       const diff = touchStart - touchEnd;
-
-      if (diff > 10) {
-        setIsVisible(false); // Swiped down -> Hide
-      } else if (diff < -10) {
-        setIsVisible(true);  // Swiped up -> Show
-      }
+      if (diff > 10) setIsVisible(false);
+      else if (diff < -10) setIsVisible(true);
       touchStart = touchEnd;
     };
 
-    // Attach to window globally but catches input no matter where the overflow is locked
     window.addEventListener('wheel', handleWheel, { passive: true });
     window.addEventListener('touchstart', handleTouchStart, { passive: true });
     window.addEventListener('touchmove', handleTouchMove, { passive: true });
@@ -56,7 +44,7 @@ export default function Navbar({ onNavigate, activeSection }) {
       className="portfolio-navbar-fixed"
       style={{
         position: 'fixed',
-        top: '1.25rem',
+        top: '1.5rem',
         left: 0,
         width: '100%',
         display: 'flex',
@@ -67,7 +55,7 @@ export default function Navbar({ onNavigate, activeSection }) {
         boxSizing: 'border-box',
         transform: isVisible ? 'translateY(0)' : 'translateY(-250%)',
         opacity: isVisible ? 1 : 0,
-        transition: 'transform 0.25s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.2s ease-out'
+        transition: 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease-out'
       }}
     >
       <div className="navbar-pill-capsule">
