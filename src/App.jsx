@@ -1,20 +1,21 @@
 import React, { useState } from 'react';
+
+// 🟢 MAKE SURE NAVBAR IS IN COMPONENTS AND OTHERS ARE IN SECTIONS
 import Navbar from './components/Navbar';
+
 import Hero from './sections/Hero';
 import Footer from './sections/Footer';
-
-// Importing the four clean independent layout components
 import Editing from './sections/Editing';
 import MotionDesign from './sections/MotionDesign';
 import Direction from './sections/Direction';
 import AboutMe from './sections/AboutMe';
-import './App.css';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('home');
 
   const handleNavigate = (sectionId) => {
     setActiveSection(sectionId);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const renderActiveSection = () => {
@@ -33,10 +34,10 @@ export default function App() {
   };
 
   return (
-    <div className="app-container">
+    <div className="min-h-screen w-full bg-slate-950 text-slate-100 flex flex-col selection:bg-sky-500 selection:text-white">
       <Navbar onNavigate={handleNavigate} activeSection={activeSection} />
       
-      <main className="main-viewport-holder">
+      <main className="flex-1 w-full flex flex-col">
         {renderActiveSection()}
       </main>
 
