@@ -47,7 +47,7 @@ export default function Hero({ onColumnClick }) {
   return (
     <section className="w-full h-screen bg-[#08080a] overflow-hidden relative m-0 p-0 select-none">
       
-      {/* 🎨 LOCAL FONT DECLARATION & HANDWRITTEN ACCENT FONT */}
+      {/* 🎨 FONT DECLARATIONS */}
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 
@@ -58,25 +58,37 @@ export default function Hero({ onColumnClick }) {
           font-style: normal;
           font-display: swap;
         }
+
+        /* ORGANIC TORN PAPER OVERLAP MASK (NO STRAIGHT LINES) */
+        .organic-torn-mask {
+          mask-image: url('/home-mask-desktop.svg');
+          -webkit-mask-image: url('/home-mask-desktop.svg');
+          mask-size: auto 100vh;
+          -webkit-mask-size: auto 100vh;
+          mask-repeat: no-repeat;
+          -webkit-mask-repeat: no-repeat;
+          mask-position: right center;
+          -webkit-mask-position: right center;
+        }
       `}</style>
 
       {/* 🎬 GLOBAL CORNER VIGNETTE SHADOW */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_45%,_rgba(0,0,0,0.85)_100%)] pointer-events-none z-[12]" />
       
-      {/* 4-COLUMN FLEX GRID */}
-      <div className="flex flex-row items-stretch w-[calc(100vw+135px)] h-full [mask-image:url('/home-mask-desktop.svg')] [mask-size:100%_100%] [mask-repeat:no-repeat]">
+      {/* EXPANDED CONTAINER WITH SEAMLESS OVERLAP TO ELIMINATE STRAIGHT LINES */}
+      <div className="flex flex-row items-stretch w-[calc(100vw+140px)] h-full relative z-[1]">
         {COLUMNS.map((col, index) => {
           const zIndices = ['z-[4]', 'z-[3]', 'z-[2]', 'z-[1]'];
-          const isMaskedCol = index < 3;
-          const isAboutMe = col.id === 'about';
+          const isTornCol = index < 3;
+
+          // Custom Widths: Editing (23%), Direction (27%), Motion (27%), About Me (23%)
+          const columnWidths = ['w-[23%]', 'w-[27%]', 'w-[27%]', 'w-[23%]'];
 
           return (
             <div
               key={col.id}
-              className={`group relative h-full w-[25%] shrink-0 min-w-0 cursor-pointer overflow-hidden ${zIndices[index]} ${
-                isMaskedCol 
-                  ? 'pr-[45px] -mr-[45px] [mask-image:url(\'/home-mask-desktop.svg\')] [mask-size:auto_100vh] [mask-repeat:no-repeat] [mask-position:right_center] [filter:drop-shadow(-12px_0_15px_rgba(0,0,0,0.85))]' 
-                  : 'grow'
+              className={`group relative h-full ${columnWidths[index]} shrink-0 min-w-0 cursor-pointer overflow-hidden ${zIndices[index]} ${
+                isTornCol ? 'organic-torn-mask pr-[50px] -mr-[50px] [filter:drop-shadow(-15px_0_20px_rgba(0,0,0,0.95))]' : ''
               }`}
               onMouseEnter={() => handleMouseEnter(index)}
               onMouseLeave={() => handleMouseLeave(index)}
@@ -103,12 +115,8 @@ export default function Hero({ onColumnClick }) {
               {/* 🎞️ ULTRA SUBTLE NOISE OVERLAY */}
               <div className="absolute inset-0 bg-[url('/noise.gif')] bg-repeat opacity-[0.05] pointer-events-none z-15 mix-blend-overlay" />
 
-              {/* 🔤 TEXT BLOCK (ABOUT ME MEIN RIGHT MARGIN / PADDING ADD KIYA HAI) */}
-              <div 
-                className={`absolute inset-x-0 top-[58%] z-20 flex flex-col items-center justify-start text-center pointer-events-none mx-auto max-w-[95%] ${
-                  isAboutMe ? 'pr-8 sm:pr-12 md:pr-16 pl-2' : 'px-2'
-                }`}
-              >
+              {/* 🔤 TEXT BLOCK (FIXED CENTERED ALIGNMENT FOR ALL COLUMNS) */}
+              <div className="absolute inset-x-0 top-[58%] z-20 flex flex-col items-center justify-start text-center pointer-events-none mx-auto max-w-[95%] px-2">
 
                 {/* Main Heading */}
                 <h1 
