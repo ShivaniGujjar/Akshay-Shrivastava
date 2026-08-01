@@ -1,15 +1,45 @@
 @import "tailwindcss";
 
+/* 🔤 FONT FACE DEFINITIONS */
+@font-face {
+  font-family: 'NewClientFont';
+  src: url('/fonts/RoseryStudio-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Talina';
+  src: url('/Talina.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GourmetEatery';
+  src: url('/Gourmet Eatery.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   /* Brand Color Tokens */
   --color-brand-blue: #2b66e3;
   --color-brand-blue-glass: rgba(43, 102, 227, 0.9);
-  --color-brand-gold: #fcd34d; /* Tailwind amber-300 */
+  --color-brand-gold: #fcd34d;
   --color-canvas-bg: #fafafa;
   --color-brand-dark: #0c0c0e;
+
+  /* 🔤 Brand Typography Tokens for Tailwind v4 */
+  --font-rosery: 'RoseryStudio', sans-serif;
+  --font-talina: 'Talina', sans-serif;
+  --font-gourmet: 'GourmetEatery', cursive, sans-serif;
 }
 
-/* 🚀 GLOBAL SCROLLBAR REMOVAL ( window window + elements) */
+/* 🚀 GLOBAL SCROLLBAR REMOVAL (window + elements) */
 * {
   -ms-overflow-style: none !important;
   scrollbar-width: none !important;
@@ -28,20 +58,19 @@ body {
   margin: 0;
   padding: 0;
   background-color: #0c0c0e;
-  scroll-behavior: auto !important; /* Forces Lenis inertia natively */
+  scroll-behavior: auto !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   max-width: 100vw;
 }
 
-/* 🔷 Force GPU Caching on Animated Tickers to reduce jitter */
 .animate-\[slowMarqueeLeft_85s_linear_infinite\],
 .animate-\[slowMarqueeRight_85s_linear_infinite\],
 .animate-\[slowMarqueeLeft_75s_linear_infinite\],
 .animate-\[slowMarqueeLeft_95s_linear_infinite\] {
   will-change: transform;
-  transform: translateZ(0); /* Hardware Acceleration activation */
+  transform: translateZ(0);
   backface-visibility: hidden;
 }
 

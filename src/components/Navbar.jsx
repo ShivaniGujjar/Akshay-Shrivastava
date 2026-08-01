@@ -3,13 +3,12 @@ import React, { useState, useEffect } from 'react';
 const NAV_ITEMS = [
   { label: 'Editing', id: 'editing' },
   { label: 'Direction', id: 'direction' },
-  { label: 'Motion design', id: 'motion' },
-  { label: 'About me', id: 'about' }
+  { label: 'Motion Design', id: 'motion' },
+  { label: 'About Me', id: 'about' }
 ];
 
-export default function Navbar({ onNavigate, activeSection }) {
+export default function Navbar({ onNavigate, activeSection = 'editing' }) {
   const [isVisible, setIsVisible] = useState(true);
-  const isHome = activeSection === 'home';
 
   useEffect(() => {
     const handleWheel = (e) => {
@@ -17,59 +16,44 @@ export default function Navbar({ onNavigate, activeSection }) {
       else if (e.deltaY < -5) setIsVisible(true);
     };
 
-    let touchStart = 0;
-    const handleTouchStart = (e) => { touchStart = e.touches[0].clientY; };
-    const handleTouchMove = (e) => {
-      const touchEnd = e.touches[0].clientY;
-      const diff = touchStart - touchEnd;
-      if (diff > 10) setIsVisible(false);
-      else if (diff < -10) setIsVisible(true);
-      touchStart = touchEnd;
-    };
-
     window.addEventListener('wheel', handleWheel, { passive: true });
-    window.addEventListener('touchstart', handleTouchStart, { passive: true });
-    window.addEventListener('touchmove', handleTouchMove, { passive: true });
-
-    return () => {
-      window.removeEventListener('wheel', handleWheel);
-      window.removeEventListener('touchstart', handleTouchStart);
-      window.removeEventListener('touchmove', handleTouchMove);
-    };
+    return () => window.removeEventListener('wheel', handleWheel);
   }, []);
+
+  const handleHomeClick = (e) => {
+    e.preventDefault();
+    if (onNavigate) {
+      onNavigate('home');
+    } else {
+      window.location.href = '/';
+    }
+  };
 
   return (
     <header 
-      className={`fixed top-6 left-0 w-full flex items-center justify-between z-[9999] px-6 sm:px-10 pointer-events-none transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-        isVisible 
-          ? 'translate-y-0 opacity-100' 
-          : '-translate-y-[250%] opacity-0'
+      className={`fixed top-4 left-0 w-full z-[9999] px-4 sm:px-8 pointer-events-none transition-all duration-400 ease-out ${
+        isVisible ? 'translate-y-0 opacity-100' : '-translate-y-[200%] opacity-0'
       }`}
     >
-      {/* 🏠 LEFT: MATCHING ROYAL BLUE GLASS HOME BUTTON */}
-      <div className="pointer-events-auto">
-        {!isHome && (
-          <button
-            onClick={() => {
-              if (onNavigate) onNavigate('home');
-            }}
-            aria-label="Go to Home"
-            className="w-[44px] h-[44px] sm:w-[48px] sm:h-[48px] flex items-center justify-center rounded-full bg-[#2b66e3]/90 text-white border border-white/25 backdrop-blur-md transition-all duration-300 ease-out shadow-[0_10px_30px_rgba(43,102,227,0.35)] hover:shadow-[0_15px_40px_rgba(43,102,227,0.5)] hover:text-amber-300 hover:scale-110 cursor-pointer"
+      <div className="w-full max-w-[1300px] mx-auto flex items-center justify-between">
+        
+        {/* LEFT: NAME LOGO */}
+        <a 
+          href="/"
+          onClick={handleHomeClick}
+          className="pointer-events-auto flex items-center gap-1.5 select-none cursor-pointer group transition-transform duration-200 hover:scale-105"
+        >
+          <span 
+            style={{ fontFamily: "'GourmetEatery', cursive, sans-serif" }}
+            className="text-amber-400 text-base sm:text-lg tracking-wide transition-colors group-hover:text-amber-300 drop-shadow-[0_2px_8px_rgba(251,191,36,0.3)]"
           >
-            <svg 
-              viewBox="0 0 24 24" 
-              className="w-5 h-5 fill-none stroke-current stroke-[2.5] stroke-linecap-round stroke-linejoin-round"
-            >
-              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-              <polyline points="9 22 9 12 15 12 15 22" />
-            </svg>
-          </button>
-        )}
-      </div>
+            akshay shrivastav
+          </span>
+          <span className="w-1.5 h-1.5 rounded-full bg-amber-400 inline-block mb-0.5 shadow-[0_0_8px_#fcd34d]" />
+        </a>
 
-      {/* 🧭 CENTER / RIGHT: SECTION NAVIGATION PILL */}
-      <div className="pointer-events-auto bg-[#2b66e3]/90 border border-white/25 px-5 py-2 sm:px-8 sm:py-2.5 rounded-full flex items-center shadow-[0_10px_30px_rgba(43,102,227,0.35)] backdrop-blur-md transition-all duration-300 hover:shadow-[0_15px_40px_rgba(43,102,227,0.5)] hover:border-white/40">
-        <div className="flex items-center gap-2 sm:gap-3.5">
+        {/* CENTER: PERFECTLY VERTICALLY CENTERED RECTANGULAR CONTAINER */}
+        <div className="pointer-events-auto bg-[#0a0a0c]/85 border border-white/10 px-4 h-9 rounded-lg flex items-center justify-center gap-2 backdrop-blur-md shadow-xl">
           {NAV_ITEMS.map((item, idx) => {
             const isActive = activeSection === item.id;
 
@@ -81,28 +65,36 @@ export default function Navbar({ onNavigate, activeSection }) {
                     e.preventDefault();
                     if (onNavigate) onNavigate(item.id);
                   }}
-                  className={`font-['Denebola','Dekko','Architects_Daughter','Comic_Sans_MS',sans-serif] text-[12px] sm:text-[14px] capitalize tracking-wide font-bold px-1.5 py-0.5 whitespace-nowrap transition-all duration-200 cursor-pointer ${
-                    isActive 
-                      ? 'text-amber-300 scale-105 drop-shadow-[0_2px_8px_rgba(251,191,36,0.5)] underline underline-offset-4 decoration-2 decoration-amber-300 font-extrabold' 
-                      : 'text-white/90 hover:text-amber-300 hover:scale-105'
+                  style={{ fontFamily: "'GourmetEatery', cursive, sans-serif" }}
+                  className={`relative inline-flex items-center text-xs sm:text-sm tracking-normal transition-colors duration-200 cursor-pointer h-full ${
+                    isActive ? 'text-amber-300 font-medium' : 'text-white hover:text-amber-400'
                   }`}
                 >
-                  {item.label}
+                  {/* Fine-tuned baseline shift to compensate for cursive font alignment */}
+                  <span className="translate-y-[1.5px] leading-none">{item.label}</span>
                 </a>
 
+                {/* GOLD DOT SEPARATOR (CENTERED) */}
                 {idx < NAV_ITEMS.length - 1 && (
-                  <span className="font-sans text-[10px] sm:text-[12px] font-bold text-white/50 select-none pointer-events-none -translate-y-[0.5px]">
-                    •
-                  </span>
+                  <span className="text-amber-400 text-xs leading-none select-none pointer-events-none px-0.5 translate-y-[0.5px] flex items-center">•</span>
                 )}
               </React.Fragment>
             );
           })}
         </div>
-      </div>
 
-      {/* Spacer div to keep the centered pill perfectly balanced when Home button is visible */}
-      <div className="w-[44px] sm:w-[48px] hidden sm:block pointer-events-none" />
+        {/* RIGHT: CONNECT BUTTON */}
+        <div className="pointer-events-auto">
+          <a 
+            href="#contact"
+            style={{ fontFamily: "'GourmetEatery', cursive, sans-serif" }}
+            className="bg-[#0a0a0c]/85 border border-white/15 text-amber-400 hover:text-amber-300 hover:border-amber-400/30 px-3.5 h-9 rounded-lg text-xs sm:text-sm font-medium tracking-wide flex items-center gap-1.5 backdrop-blur-md transition-all duration-300 shadow-lg cursor-pointer hover:scale-105"
+          >
+            <span className="translate-y-[1px] leading-none">Let's Connect ↗</span>
+          </a>
+        </div>
+
+      </div>
     </header>
   );
 }
