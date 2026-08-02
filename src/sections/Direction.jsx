@@ -186,7 +186,7 @@ export default function Direction() {
           playsInline 
           className="absolute top-0 left-0 w-full h-screen object-cover z-0 filter brightness-[0.65] contrast-105"
         >
-          <source src="https://res.cloudinary.com/n1mfkfh4/video/upload/v1784316399/Ifolder_with_grade_final_vh9ygb.mp4" type="video/mp4" />
+          <source src="https://res.cloudinary.com/n1mfkfh4/video/upload/v1785678011/Ifolder_with_grade_final_lzq260.mp4" />
         </video>
 
         {/* LIGHT GRADIENT VIGNETTE OVERLAY */}

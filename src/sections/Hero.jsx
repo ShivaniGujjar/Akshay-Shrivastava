@@ -17,13 +17,13 @@ const COLUMNS = [
     id: 'direction', 
     title: 'DIRECTION', 
     subtitle: 'Turning ideas into visual experiences.',
-    videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1784316399/Ifolder_with_grade_final_vh9ygb.mp4' 
+    videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785678011/Ifolder_with_grade_final_lzq260.mp4' 
   },
   { 
     id: 'about', 
     title: 'ABOUT ME', 
     subtitle: 'The person behind the projects.',
-    videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1784318460/Learn_AE_in_a_single_day_1_vwktvg.mp4' 
+    videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785678044/After_effects_compressed_jxplaf.mp4' 
   }
 ];
 
