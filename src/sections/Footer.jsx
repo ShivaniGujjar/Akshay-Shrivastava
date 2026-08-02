@@ -36,41 +36,43 @@ const SOCIAL_LINKS = [
 
 export default function Footer() {
   return (
-    <footer className="fixed bottom-4 left-0 w-full px-4 sm:px-8 z-[9999] pointer-events-none flex items-center justify-between">
-      
-      {/* 🟢 BOTTOM-LEFT: AVAILABLE FOR WORK BADGE */}
-      <div 
-        style={{ fontFamily: "'GourmetEatery', cursive, sans-serif" }}
-        className="pointer-events-auto flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-[#0a0a0c]/85 text-white border border-white/10 backdrop-blur-md shadow-xl text-xs sm:text-sm font-medium tracking-wide transition-all duration-300 hover:border-amber-400/30 group cursor-pointer"
-      >
-        <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse shadow-[0_0_8px_#fcd34d]" />
-        <span className="uppercase text-neutral-200 transition-colors group-hover:text-amber-400">
-          AVAILABLE FOR WORK
-        </span>
-      </div>
+    <footer className="fixed bottom-4 left-0 w-full px-6 md:px-16 z-[9999] pointer-events-none">
+      <div className="w-full max-w-[1700px] mx-auto flex items-center justify-between">
+        
+        {/* 🟢 BOTTOM-LEFT: AVAILABLE FOR WORK BADGE */}
+        <div 
+          style={{ fontFamily: "'GourmetEatery', cursive, sans-serif" }}
+          className="pointer-events-auto flex items-center gap-2 px-3.5 h-9 rounded-lg bg-[#0a0a0c]/85 text-white border border-white/10 backdrop-blur-md shadow-xl text-xs sm:text-sm font-medium tracking-wide transition-all duration-300 hover:border-amber-400/30 group cursor-pointer"
+        >
+          <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse shadow-[0_0_8px_#fcd34d]" />
+          <span className="uppercase text-neutral-200 transition-colors group-hover:text-amber-400 translate-y-[1px]">
+            AVAILABLE FOR WORK
+          </span>
+        </div>
 
-      {/* 🌐 BOTTOM-RIGHT: SOCIAL LINKS CONTAINER */}
-      <div className="flex items-center justify-center bg-[#0a0a0c]/85 border border-white/10 px-4 py-2 rounded-lg shadow-xl backdrop-blur-md pointer-events-auto transition-all duration-300 gap-3 hover:border-amber-400/30">
-        {SOCIAL_LINKS.map((social, idx) => (
-          <React.Fragment key={social.id}>
-            <a 
-              href={social.url} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              aria-label={social.id}
-              className="text-neutral-300 flex items-center justify-center no-underline transition-all duration-200 ease-out p-1 cursor-pointer hover:text-amber-400 hover:scale-125"
-            >
-              {social.icon}
-            </a>
-            {idx < SOCIAL_LINKS.length - 1 && (
-              <span className="text-[10px] text-neutral-600 select-none pointer-events-none">
-                •
-              </span>
-            )}
-          </React.Fragment>
-        ))}
-      </div>
+        {/* 🌐 BOTTOM-RIGHT: SOCIAL LINKS CONTAINER */}
+        <div className="flex items-center justify-center bg-[#0a0a0c]/85 border border-white/10 px-4 h-9 rounded-lg shadow-xl backdrop-blur-md pointer-events-auto transition-all duration-300 gap-3 hover:border-amber-400/30">
+          {SOCIAL_LINKS.map((social, idx) => (
+            <React.Fragment key={social.id}>
+              <a 
+                href={social.url} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                aria-label={social.id}
+                className="text-neutral-300 flex items-center justify-center no-underline transition-all duration-200 ease-out p-1 cursor-pointer hover:text-amber-400 hover:scale-125"
+              >
+                {social.icon}
+              </a>
+              {idx < SOCIAL_LINKS.length - 1 && (
+                <span className="text-[10px] text-neutral-600 select-none pointer-events-none">
+                  •
+                </span>
+              )}
+            </React.Fragment>
+          ))}
+        </div>
 
+      </div>
     </footer>
   );
 }

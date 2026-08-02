@@ -8,16 +8,16 @@ const COLUMNS = [
     videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1784312262/editing_ra4d0j.mp4' 
   },
   { 
-    id: 'direction', 
-    title: 'DIRECTION', 
-    subtitle: 'Turning ideas into visual experiences.',
-    videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1784316399/Ifolder_with_grade_final_vh9ygb.mp4' 
-  },
-  { 
     id: 'motion', 
     title: 'MOTION DESIGN', 
     subtitle: 'Adding motion that brings stories to life.',
     videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1784024845/motion_gqgmye.mp4' 
+  },
+  { 
+    id: 'direction', 
+    title: 'DIRECTION', 
+    subtitle: 'Turning ideas into visual experiences.',
+    videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1784316399/Ifolder_with_grade_final_vh9ygb.mp4' 
   },
   { 
     id: 'about', 
@@ -81,7 +81,7 @@ export default function Hero({ onColumnClick }) {
           const zIndices = ['z-[4]', 'z-[3]', 'z-[2]', 'z-[1]'];
           const isTornCol = index < 3;
 
-          // Custom Widths: Editing (23%), Direction (27%), Motion (27%), About Me (23%)
+          // Custom Widths matching sequence: Editing (23%), Motion (27%), Direction (27%), About Me (23%)
           const columnWidths = ['w-[23%]', 'w-[27%]', 'w-[27%]', 'w-[23%]'];
 
           return (

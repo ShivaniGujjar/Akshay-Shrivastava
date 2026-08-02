@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 const NAV_ITEMS = [
   { label: 'Editing', id: 'editing' },
-  { label: 'Direction', id: 'direction' },
   { label: 'Motion Design', id: 'motion' },
+  { label: 'Direction', id: 'direction' },
   { label: 'About Me', id: 'about' }
 ];
 
@@ -31,11 +31,11 @@ export default function Navbar({ onNavigate, activeSection = 'editing' }) {
 
   return (
     <header 
-      className={`fixed top-4 left-0 w-full z-[9999] px-4 sm:px-8 pointer-events-none transition-all duration-400 ease-out ${
+      className={`fixed top-4 left-0 w-full z-[9999] px-6 md:px-16 pointer-events-none transition-all duration-400 ease-out ${
         isVisible ? 'translate-y-0 opacity-100' : '-translate-y-[200%] opacity-0'
       }`}
     >
-      <div className="w-full max-w-[1300px] mx-auto flex items-center justify-between">
+      <div className="w-full max-w-[1700px] mx-auto flex items-center justify-between">
         
         {/* LEFT: NAME LOGO */}
         <a 
@@ -87,6 +87,10 @@ export default function Navbar({ onNavigate, activeSection = 'editing' }) {
         <div className="pointer-events-auto">
           <a 
             href="#contact"
+            onClick={(e) => {
+              e.preventDefault();
+              if (onNavigate) onNavigate('connect');
+            }}
             style={{ fontFamily: "'GourmetEatery', cursive, sans-serif" }}
             className="bg-[#0a0a0c]/85 border border-white/15 text-amber-400 hover:text-amber-300 hover:border-amber-400/30 px-3.5 h-9 rounded-lg text-xs sm:text-sm font-medium tracking-wide flex items-center gap-1.5 backdrop-blur-md transition-all duration-300 shadow-lg cursor-pointer hover:scale-105"
           >
