@@ -146,7 +146,7 @@ export default function Editing() {
         
         {/* FLUID BACKDROP VIDEO */}
         <video 
-          src="https://res.cloudinary.com/n1mfkfh4/video/upload/v1784312262/editing_ra4d0j.mp4" 
+          src="https://res.cloudinary.com/n1mfkfh4/video/upload/v1785678593/Campus_film_compressed_2_otok6t.mp4" 
           autoPlay 
           loop 
           muted 
