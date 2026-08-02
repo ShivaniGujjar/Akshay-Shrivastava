@@ -31,11 +31,11 @@ export default function Navbar({ onNavigate, activeSection = 'editing' }) {
 
   return (
     <header 
-      className={`fixed top-4 left-0 w-full z-[9999] px-6 md:px-16 pointer-events-none transition-all duration-400 ease-out ${
+      className={`fixed top-4 left-0 w-full z-[9999] px-4 sm:px-8 md:px-12 pointer-events-none transition-all duration-400 ease-out ${
         isVisible ? 'translate-y-0 opacity-100' : '-translate-y-[200%] opacity-0'
       }`}
     >
-      <div className="w-full max-w-[1700px] mx-auto flex items-center justify-between">
+      <div className="w-full flex items-center justify-between">
         
         {/* LEFT: NAME LOGO */}
         <a 
@@ -52,7 +52,7 @@ export default function Navbar({ onNavigate, activeSection = 'editing' }) {
           <span className="w-1.5 h-1.5 rounded-full bg-amber-400 inline-block mb-0.5 shadow-[0_0_8px_#fcd34d]" />
         </a>
 
-        {/* CENTER: PERFECTLY VERTICALLY CENTERED RECTANGULAR CONTAINER */}
+        {/* CENTER: CAPSULE NAVIGATION */}
         <div className="pointer-events-auto bg-[#0a0a0c]/85 border border-white/10 px-4 h-9 rounded-lg flex items-center justify-center gap-2 backdrop-blur-md shadow-xl">
           {NAV_ITEMS.map((item, idx) => {
             const isActive = activeSection === item.id;
@@ -70,13 +70,11 @@ export default function Navbar({ onNavigate, activeSection = 'editing' }) {
                     isActive ? 'text-amber-300 font-medium' : 'text-white hover:text-amber-400'
                   }`}
                 >
-                  {/* Fine-tuned baseline shift to compensate for cursive font alignment */}
                   <span className="translate-y-[1.5px] leading-none">{item.label}</span>
                 </a>
 
-                {/* GOLD DOT SEPARATOR (CENTERED) */}
                 {idx < NAV_ITEMS.length - 1 && (
-                  <span className="text-amber-400 text-xs leading-none select-none pointer-events-none px-0.5 translate-y-[0.5px] flex items-center">•</span>
+                  <span className="text-white/40 text-xs leading-none select-none pointer-events-none px-0.5 translate-y-[0.5px] flex items-center">•</span>
                 )}
               </React.Fragment>
             );

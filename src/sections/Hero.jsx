@@ -115,8 +115,8 @@ export default function Hero({ onColumnClick }) {
               {/* 🎞️ ULTRA SUBTLE NOISE OVERLAY */}
               <div className="absolute inset-0 bg-[url('/noise.gif')] bg-repeat opacity-[0.05] pointer-events-none z-15 mix-blend-overlay" />
 
-              {/* 🔤 TEXT BLOCK (FIXED CENTERED ALIGNMENT FOR ALL COLUMNS) */}
-              <div className="absolute inset-x-0 top-[58%] z-20 flex flex-col items-center justify-start text-center pointer-events-none mx-auto max-w-[95%] px-2">
+              {/* 🔤 TEXT BLOCK (FIXED CENTERED ALIGNMENT FOR ALL COLUMNS - SLIGHT LEFT SHIFT FOR EDITING) */}
+              <div className={`absolute inset-x-0 top-[58%] z-20 flex flex-col items-center justify-start text-center pointer-events-none mx-auto max-w-[95%] px-2 ${index === 0 ? '-translate-x-3' : ''}`}>
 
                 {/* Main Heading */}
                 <h1 
