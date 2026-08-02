@@ -11,7 +11,7 @@ const COLUMNS = [
     id: 'motion', 
     title: 'MOTION DESIGN', 
     subtitle: 'Adding motion that brings stories to life.',
-    videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1784024845/motion_gqgmye.mp4' 
+    videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785674839/Perfectionism_compressed_isgrjo.mp4' 
   },
   { 
     id: 'direction', 

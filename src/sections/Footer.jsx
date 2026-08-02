@@ -36,7 +36,7 @@ const SOCIAL_LINKS = [
 
 export default function Footer() {
   return (
-    <footer className="fixed bottom-4 left-0 w-full px-4 sm:px-8 md:px-12 z-[9999] pointer-events-none">
+    <footer className="fixed bottom-4 left-0 w-screen max-w-full box-border z-[9999] px-4 sm:px-8 md:px-12 pointer-events-none">
       <div className="w-full flex items-center justify-between">
         
         {/* 🟢 BOTTOM-LEFT: AVAILABLE FOR WORK BADGE */}
