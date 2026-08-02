@@ -37,23 +37,27 @@ export default function Navbar({ onNavigate, activeSection = 'editing' }) {
     >
       <div className="w-full flex items-center justify-between">
         
-        {/* LEFT: NAME LOGO */}
+        {/* LEFT: NAME LOGO WITH INCREASED SIZE & BLUE STROKE */}
         <a 
           href="/"
           onClick={handleHomeClick}
           className="pointer-events-auto flex items-center gap-1.5 select-none cursor-pointer group transition-transform duration-200 hover:scale-105"
         >
           <span 
-            style={{ fontFamily: "'GourmetEatery', cursive, sans-serif" }}
-            className="text-amber-400 text-base sm:text-lg tracking-wide transition-colors group-hover:text-amber-300 drop-shadow-[0_2px_8px_rgba(251,191,36,0.3)]"
+            style={{ 
+              fontFamily: "'Permanent Marker', cursive, sans-serif",
+              WebkitTextStroke: '1px #144bff',
+              textShadow: '2px 2px 4px rgba(0,0,0,0.9), 0 0 10px rgba(20,75,255,0.4)'
+            }}
+            className="text-[#e6dec9] text-lg sm:text-xl tracking-wide transition-colors group-hover:text-white"
           >
             akshay shrivastav
           </span>
-          <span className="w-1.5 h-1.5 rounded-full bg-amber-400 inline-block mb-0.5 shadow-[0_0_8px_#fcd34d]" />
+          <span className="w-1.5 h-1.5 rounded-full bg-[#144bff] inline-block mb-0.5 animate-pulse shadow-[0_0_6px_#144bff]" />
         </a>
 
         {/* CENTER: CAPSULE NAVIGATION */}
-        <div className="pointer-events-auto bg-[#0a0a0c]/85 border border-white/10 px-4 h-9 rounded-lg flex items-center justify-center gap-2 backdrop-blur-md shadow-xl">
+        <div className="pointer-events-auto bg-[#144bff] border border-white/20 px-4 h-10 rounded-xl flex items-center justify-center gap-2 shadow-xl">
           {NAV_ITEMS.map((item, idx) => {
             const isActive = activeSection === item.id;
 
@@ -65,16 +69,16 @@ export default function Navbar({ onNavigate, activeSection = 'editing' }) {
                     e.preventDefault();
                     if (onNavigate) onNavigate(item.id);
                   }}
-                  style={{ fontFamily: "'GourmetEatery', cursive, sans-serif" }}
-                  className={`relative inline-flex items-center text-xs sm:text-sm tracking-normal transition-colors duration-200 cursor-pointer h-full ${
-                    isActive ? 'text-amber-300 font-medium' : 'text-white hover:text-amber-400'
+                  style={{ fontFamily: "'Permanent Marker', cursive, sans-serif" }}
+                  className={`relative inline-flex items-center text-xs sm:text-sm tracking-wide transition-all duration-200 cursor-pointer h-full px-1 ${
+                    isActive ? 'text-white font-bold scale-105' : 'text-[#e6dec9] hover:text-white'
                   }`}
                 >
-                  <span className="translate-y-[1.5px] leading-none">{item.label}</span>
+                  <span className="translate-y-[1px] leading-none">{item.label}</span>
                 </a>
 
                 {idx < NAV_ITEMS.length - 1 && (
-                  <span className="text-white/40 text-xs leading-none select-none pointer-events-none px-0.5 translate-y-[0.5px] flex items-center">•</span>
+                  <span className="text-[#e6dec9]/40 text-xs leading-none select-none pointer-events-none px-0.5 translate-y-[1px] flex items-center">•</span>
                 )}
               </React.Fragment>
             );
@@ -89,8 +93,8 @@ export default function Navbar({ onNavigate, activeSection = 'editing' }) {
               e.preventDefault();
               if (onNavigate) onNavigate('connect');
             }}
-            style={{ fontFamily: "'GourmetEatery', cursive, sans-serif" }}
-            className="bg-[#0a0a0c]/85 border border-white/15 text-amber-400 hover:text-amber-300 hover:border-amber-400/30 px-3.5 h-9 rounded-lg text-xs sm:text-sm font-medium tracking-wide flex items-center gap-1.5 backdrop-blur-md transition-all duration-300 shadow-lg cursor-pointer hover:scale-105"
+            style={{ fontFamily: "'Permanent Marker', cursive, sans-serif" }}
+            className="bg-[#144bff] hover:bg-[#103ce6] text-[#e6dec9] hover:text-white border border-white/20 px-4 h-10 rounded-xl text-xs sm:text-sm font-medium tracking-wide flex items-center gap-1.5 transition-all duration-300 shadow-xl cursor-pointer hover:scale-105"
           >
             <span className="translate-y-[1px] leading-none">Let's Connect ↗</span>
           </a>

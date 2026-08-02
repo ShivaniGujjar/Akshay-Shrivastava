@@ -42,7 +42,7 @@ const duplicateList = (arr, count = 4) => {
 
 export default function SocialProof({ brands = DEFAULT_BRANDS, testimonials = DEFAULT_TESTIMONIALS }) {
   return (
-    <section className="w-full relative overflow-hidden pt-12 pb-24 font-sans select-none bg-[#1a1c23] text-white">
+    <section className="w-full relative overflow-hidden pt-12 pb-24 font-sans select-none bg-[#e6dec9] text-[#14120e]">
       
       {/* 🎨 LOCAL FONT DECLARATION */}
       <style>{`
@@ -53,6 +53,13 @@ export default function SocialProof({ brands = DEFAULT_BRANDS, testimonials = DE
           font-style: normal;
           font-display: swap;
         }
+
+        /* BLUE STROKE FOR HEADINGS */
+        .blue-stroke-header {
+          color: #e6dec9;
+          -webkit-text-stroke: 1.2px #144bff;
+          text-shadow: 2px 2px 0px #144bff, 0 4px 20px rgba(20,75,255,0.25);
+        }
       `}</style>
 
       {/* ────────────────── 1. WORKED WITH SECTION ────────────────── */}
@@ -62,11 +69,11 @@ export default function SocialProof({ brands = DEFAULT_BRANDS, testimonials = DE
         <div className="inline-flex flex-col items-center mb-8">
           <h3 
             style={{ fontFamily: "'RoseryStudio', var(--font-rosery), sans-serif" }}
-            className="text-amber-400 text-3xl sm:text-4xl md:text-5xl uppercase tracking-wider m-0 drop-shadow-[0_4px_12px_rgba(251,191,36,0.2)]"
+            className="text-4xl sm:text-5xl md:text-6xl uppercase tracking-wider m-0 blue-stroke-header"
           >
             Worked With
           </h3>
-          <div className="w-12 h-1 bg-amber-400/60 rounded-sm mt-2 shadow-[0_0_8px_#fcd34d]" />
+          <div className="w-12 h-1 bg-[#144bff] rounded-sm mt-2 shadow-[0_0_8px_#144bff]" />
         </div>
 
         {/* Marquee Container */}
@@ -76,9 +83,9 @@ export default function SocialProof({ brands = DEFAULT_BRANDS, testimonials = DE
               <div 
                 key={`brand-${idx}`} 
                 style={{ fontFamily: "'RoseryStudio', var(--font-rosery), sans-serif" }}
-                className="px-7 py-3 bg-[#0c0c0e]/90 text-white rounded-md inline-flex items-center justify-center shrink-0 shadow-lg text-xs sm:text-sm tracking-widest border border-white/15 backdrop-blur-md hover:border-amber-400/50 hover:text-amber-300 hover:scale-105 transition-all duration-300 cursor-default"
+                className="px-7 py-3 bg-[#faf8f5] text-[#14120e] rounded-md inline-flex items-center justify-center shrink-0 shadow-md text-xs sm:text-sm tracking-widest border border-[#144bff]/20 backdrop-blur-md hover:border-[#144bff] hover:text-[#144bff] hover:scale-105 transition-all duration-300 cursor-default"
               >
-                <span className="text-amber-400 mr-2.5">✦</span>
+                <span className="text-[#144bff] mr-2.5">✦</span>
                 {brand}
               </div>
             ))}
@@ -86,12 +93,12 @@ export default function SocialProof({ brands = DEFAULT_BRANDS, testimonials = DE
         </div>
       </div>
 
-      {/* ────────────────── 2. TESTIMONIALS CINEMATIC BAND ────────────────── */}
-      <div className="w-full bg-[#0c0c0e] relative py-28 sm:py-36 flex flex-col items-center overflow-hidden shadow-2xl border-y border-white/10">
+      {/* ────────────────── 2. TESTIMONIALS CINEMATIC BAND (VIBRANT BLUE WITH COMPACT HEIGHT & SEAMLESS TORN EDGE) ────────────────── */}
+      <div className="w-full bg-[#144bff] relative py-20 sm:py-28 flex flex-col items-center overflow-hidden shadow-2xl">
         
-        {/* Top Torn Canvas Divider */}
+        {/* Top Seamless Torn Edge Mask */}
         <div 
-          className="absolute -top-[2px] left-0 w-full h-[55px] sm:h-[75px] z-[12] bg-[#1a1c23]"
+          className="absolute top-0 left-0 w-full h-[50px] sm:h-[75px] z-[12] bg-[#e6dec9]"
           style={{
             maskImage: "url('/bottom.png')",
             WebkitMaskImage: "url('/bottom.png')",
@@ -99,71 +106,75 @@ export default function SocialProof({ brands = DEFAULT_BRANDS, testimonials = DE
             WebkitMaskSize: "auto 100%",
             maskRepeat: "repeat-x",
             WebkitMaskRepeat: "repeat-x",
+            maskPosition: "bottom",
+            WebkitMaskPosition: "bottom",
             transform: "scaleY(-1)"
           }}
         />
 
         {/* Header */}
-        <div className="relative z-[15] text-center mb-12 px-4">
+        <div className="relative z-[15] text-center mb-10 px-4 pt-2">
           <h2 
             style={{ fontFamily: "'RoseryStudio', var(--font-rosery), sans-serif" }}
-            className="text-amber-400 text-3xl sm:text-4xl md:text-5xl uppercase drop-shadow-md m-0"
+            className="text-3xl sm:text-4xl md:text-5xl uppercase m-0 text-white drop-shadow-md"
           >
-            Testimonials
+            Testimonial
           </h2>
-          <p className="text-neutral-400 font-sans text-xs sm:text-sm font-semibold uppercase tracking-[2px] mt-2">
+          <p className="text-white/80 font-sans text-xs sm:text-sm font-semibold uppercase tracking-[2px] mt-1.5">
             What clients & directors say about my work
           </p>
         </div>
 
-        {/* Ticker Cards Wrapper */}
-        <div className="w-full overflow-hidden py-4 group relative z-[15]">
-          <div className="inline-flex whitespace-nowrap gap-6 sm:gap-10 w-max will-change-transform animate-[slowMarqueeLeft_85s_linear_infinite] group-hover:[animation-play-state:paused]">
+        {/* Ticker Cards Wrapper (Compact & Elegant Card Dimensions) */}
+        <div className="w-full overflow-hidden py-2 group relative z-[15]">
+          <div className="inline-flex whitespace-nowrap gap-5 sm:gap-7 w-max will-change-transform animate-[slowMarqueeLeft_75s_linear_infinite] group-hover:[animation-play-state:paused]">
             {duplicateList(testimonials).map((testi, idx) => (
               <div 
                 key={`testi-${idx}`} 
-                className="relative bg-[#16171d] text-white w-[320px] sm:w-[420px] p-8 sm:p-9 rounded-md inline-flex flex-col justify-between shrink-0 shadow-[0_20px_50px_rgba(0,0,0,0.5)] whitespace-normal border border-white/10 backdrop-blur-xl transition-all duration-300 hover:border-amber-400/50 hover:-translate-y-1"
+                className="relative bg-[#faf8f5] text-[#14120e] w-[300px] sm:w-[370px] p-6 sm:p-7 rounded-xl inline-flex flex-col justify-between shrink-0 shadow-lg whitespace-normal border border-white/20 backdrop-blur-xl transition-all duration-300 hover:scale-[1.02]"
               >
                 {/* Decorative Quote Mark */}
-                <span className="text-amber-400/20 font-serif text-6xl leading-none absolute top-4 right-6 select-none pointer-events-none">
+                <span className="text-[#144bff]/20 font-serif text-5xl leading-none absolute top-3 right-5 select-none pointer-events-none">
                   “
                 </span>
 
                 <p 
-                  style={{ fontFamily: "'RoseryStudio', var(--font-rosery), sans-serif" }}
-                  className="text-white/95 text-base sm:text-lg leading-relaxed m-0 relative z-10"
+                  style={{ fontFamily: "'Permanent Marker', cursive, sans-serif" }}
+                  className="text-[#14120e] text-xs sm:text-sm leading-relaxed m-0 relative z-10"
                 >
                   "{testi.quote}"
                 </p>
 
-                <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
+                <div className="mt-4 pt-3 border-t border-black/10 flex items-center justify-between">
                   <div>
-                    <p className="text-amber-400 font-sans font-black text-xs sm:text-sm uppercase tracking-wider m-0">
+                    <p className="text-[#144bff] font-sans font-black text-[11px] sm:text-xs uppercase tracking-wider m-0">
                       — {testi.client}
                     </p>
                     {testi.company && (
-                      <p className="text-neutral-400 text-[11px] font-semibold uppercase tracking-wide mt-0.5 m-0">
+                      <p className="text-neutral-500 text-[10px] font-semibold uppercase tracking-wide mt-0.5 m-0">
                         {testi.company}
                       </p>
                     )}
                   </div>
-                  <div className="w-2 h-2 rounded-sm bg-amber-400 shadow-[0_0_8px_#fcd34d]" />
+                  <div className="w-1.5 h-1.5 rounded-sm bg-[#144bff] shadow-[0_0_6px_#144bff]" />
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Bottom Torn Canvas Divider */}
+        {/* Bottom Seamless Torn Edge Mask */}
         <div 
-          className="absolute -bottom-[2px] left-0 w-full h-[55px] sm:h-[75px] z-[12] bg-[#1a1c23]"
+          className="absolute bottom-0 left-0 w-full h-[50px] sm:h-[75px] z-[12] bg-[#e6dec9]"
           style={{
             maskImage: "url('/bottom.png')",
             WebkitMaskImage: "url('/bottom.png')",
             maskSize: "auto 100%",
             WebkitMaskSize: "auto 100%",
             maskRepeat: "repeat-x",
-            WebkitMaskRepeat: "repeat-x"
+            WebkitMaskRepeat: "repeat-x",
+            maskPosition: "bottom",
+            WebkitMaskPosition: "bottom"
           }}
         />
       </div>

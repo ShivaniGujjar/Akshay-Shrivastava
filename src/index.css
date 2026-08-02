@@ -26,9 +26,11 @@
 }
 
 @theme {
-  /* Brand Color Tokens */
-  --color-brand-blue: #2b66e3;
-  --color-brand-blue-glass: rgba(43, 102, 227, 0.9);
+  /* Brand Color Tokens (Updated with Client's requested Blue & Beige/Off-white) */
+  --color-brand-blue: #144bff;
+  --color-brand-blue-glass: rgba(20, 75, 255, 0.9);
+  --color-brand-beige: #f3efe6;
+  --color-brand-beige-muted: #d9d3c5;
   --color-brand-gold: #fcd34d;
   --color-canvas-bg: #fafafa;
   --color-brand-dark: #0c0c0e;

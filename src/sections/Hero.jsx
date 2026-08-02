@@ -27,6 +27,40 @@ const COLUMNS = [
   }
 ];
 
+const SOCIAL_LINKS = [
+  { 
+    id: 'Instagram', 
+    url: 'https://instagram.com',
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-[22px] h-[22px] sm:w-[26px] sm:h-[26px] fill-none stroke-current stroke-[2] stroke-linecap-round stroke-linejoin-round">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+      </svg>
+    )
+  },
+  { 
+    id: 'Gmail', 
+    url: 'mailto:client@email.com',
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-[22px] h-[22px] sm:w-[26px] sm:h-[26px] fill-none stroke-current stroke-[2] stroke-linecap-round stroke-linejoin-round">
+        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+        <polyline points="22,6 12,13 2,6"></polyline>
+      </svg>
+    )
+  },
+  { 
+    id: 'YouTube', 
+    url: 'https://youtube.com',
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-[22px] h-[22px] sm:w-[26px] sm:h-[26px] fill-none stroke-current stroke-[2] stroke-linecap-round stroke-linejoin-round">
+        <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+        <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+      </svg>
+    )
+  }
+];
+
 export default function Hero({ onColumnClick }) {
   const videoRefs = useRef([]);
 
@@ -74,6 +108,57 @@ export default function Hero({ onColumnClick }) {
 
       {/* 🎬 GLOBAL CORNER VIGNETTE SHADOW */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_45%,_rgba(0,0,0,0.85)_100%)] pointer-events-none z-[12]" />
+
+      {/* 📌 STATIC FIXED NAVBAR WITH EDITING PAGE BLUE/BEIGE THEME */}
+      <header className="fixed top-4 left-0 w-screen max-w-full box-border z-[9999] px-4 sm:px-8 md:px-12 pointer-events-none flex items-center justify-between">
+        
+        {/* Logo / Brand Name (Matching Navbar.jsx size) */}
+        <div 
+          onClick={() => onColumnClick && onColumnClick('home')}
+          className="pointer-events-auto cursor-pointer flex items-center gap-1.5 select-none group transition-transform duration-200 hover:scale-105"
+        >
+          <span 
+            style={{ 
+              fontFamily: "'Permanent Marker', cursive, sans-serif",
+              WebkitTextStroke: '1px #144bff',
+              textShadow: '2px 2px 4px rgba(0,0,0,0.9), 0 0 10px rgba(20,75,255,0.4)'
+            }}
+            className="text-[#e6dec9] text-base sm:text-lg tracking-wide uppercase transition-colors group-hover:text-white"
+          >
+            akshay shrivastav
+          </span>
+          <span className="w-1.5 h-1.5 rounded-full bg-[#144bff] inline-block mb-0.5 animate-pulse shadow-[0_0_6px_#144bff]" />
+        </div>
+
+        {/* Center Navigation Pill matching Editing Theme (No Gap) */}
+        <nav className="pointer-events-auto bg-[#144bff] border border-white/20 px-4 h-10 rounded-xl flex items-center justify-center gap-2 shadow-xl">
+          {COLUMNS.map((col, idx) => (
+            <React.Fragment key={col.id}>
+              <button
+                onClick={() => onColumnClick && onColumnClick(col.id)}
+                className="pointer-events-auto text-[#e6dec9] hover:text-white transition-all duration-200 cursor-pointer bg-transparent border-none outline-none font-medium text-xs sm:text-sm tracking-wide px-1 h-full flex items-center"
+                style={{ fontFamily: "'Permanent Marker', cursive, sans-serif" }}
+              >
+                <span className="translate-y-[1px] leading-none">{col.title}</span>
+              </button>
+              {idx < COLUMNS.length - 1 && (
+                <span className="text-[#e6dec9]/40 text-xs leading-none select-none pointer-events-none px-0.5 translate-y-[1px] flex items-center">•</span>
+              )}
+            </React.Fragment>
+          ))}
+        </nav>
+
+        {/* Right CTA / Let's Connect Button */}
+        <div className="pointer-events-auto">
+          <a
+            href="mailto:client@email.com"
+            className="bg-[#144bff] hover:bg-[#103ce6] text-[#e6dec9] hover:text-white font-medium text-xs sm:text-sm px-4 h-10 rounded-xl border border-white/20 transition-all duration-300 no-underline shadow-xl flex items-center gap-1.5 cursor-pointer hover:scale-105"
+            style={{ fontFamily: "'Permanent Marker', cursive, sans-serif" }}
+          >
+            <span className="translate-y-[1px] leading-none">Let's Connect ↗</span>
+          </a>
+        </div>
+      </header>
       
       {/* EXPANDED CONTAINER WITH 24% 26% 24% 26% WIDTHS */}
       <div className="w-full h-full overflow-hidden relative">
@@ -82,7 +167,6 @@ export default function Hero({ onColumnClick }) {
             const zIndices = ['z-[4]', 'z-[3]', 'z-[2]', 'z-[1]'];
             const isTornCol = index < 3;
 
-            // Updated sequence widths: Editing (24%), Motion Design (26%), Direction (24%), About Me (26%)
             const columnWidths = ['w-[24%]', 'w-[26%]', 'w-[24%]', 'w-[26%]'];
 
             return (
@@ -116,7 +200,7 @@ export default function Hero({ onColumnClick }) {
                 {/* 🎞️ ULTRA SUBTLE NOISE OVERLAY */}
                 <div className="absolute inset-0 bg-[url('/noise.gif')] bg-repeat opacity-[0.05] pointer-events-none z-15 mix-blend-overlay" />
 
-                {/* 🔤 TEXT BLOCK (FIXED CENTERED ALIGNMENT FOR ALL COLUMNS - SLIGHT LEFT SHIFT FOR EDITING) */}
+                {/* 🔤 TEXT BLOCK */}
                 <div className={`absolute inset-x-0 top-[58%] z-20 flex flex-col items-center justify-start text-center pointer-events-none mx-auto max-w-[95%] px-2 ${index === 0 ? '-translate-x-3' : ''}`}>
 
                   {/* Main Heading */}
@@ -145,6 +229,46 @@ export default function Hero({ onColumnClick }) {
           })}
         </div>
       </div>
+
+      {/* 📌 STATIC FIXED FOOTER FOR HOMEPAGE */}
+      <footer className="fixed bottom-0 left-0 w-screen max-w-full box-border z-[9999] px-4 sm:px-8 md:px-12 pointer-events-none flex items-end pb-8 sm:pb-10">
+        <div className="w-full flex items-center justify-between relative">
+          
+          {/* 🟢 BOTTOM-LEFT: AVAILABLE FOR WORK BADGE */}
+          <div 
+            style={{ fontFamily: "'GourmetEatery', cursive, sans-serif" }}
+            className="pointer-events-auto flex items-center gap-2 px-3.5 h-9 rounded-lg bg-[#144bff] text-white border border-white/20 text-xs sm:text-sm font-medium tracking-wide cursor-pointer origin-left"
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+            <span className="uppercase text-white translate-y-[1px]">
+              AVAILABLE FOR WORK
+            </span>
+          </div>
+
+          {/* 🌐 BOTTOM-RIGHT: SOCIAL LINKS CONTAINER */}
+          <div className="flex items-center justify-center bg-[#144bff] border border-white/20 px-5 h-11 sm:h-12 rounded-xl pointer-events-auto gap-4 origin-right">
+            {SOCIAL_LINKS.map((social, idx) => (
+              <React.Fragment key={social.id}>
+                <a 
+                  href={social.url} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  aria-label={social.id}
+                  className="text-white flex items-center justify-center no-underline transition-all duration-200 ease-out p-1.5 cursor-pointer hover:scale-125"
+                >
+                  {social.icon}
+                </a>
+                {idx < SOCIAL_LINKS.length - 1 && (
+                  <span className="text-xs text-white/50 select-none pointer-events-none">
+                    •
+                  </span>
+                )}
+              </React.Fragment>
+            ))}
+          </div>
+
+        </div>
+      </footer>
 
     </section>
   );

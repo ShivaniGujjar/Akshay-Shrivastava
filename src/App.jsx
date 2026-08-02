@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 
 import Hero from './sections/Hero';
-import Footer from './sections/Footer';
 import Editing from './sections/Editing';
 import MotionDesign from './sections/MotionDesign';
 import Direction from './sections/Direction';
@@ -35,13 +34,14 @@ export default function App() {
 
   return (
     <div className="min-h-screen w-full bg-slate-950 text-slate-100 flex flex-col selection:bg-sky-500 selection:text-white">
-      <Navbar onNavigate={handleNavigate} activeSection={activeSection} />
+      {/* Navbar sirf tabhi dikhega jab user Home pe nahi hoga, kyunki Home pe Hero.jsx ka apna custom navbar fixed hai */}
+      {activeSection !== 'home' && (
+        <Navbar onNavigate={handleNavigate} activeSection={activeSection} />
+      )}
       
       <main className="flex-1 w-full flex flex-col">
         {renderActiveSection()}
       </main>
-
-      <Footer />
     </div>
   );
 }

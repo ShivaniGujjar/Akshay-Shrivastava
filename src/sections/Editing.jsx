@@ -1,26 +1,27 @@
 import React, { useState, useRef, useEffect } from 'react';
 import SocialProof from '../components/SocialProof';
+import Footer from './Footer'; // 👈 Animation wala footer yahan properly imported hai
 
 // 🎬 REAL SHOWCASE DATA
 const LONG_FORMS = [
-  { id: 'lf1', title: 'The Founder Journey', category: 'Podcast', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1784312262/editing_ra4d0j.mp4', poster: 'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=600' },
-  { id: 'lf2', title: 'Tech Masterclass Loop', category: 'Edutainment', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1784316399/Ifolder_with_grade_final_vh9ygb.mp4', poster: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600' },
-  { id: 'lf3', title: 'Campus Uncut Documentary', category: 'Documentary', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1784024845/motion_gqgmye.mp4', poster: 'https://images.unsplash.com/photo-1536240478700-b869070f9279?w=600' },
-  { id: 'lf4', title: 'Talking Head Masterclass', category: 'Vlog', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1784318460/Learn_AE_in_a_single_day_1_vwktvg.mp4', poster: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600' },
+  { id: 'lf1', title: 'The Founder Journey', category: 'Podcast', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785678593/Campus_film_compressed_2_otok6t.mp4', poster: 'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=600' },
+  { id: 'lf2', title: 'Tech Masterclass Loop', category: 'Edutainment', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785678044/After_effects_compressed_jxplaf.mp4', poster: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600' },
+  { id: 'lf3', title: 'Campus Uncut Documentary', category: 'Documentary', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785678011/Ifolder_with_grade_final_lzq260.mp4', poster: 'https://images.unsplash.com/photo-1536240478700-b869070f9279?w=600' },
+  { id: 'lf4', title: 'Talking Head Masterclass', category: 'Vlog', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785674839/Perfectionism_compressed_isgrjo.mp4', poster: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600' },
 ];
 
 const SHORT_FORMS_ROW1 = [
-  { id: 'sf1', title: 'UGC Retention Hook', brand: 'Waywen', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1784312262/editing_ra4d0j.mp4' },
-  { id: 'sf2', title: '3D Product Reel', brand: "Master's Union", videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1784024845/motion_gqgmye.mp4' },
-  { id: 'sf3', title: 'Viral Podcast Clip', brand: 'Edutainment', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1784316399/Ifolder_with_grade_final_vh9ygb.mp4' },
-  { id: 'sf4', title: 'App Promo Reel', brand: 'Media Hub', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1784318460/Learn_AE_in_a_single_day_1_vwktvg.mp4' },
+  { id: 'sf1', title: 'UGC Retention Hook', brand: 'Waywen', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785674839/Perfectionism_compressed_isgrjo.mp4', poster: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600' },
+  { id: 'sf2', title: '3D Product Reel', brand: "Master's Union", videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785678011/Ifolder_with_grade_final_lzq260.mp4', poster: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600' },
+  { id: 'sf3', title: 'Viral Podcast Clip', brand: 'Edutainment', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785678044/After_effects_compressed_jxplaf.mp4', poster: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600' },
+  { id: 'sf4', title: 'App Promo Reel', brand: 'Media Hub', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785678593/Campus_film_compressed_2_otok6t.mp4', poster: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600' },
 ];
 
 const SHORT_FORMS_ROW2 = [
-  { id: 'sf5', title: 'Brand Story Reel', brand: 'Kolkata Media', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1784316399/Ifolder_with_grade_final_vh9ygb.mp4' },
-  { id: 'sf6', title: 'High-Retention Ad', brand: 'SaaS Launch', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1784312262/editing_ra4d0j.mp4' },
-  { id: 'sf7', title: 'Fashion Motion Edit', brand: 'Studio Luxe', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1784024845/motion_gqgmye.mp4' },
-  { id: 'sf8', title: 'Fitness Campaign', brand: 'Fit Tribe', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1784318460/Learn_AE_in_a_single_day_1_vwktvg.mp4' },
+  { id: 'sf5', title: 'Brand Story Reel', brand: 'Kolkata Media', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785678044/After_effects_compressed_jxplaf.mp4', poster: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=600' },
+  { id: 'sf6', title: 'High-Retention Ad', brand: 'SaaS Launch', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785678593/Campus_film_compressed_2_otok6t.mp4', poster: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600' },
+  { id: 'sf7', title: 'Fashion Motion Edit', brand: 'Studio Luxe', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785678011/Ifolder_with_grade_final_lzq260.mp4', poster: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600' },
+  { id: 'sf8', title: 'Fitness Campaign', brand: 'Fit Tribe', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785674839/Perfectionism_compressed_isgrjo.mp4', poster: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=600' },
 ];
 
 const duplicateList = (arr, count = 4) => {
@@ -31,34 +32,56 @@ const duplicateList = (arr, count = 4) => {
   return output;
 };
 
-function VideoCard({ item, aspectRatio = "wide" }) {
+function VideoCard({ item, aspectRatio = "wide", hoveredId, setHoveredId }) {
+  const cardRef = useRef(null);
   const videoRef = useRef(null);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const isHovered = hoveredId === item.id;
+  const isAnyHovered = hoveredId !== null;
 
-  const handleMouseEnter = () => {
-    setIsPlaying(true);
-    if (videoRef.current) {
-      videoRef.current.play().catch(() => {});
-    }
-  };
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
 
-  const handleMouseLeave = () => {
-    setIsPlaying(false);
-    if (videoRef.current) {
-      videoRef.current.pause();
-      videoRef.current.currentTime = 0;
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
     }
-  };
+
+    return () => {
+      if (cardRef.current) observer.unobserve(cardRef.current);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      if (!isVisible) {
+        videoRef.current.pause();
+      } else if (isAnyHovered) {
+        if (isHovered) {
+          videoRef.current.play().catch(() => {});
+        } else {
+          videoRef.current.pause();
+        }
+      } else {
+        videoRef.current.play().catch(() => {});
+      }
+    }
+  }, [isVisible, isHovered, isAnyHovered]);
 
   const cardDimensions = aspectRatio === "wide" 
-    ? "w-[320px] sm:w-[400px] h-[200px] sm:h-[240px]" 
-    : "w-[210px] sm:w-[250px] h-[310px] sm:h-[370px]";
+    ? "w-[340px] sm:w-[420px] h-[210px] sm:h-[260px]" 
+    : "w-[300px] sm:w-[380px] h-[450px] sm:h-[550px]";
 
   return (
     <div 
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      className={`relative group rounded-md overflow-hidden cursor-pointer bg-black/90 border border-white/10 shadow-xl transition-all duration-500 ease-out hover:scale-[1.03] hover:border-amber-400/40 hover:shadow-2xl ${cardDimensions} shrink-0`}
+      ref={cardRef}
+      onMouseEnter={() => setHoveredId(item.id)}
+      onMouseLeave={() => setHoveredId(null)}
+      className={`relative group rounded-xl overflow-hidden cursor-pointer bg-[#14120e] border border-[#144bff]/30 shadow-xl transition-all duration-500 ease-out hover:scale-[1.03] hover:border-[#144bff] hover:shadow-[0_0_30px_rgba(20,75,255,0.4)] ${cardDimensions} shrink-0`}
     >
       <video
         ref={videoRef}
@@ -68,37 +91,37 @@ function VideoCard({ item, aspectRatio = "wide" }) {
         loop
         playsInline
         preload="metadata"
-        className="absolute inset-0 w-full h-full object-cover transition-all duration-700 filter brightness-90 group-hover:brightness-100 group-hover:scale-105"
+        className="absolute inset-0 w-full h-full object-cover transition-all duration-700 filter brightness-[0.85] group-hover:brightness-100 group-hover:scale-105"
       />
 
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity duration-300 group-hover:opacity-75" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#14120e]/90 via-[#14120e]/30 to-transparent transition-opacity duration-300 group-hover:opacity-75" />
 
       {item.category && (
         <div 
           style={{ fontFamily: "'RoseryStudio', var(--font-rosery), sans-serif" }}
-          className="absolute top-3 left-3 bg-white/90 backdrop-blur-md px-2.5 py-0.5 rounded-sm text-black text-[11px] font-bold uppercase tracking-wide shadow-sm"
+          className="absolute top-4 left-4 bg-[#144bff] backdrop-blur-md px-3 py-1 rounded-sm text-white text-xs font-bold uppercase tracking-wide shadow-sm"
         >
           {item.category}
         </div>
       )}
 
-      <div className={`absolute top-3 right-3 w-7 h-7 rounded-sm bg-white/20 backdrop-blur-md flex items-center justify-center transition-all duration-300 ${isPlaying ? 'scale-110 bg-amber-300 text-black' : 'text-white'}`}>
-        {isPlaying ? (
-          <span className="w-2 h-2 bg-black rounded-xs animate-pulse" />
+      <div className={`absolute top-4 right-4 w-9 h-9 rounded-sm backdrop-blur-md flex items-center justify-center transition-all duration-300 ${isHovered ? 'scale-110 bg-[#144bff] text-white shadow-[0_0_15px_#144bff]' : 'bg-black/40 text-[#e6dec9]'}`}>
+        {isHovered ? (
+          <span className="w-2.5 h-2.5 bg-white rounded-xs animate-pulse" />
         ) : (
-          <svg className="w-3.5 h-3.5 fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          <svg className="w-4 h-4 fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
         )}
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 p-4 transform transition-transform duration-300 group-hover:translate-y-0">
+      <div className="absolute bottom-0 left-0 right-0 p-6 transform transition-transform duration-300 group-hover:translate-y-0">
         <h4 
           style={{ fontFamily: "'RoseryStudio', var(--font-rosery), sans-serif" }}
-          className="text-white text-base sm:text-lg leading-snug drop-shadow-md"
+          className="text-[#e6dec9] text-xl sm:text-2xl leading-snug drop-shadow-md mb-1"
         >
           {item.title}
         </h4>
         {item.brand && (
-          <p className="text-amber-300 font-sans text-xs font-semibold uppercase tracking-wider mt-0.5">
+          <p className="text-[#144bff] font-sans text-xs font-semibold uppercase tracking-wider bg-black/60 px-2.5 py-1 rounded-xs inline-block">
             {item.brand}
           </p>
         )}
@@ -109,6 +132,9 @@ function VideoCard({ item, aspectRatio = "wide" }) {
 
 export default function Editing() {
   const [selectedVideo, setSelectedVideo] = useState(null);
+  const [hoveredLongId, setHoveredLongId] = useState(null);
+  const [hoveredShort1Id, setHoveredShort1Id] = useState(null);
+  const [hoveredShort2Id, setHoveredShort2Id] = useState(null);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -119,9 +145,16 @@ export default function Editing() {
   }, []);
 
   return (
-    <div className="w-full min-h-screen bg-[#1a1c23] relative overflow-x-hidden pb-12 font-sans tracking-tight text-white">
+    <div className="w-full min-h-screen bg-[#e6dec9] relative overflow-x-hidden pb-32 font-sans tracking-tight text-[#14120e]">
       
-      {/* 🎨 LOCAL FONT DECLARATIONS */}
+      {/* 🎞️ SUBTLE CINEMATIC GRAIN OVERLAY */}
+      <div 
+        className="fixed inset-0 pointer-events-none z-[999] opacity-[0.04]"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+        }}
+      />
+
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 
@@ -133,18 +166,33 @@ export default function Editing() {
           font-display: swap;
         }
 
-        /* REFINED YELLOW STROKE EFFECT FOR EDITING WORK TITLE */
-        .yellow-stroke-title {
-          color: #ffffff;
-          -webkit-text-stroke: 1.5px #facc15;
-          text-shadow: 2px 2px 0px #facc15, 0 4px 25px rgba(0,0,0,0.9);
+        .blue-stroke-title {
+          color: #e6dec9;
+          -webkit-text-stroke: 1.5px #144bff;
+          text-shadow: 2px 2px 0px #144bff, 0 4px 25px rgba(20,75,255,0.3);
+        }
+
+        .blue-stroke-header {
+          color: #e6dec9;
+          -webkit-text-stroke: 1.2px #144bff;
+          text-shadow: 2px 2px 0px #144bff, 0 4px 20px rgba(20,75,255,0.25);
+          white-space: nowrap;
+        }
+
+        .editing-cutout-mask {
+          mask-image: url('/editingcutout.svg');
+          -webkit-mask-image: url('/editingcutout.svg');
+          mask-size: 100% 100%;
+          -webkit-mask-size: 100% 100%;
+          mask-repeat: no-repeat;
+          -webkit-mask-repeat: no-repeat;
+          mask-position: bottom center;
+          -webkit-mask-position: bottom center;
         }
       `}</style>
 
-      {/* 🎬 100VH CINEMATIC HERO BANNER */}
-      <div className="relative w-full h-screen bg-[#08080a] flex flex-col justify-center items-center overflow-hidden m-0 p-0"> 
-        
-        {/* FLUID BACKDROP VIDEO */}
+      {/* HERO BANNER */}
+      <div className="relative w-full h-screen bg-[#14120e] flex flex-col justify-center items-center overflow-hidden m-0 p-0 editing-cutout-mask"> 
         <video 
           src="https://res.cloudinary.com/n1mfkfh4/video/upload/v1785678593/Campus_film_compressed_2_otok6t.mp4" 
           autoPlay 
@@ -154,178 +202,184 @@ export default function Editing() {
           className="absolute top-0 left-0 w-full h-screen object-cover z-0 filter brightness-[0.55] contrast-105"
         />
 
-        {/* GRADIENT VIGNETTE OVERLAY */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/60 z-[1] pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#14120e]/80 via-transparent to-[#14120e]/60 z-[1] pointer-events-none" />
 
-        {/* CENTERED BANNER TYPOGRAPHY */}
         <div className="relative z-10 flex flex-col justify-center items-center px-4">
           <h1 
             style={{ fontFamily: "'RoseryStudio', var(--font-rosery), sans-serif" }}
-            className="text-[3.2rem] sm:text-[4.5rem] md:text-[5.5rem] uppercase m-0 text-center leading-none tracking-tight yellow-stroke-title"
+            className="text-[3.2rem] sm:text-[4.5rem] md:text-[5.5rem] uppercase m-0 text-center leading-none tracking-tight blue-stroke-title"
           >
             Editing Work
           </h1>
           <p 
-            style={{ fontFamily: "'RoseryStudio', var(--font-rosery), sans-serif" }}
-            className="text-amber-300 text-xs sm:text-sm md:text-base uppercase tracking-[2.5px] mt-4 text-center drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)] bg-black/60 backdrop-blur-md px-6 py-2 rounded-md border border-amber-400/30 shadow-lg"
+            style={{ fontFamily: "'Permanent Marker', cursive, sans-serif" }}
+            className="text-[#144bff] text-sm sm:text-lg md:text-xl uppercase tracking-[2px] mt-6 text-center drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)] px-6 py-2"
           >
             POST-PRODUCTION • RETENTION EDITING • UGC ADS
           </p>
         </div>
-
-        {/* ✂️ CSS MASKED TORN EDGE */}
-        <div 
-          className="absolute bottom-0 left-0 w-full h-[60px] sm:h-[90px] z-[15] pointer-events-none bg-[#1a1c23]"
-          style={{
-            maskImage: "url('/bottom.png')",
-            WebkitMaskImage: "url('/bottom.png')",
-            maskSize: "auto 100%",
-            WebkitMaskSize: "auto 100%",
-            maskRepeat: "repeat-x",
-            WebkitMaskRepeat: "repeat-x",
-            maskPosition: "bottom",
-            WebkitMaskPosition: "bottom"
-          }}
-        />
       </div>
 
-      {/* 🎨 HEADER SECTION */}
-      <div className="max-w-[1200px] w-full mx-auto pt-12 sm:pt-20 pb-8 px-6 flex flex-col items-center relative z-20">
-        
-        {/* Category Chip Badge */}
-        
+      {/* HEADER SECTION */}
+      <div className="w-full mx-auto pt-14 sm:pt-24 pb-8 px-4 flex flex-col items-center relative z-20 text-center overflow-x-hidden">
+        <div className="inline-flex flex-col items-center">
+          <h2 
+            style={{ fontFamily: "'RoseryStudio', var(--font-rosery), sans-serif" }}
+            className="text-3xl sm:text-5xl md:text-6xl uppercase tracking-wider m-0 blue-stroke-header"
+          >
+            WELCOME TO EDITING SECTION
+          </h2>
+          <div className="w-16 h-1.5 bg-[#144bff] rounded-sm mt-2 shadow-[0_0_10px_#144bff]" />
+        </div>
 
-        {/* Main Title */}
-        <h2 
-          style={{ fontFamily: "'RoseryStudio', var(--font-rosery), sans-serif" }}
-          className="text-amber-400 text-4xl sm:text-5xl md:text-[3.6rem] tracking-tight text-center relative z-10 leading-tight drop-shadow-sm uppercase"
+        <p 
+          style={{ fontFamily: "'Permanent Marker', cursive, sans-serif" }}
+          className="text-[#144bff] text-sm sm:text-lg tracking-[2px] uppercase mt-6 max-w-[800px] leading-relaxed px-4"
         >
-          Welcome to editing section
-        </h2>
+          I CRAFT HIGH-RETENTION VISUAL STORYTELLING, HIGH-FIDELITY EDUTAINMENT LOOPS, AND PERFORMANCE-DRIVEN UGC ADS, SCALING DIGITAL BRANDS ACROSS SOCIAL NETWORKS.
+        </p>
+      </div>
 
-        {/* Subtitle Card Wrapper */}
-        <div className="mt-5 max-w-[680px] bg-[#0c0c0e]/80 backdrop-blur-md px-6 py-4 rounded-md border border-white/10 shadow-sm text-center">
-          <p className="text-neutral-300 text-base sm:text-lg font-medium leading-relaxed m-0">
-            I craft high-retention visual storytelling, high-fidelity edutainment loops, and performance-driven UGC ads, scaling digital brands across social networks.
-          </p>
+      {/* FEATURED VIDEO */}
+      <div className="max-w-[1100px] w-full mx-auto px-6 mb-16 relative z-20">
+        <div className="relative w-full aspect-video rounded-2xl overflow-hidden bg-[#14120e] border-2 border-[#144bff]/40 shadow-2xl group">
+          <video 
+            src="https://res.cloudinary.com/n1mfkfh4/video/upload/v1785678593/Campus_film_compressed_2_otok6t.mp4" 
+            controls
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute top-4 left-4 bg-[#144bff] text-white px-3.5 py-1.5 rounded-md text-xs font-bold uppercase tracking-wider shadow-md pointer-events-none" style={{ fontFamily: "'RoseryStudio', var(--font-rosery), sans-serif" }}>
+            Featured Masterpiece
+          </div>
         </div>
       </div>
 
-      {/* 🔄 LONG FORMS TICKER (SUBTLE CURVED BADGE) */}
-      <div className="w-full max-w-full relative overflow-hidden my-10 sm:my-14">
-        <div className="max-w-[1100px] w-full mx-auto px-6 flex flex-col items-center text-center">
-          
-          {/* SLIGHTLY CURVED BADGE */}
-          <div 
-            style={{ fontFamily: "'RoseryStudio', var(--font-rosery), sans-serif" }}
-            className="inline-flex items-center gap-3 px-6 py-2.5 bg-[#0a0a0c]/90 border-2 border-amber-400/50 rounded-md text-amber-300 text-lg sm:text-2xl uppercase shadow-[0_4px_20px_rgba(251,191,36,0.15)] cursor-pointer mb-3"
-          >
-            <div className="p-1.5 bg-amber-400/20 rounded-sm border border-amber-400/40 text-amber-400 flex items-center justify-center">
-              <svg className="w-4 h-4 sm:w-5 sm:h-5 fill-current" viewBox="0 0 24 24">
-                <path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H9l2 4H8L6 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4zM8 17H4v-3h4v3zm0-5H4V9h4v3zm6 5h-4v-3h4v3zm0-5h-4V9h4v3zm6 5h-4v-3h4v3zm0-5h-4V9h4v3z"/>
-              </svg>
-            </div>
-            <span>LONG FORMS</span>
+      {/* LONG FORMS */}
+      <div className="w-full max-w-full relative overflow-hidden my-14 sm:my-20">
+        <div className="max-w-[1100px] w-full mx-auto px-6 flex flex-col items-center text-center mb-8">
+          <div className="inline-flex flex-col items-center">
+            <h3 
+              style={{ fontFamily: "'RoseryStudio', var(--font-rosery), sans-serif" }}
+              className="text-4xl sm:text-5xl md:text-6xl uppercase tracking-wider m-0 blue-stroke-header"
+            >
+              LONG FORMS
+            </h3>
+            <div className="w-12 h-1 bg-[#144bff] rounded-sm mt-2 shadow-[0_0_8px_#144bff]" />
           </div>
 
           <p 
             style={{ fontFamily: "'Permanent Marker', cursive, sans-serif" }}
-            className="text-neutral-300 text-xs sm:text-sm tracking-wider uppercase opacity-85 mt-1"
+            className="text-[#144bff] text-sm sm:text-lg tracking-[2px] uppercase mt-4"
           >
             PODCASTS • YOUTUBE DOCUMENTARIES • TALKING HEAD • MASTERCLASSES
           </p>
         </div>
 
-        <div className="w-full max-w-full overflow-hidden pt-6 pb-4 group">
+        <div className="w-full max-w-full overflow-hidden pt-4 pb-4 group">
           <div className="inline-flex whitespace-nowrap gap-6 sm:gap-10 w-max will-change-transform animate-[slowMarqueeLeft_85s_linear_infinite] group-hover:[animation-play-state:paused]">
             {duplicateList(LONG_FORMS).map((item, idx) => (
               <div key={`long-${idx}`} onClick={() => setSelectedVideo(item)}>
-                <VideoCard item={item} aspectRatio="wide" />
+                <VideoCard 
+                  item={item} 
+                  aspectRatio="wide" 
+                  hoveredId={hoveredLongId} 
+                  setHoveredId={setHoveredLongId} 
+                />
               </div>
             ))}
           </div>
         </div>
       </div>
 
-      {/* 🔄 SHORT FORMS TICKERS (SUBTLE CURVED BADGE) */}
-      <div className="w-full max-w-full relative overflow-hidden my-14 sm:my-18">
-        <div className="max-w-[1100px] w-full mx-auto px-6 flex flex-col items-center text-center">
-          
-          {/* SLIGHTLY CURVED BADGE */}
-          <div 
-            style={{ fontFamily: "'RoseryStudio', var(--font-rosery), sans-serif" }}
-            className="inline-flex items-center gap-3 px-6 py-2.5 bg-[#0a0a0c]/90 border-2 border-amber-400/50 rounded-md text-amber-300 text-lg sm:text-2xl uppercase shadow-[0_4px_20px_rgba(251,191,36,0.15)] cursor-pointer mb-3"
-          >
-            <div className="p-1.5 bg-amber-400/20 rounded-sm border border-amber-400/40 text-amber-400 flex items-center justify-center">
-              <svg className="w-4 h-4 sm:w-5 sm:h-5 fill-current" viewBox="0 0 24 24">
-                <path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14zm-7.5-2l6-4.5-6-4.5v9z"/>
-              </svg>
-            </div>
-            <span>SHORT FORMS</span>
+      {/* SHORT FORMS */}
+      <div className="w-full max-w-full relative overflow-hidden my-16 sm:my-24">
+        <div className="max-w-[1100px] w-full mx-auto px-6 flex flex-col items-center text-center mb-8">
+          <div className="inline-flex flex-col items-center">
+            <h3 
+              style={{ fontFamily: "'RoseryStudio', var(--font-rosery), sans-serif" }}
+              className="text-4xl sm:text-5xl md:text-6xl uppercase tracking-wider m-0 blue-stroke-header"
+            >
+              SHORT FORMS
+            </h3>
+            <div className="w-12 h-1 bg-[#144bff] rounded-sm mt-2 shadow-[0_0_8px_#144bff]" />
           </div>
 
           <p 
             style={{ fontFamily: "'Permanent Marker', cursive, sans-serif" }}
-            className="text-neutral-300 text-xs sm:text-sm tracking-wider uppercase opacity-85 mt-1"
+            className="text-[#144bff] text-sm sm:text-lg tracking-[2px] uppercase mt-4"
           >
             UGC ADS • RETENTION HOOKS • PODCAST SHORTS • REELS
           </p>
         </div>
         
-        {/* ROW 1: LEFT SLOW TICKER */}
-        <div className="w-full max-w-full overflow-hidden pt-6 pb-4 mb-6 sm:mb-8 group">
+        <div className="w-full max-w-full overflow-hidden pt-4 pb-4 mb-6 sm:mb-8 group">
           <div className="inline-flex whitespace-nowrap gap-6 sm:gap-10 w-max will-change-transform animate-[slowMarqueeLeft_85s_linear_infinite] group-hover:[animation-play-state:paused]">
             {duplicateList(SHORT_FORMS_ROW1).map((item, idx) => (
               <div key={`short1-${idx}`} onClick={() => setSelectedVideo(item)}>
-                <VideoCard item={item} aspectRatio="tall" />
+                <VideoCard 
+                  item={item} 
+                  aspectRatio="tall" 
+                  hoveredId={hoveredShort1Id} 
+                  setHoveredId={setHoveredShort1Id} 
+                />
               </div>
             ))}
           </div>
         </div>
 
-        {/* ROW 2: RIGHT SLOW TICKER */}
         <div className="w-full max-w-full overflow-hidden py-4 group">
           <div className="inline-flex whitespace-nowrap gap-6 sm:gap-10 w-max will-change-transform animate-[slowMarqueeRight_85s_linear_infinite] group-hover:[animation-play-state:paused]">
             {duplicateList(SHORT_FORMS_ROW2).map((item, idx) => (
               <div key={`short2-${idx}`} onClick={() => setSelectedVideo(item)}>
-                <VideoCard item={item} aspectRatio="tall" />
+                <VideoCard 
+                  item={item} 
+                  aspectRatio="tall" 
+                  hoveredId={hoveredShort2Id} 
+                  setHoveredId={setHoveredShort2Id} 
+                />
               </div>
             ))}
           </div>
         </div>
       </div>
 
-      {/* 🚀 REUSABLE SOCIAL PROOF COMPONENT */}
-      <SocialProof />
+      {/* SOCIAL PROOF */}
+      <div className="mb-24 sm:mb-32">
+        <SocialProof />
+      </div>
 
-      {/* 🍿 FULLSCREEN VIDEO MODAL POPUP */}
+      {/* FULLSCREEN VIDEO MODAL */}
       {selectedVideo && (
         <div 
           onClick={() => setSelectedVideo(null)}
-          className="fixed inset-0 z-[99999] bg-black/90 backdrop-blur-xl flex items-center justify-center p-4 sm:p-8 cursor-pointer"
+          className="fixed inset-0 z-[99999] bg-black/85 backdrop-blur-xl flex items-center justify-center p-4 sm:p-8 cursor-pointer"
         >
           <div 
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-5xl bg-[#0c0c0e] rounded-md overflow-hidden shadow-2xl border border-white/20 cursor-default"
+            className="relative w-full max-w-5xl bg-[#faf8f5] rounded-md overflow-hidden shadow-2xl border border-[#144bff]/30 cursor-default"
           >
             <button 
               onClick={() => setSelectedVideo(null)}
-              className="absolute top-4 right-4 z-50 w-10 h-10 rounded-sm bg-white/20 text-white hover:bg-amber-400 hover:text-black flex items-center justify-center font-bold text-xl transition-all"
+              className="absolute top-4 right-4 z-50 w-10 h-10 rounded-sm bg-[#14120e] text-white hover:bg-[#144bff] flex items-center justify-center font-bold text-xl transition-all"
             >
               ✕
             </button>
-            <div className="aspect-video w-full">
+            <div className="aspect-video w-full bg-black">
               <video src={selectedVideo.videoUrl} controls autoPlay className="w-full h-full object-contain" />
             </div>
-            <div className="p-6 bg-[#0c0c0e] text-white flex items-center justify-between border-t border-white/10">
+            <div className="p-6 bg-[#faf8f5] text-[#14120e] flex items-center justify-between border-t border-black/10">
               <h3 
                 style={{ fontFamily: "'RoseryStudio', var(--font-rosery), sans-serif" }}
-                className="text-xl sm:text-2xl font-bold text-amber-300 uppercase"
+                className="text-xl sm:text-2xl font-bold text-[#144bff] uppercase"
               >
                 {selectedVideo.title}
               </h3>
               {selectedVideo.brand && (
-                <span className="text-xs font-semibold uppercase tracking-wider text-neutral-400 bg-white/5 px-3 py-1 rounded-sm border border-white/10">
+                <span className="text-xs font-semibold uppercase tracking-wider text-[#554f46] bg-[#e8e2d5] px-3 py-1 rounded-sm border border-black/10">
                   {selectedVideo.brand}
                 </span>
               )}
@@ -334,7 +388,9 @@ export default function Editing() {
         </div>
       )}
 
-      {/* Embedded Smooth Marquee Keyframe Animations */}
+      {/* 🚀 ANIMATED SCROLL FOOTER */}
+      <Footer />
+
       <style>{`
         @keyframes slowMarqueeLeft {
           0% { transform: translate3d(0, 0, 0); }
