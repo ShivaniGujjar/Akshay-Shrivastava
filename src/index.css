@@ -25,7 +25,6 @@
   font-display: swap;
 }
 
-
 @font-face {
   font-family: 'Helvetica Neue';
   src: url('/fonts/HelveticaNeueRoman.otf') format('opentype');
@@ -41,7 +40,6 @@
 }
 
 @theme {
-  /* Brand Color Tokens (Updated with Client's requested Blue & Beige/Off-white) */
   --color-brand-blue: #144bff;
   --color-brand-blue-glass: rgba(20, 75, 255, 0.9);
   --color-brand-beige: #f3efe6;
@@ -50,13 +48,17 @@
   --color-canvas-bg: #fafafa;
   --color-brand-dark: #0c0c0e;
 
-  /* 🔤 Brand Typography Tokens for Tailwind v4 */
   --font-rosery: 'RoseryStudio', sans-serif;
   --font-talina: 'Talina', sans-serif;
   --font-gourmet: 'GourmetEatery', cursive, sans-serif;
 }
 
-/* 🚀 GLOBAL SCROLLBAR REMOVAL (window + elements) */
+/* 🎨 TAILWIND V4 FONT UTILITY */
+@utility font-gourmet {
+  font-family: 'GourmetEatery', cursive, sans-serif;
+}
+
+/* 🚀 GLOBAL SCROLLBAR REMOVAL */
 * {
   -ms-overflow-style: none !important;
   scrollbar-width: none !important;
@@ -69,7 +71,6 @@
   background: transparent !important;
 }
 
-/* ⚡️ GLOBAL GPU & BUFFER OPTIMIZATIONS */
 html,
 body {
   margin: 0;

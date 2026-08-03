@@ -3,25 +3,25 @@ import React, { useRef } from 'react';
 const COLUMNS = [
   { 
     id: 'editing', 
-    title: 'EDITING', 
+    title: 'Editing', 
     subtitle: 'Crafting stories that keep people watching.',
     videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785678593/Campus_film_compressed_2_otok6t.mp4' 
   },
   { 
     id: 'motion', 
-    title: 'MOTION DESIGN', 
+    title: 'Motion design', 
     subtitle: 'Adding motion that brings stories to life.',
     videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785674839/Perfectionism_compressed_isgrjo.mp4' 
   },
   { 
     id: 'direction', 
-    title: 'DIRECTION', 
+    title: 'Direction', 
     subtitle: 'Turning ideas into visual experiences.',
     videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785678011/Ifolder_with_grade_final_lzq260.mp4' 
   },
   { 
     id: 'about', 
-    title: 'ABOUT ME', 
+    title: 'About me', 
     subtitle: 'The person behind the projects.',
     videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785678044/After_effects_compressed_jxplaf.mp4' 
   }
@@ -131,49 +131,50 @@ export default function Hero({ onColumnClick }) {
       {/* 🎬 GLOBAL CORNER VIGNETTE SHADOW */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_45%,_rgba(0,0,0,0.85)_100%)] pointer-events-none z-[12]" />
 
-      {/* 📌 STATIC FIXED NAVBAR (HelveticaNeue Font Applied) */}
-      <header className="fixed top-4 left-0 w-screen max-w-full box-border z-[9999] px-4 sm:px-8 md:px-12 pointer-events-none flex items-center justify-between">
+      {/* 📌 STATIC FIXED NAVBAR */}
+      <header className="fixed top-4 left-0 w-screen max-w-full box-border z-[9999] px-4 sm:px-8 md:px-12 pointer-events-none transition-all duration-400 ease-out flex items-center justify-between">
         
-        {/* Logo / Brand Name */}
+        {/* LEFT: NAME LOGO */}
         <div 
           onClick={() => onColumnClick && onColumnClick('home')}
-          className="pointer-events-auto flex items-center gap-1.5 select-none cursor-pointer group transition-transform duration-200 hover:scale-105"
+          className="pointer-events-auto flex items-center gap-1.5 select-none cursor-pointer group"
         >
           <span 
-            style={{ fontFamily: "'HelveticaNeue', sans-serif", fontWeight: 'bold' }}
-            className="text-amber-400 text-base sm:text-lg tracking-wide transition-colors group-hover:text-amber-300 drop-shadow-[0_2px_8px_rgba(251,191,36,0.3)]"
+            className="font-gourmet text-[#FFC822] text-lg sm:text-xl tracking-wide transition-colors duration-200 hover:text-[#FFC822] capitalize"
           >
-            akshay shrivastav
+            Akshay shrivastav
           </span>
-          <span className="w-1.5 h-1.5 rounded-full bg-amber-400 inline-block mb-0.5 shadow-[0_0_8px_#fcd34d]" />
+          <span className="w-1.5 h-1.5 rounded-full bg-[#FFFFFF] inline-block mb-0.5 animate-pulse " />
         </div>
 
-        {/* Center Navigation Pill (COMPACT GAP FIXED) */}
-        <nav className="pointer-events-none hidden md:flex items-center gap-0.5 bg-[#0a0a0c]/85 border border-white/10 px-2.5 h-9 rounded-lg backdrop-blur-md shadow-xl">
+        {/* CENTER: CAPSULE NAVIGATION */}
+        <div className="pointer-events-auto bg-[#0A0B0C] border border-white/20 px-4 pt-4 pb-2.5 rounded-xl hidden md:flex items-center justify-center gap-0 shadow-xl backdrop-blur-md">
           {COLUMNS.map((col, idx) => (
             <React.Fragment key={col.id}>
               <button
                 onClick={() => onColumnClick && onColumnClick(col.id)}
-                className="pointer-events-auto text-white hover:text-amber-400 transition-colors duration-200 cursor-pointer bg-transparent border-none outline-none text-xs sm:text-sm h-full flex items-center px-1"
-                style={{ fontFamily: "'HelveticaNeue', sans-serif", fontWeight: 500 }}
+                className="font-gourmet relative inline-flex items-center text-sm sm:text-base transition-all duration-200 cursor-pointer text-[#FFFFFF] hover:text-[#FFC822] bg-transparent border-none outline-none px-1.5"
               >
-                <span className="translate-y-[1.5px] leading-none">{col.title}</span>
+                <span className="leading-none">{col.title}</span>
               </button>
               {idx < COLUMNS.length - 1 && (
-                <span className="text-white/40 text-[10px] leading-none select-none pointer-events-none mx-0.5 translate-y-[0.5px] flex items-center">•</span>
+                <span className="text-[#FFC822] text-[10px] leading-none select-none pointer-events-none flex items-center -translate-y-0.5 mx-1">●</span>
               )}
             </React.Fragment>
           ))}
-        </nav>
+        </div>
 
-        {/* Right CTA / Let's Connect Button */}
+        {/* RIGHT: CONNECT BUTTON */}
         <div className="pointer-events-auto">
           <a
             href="mailto:client@email.com"
-            className="bg-[#0a0a0c]/85 border border-white/15 text-amber-400 hover:text-amber-300 hover:border-amber-400/30 px-3.5 h-9 rounded-lg text-xs sm:text-sm tracking-wide flex items-center gap-1.5 backdrop-blur-md transition-all duration-300 shadow-lg cursor-pointer hover:scale-105 no-underline"
-            style={{ fontFamily: "'HelveticaNeue', sans-serif", fontWeight: 500 }}
+            onClick={(e) => {
+              e.preventDefault();
+              if (onColumnClick) onColumnClick('connect');
+            }}
+            className="font-gourmet bg-[#0A0B0C]  text-[#FFFFFF] hover:text-[#FFC822] border border-white/20 px-5 pt-3 pb-2.5 rounded-xl text-sm sm:text-base flex items-center gap-1.5 transition-all duration-300 shadow-xl cursor-pointer hover:scale-105 no-underline"
           >
-            <span className="translate-y-[1px] leading-none">Let's Connect ↗</span>
+            <span className="leading-none">Let's connect ↗</span>
           </a>
         </div>
       </header>
@@ -248,7 +249,7 @@ export default function Hero({ onColumnClick }) {
         </div>
       </div>
 
-      {/* 📌 STATIC FIXED FOOTER FOR HOMEPAGE (HelveticaNeue Font Applied) */}
+      {/* 📌 STATIC FIXED FOOTER FOR HOMEPAGE */}
       <footer className="fixed bottom-0 left-0 w-screen max-w-full box-border z-[9999] px-4 sm:px-8 md:px-12 pointer-events-none flex items-end pb-8 sm:pb-10">
         <div className="w-full flex items-center justify-between relative">
           
@@ -264,7 +265,7 @@ export default function Hero({ onColumnClick }) {
           </div>
 
           {/* 🌐 BOTTOM-RIGHT: SOCIAL LINKS CONTAINER */}
-          <div className="flex items-center justify-center bg-[#0a0a0c]/85 border border-white/15 px-5 h-11 sm:h-12 rounded-xl shadow-xl backdrop-blur-md pointer-events-auto gap-4 origin-right">
+          <div className="flex items-center justify-center bg-[#0a0a0c]/85 border border-white/15 px-4 h-11 sm:h-12 rounded-xl shadow-xl backdrop-blur-md pointer-events-auto gap-4 origin-right">
             {SOCIAL_LINKS.map((social, idx) => (
               <React.Fragment key={social.id}>
                 <a 

@@ -81,7 +81,6 @@ function VideoCard({ item, aspectRatio = "wide", hoveredId, setHoveredId }) {
       ref={cardRef}
       onMouseEnter={() => setHoveredId(item.id)}
       onMouseLeave={() => setHoveredId(null)}
-      /* 🚀 NO BLUE HIGHLIGHT / NO BLUE BORDER / NO OUTLINE GLITCH */
       className={`relative group rounded-xl overflow-hidden cursor-pointer bg-[#14120e] shadow-xl transition-all duration-500 ease-out hover:scale-[1.03] ${cardDimensions} shrink-0 outline-none focus:outline-none select-none`}
     >
       <video
@@ -99,16 +98,16 @@ function VideoCard({ item, aspectRatio = "wide", hoveredId, setHoveredId }) {
 
       {item.category && (
         <div 
-          style={{ fontFamily: "'Talina', sans-serif", letterSpacing: '-2px' }}
-          className="absolute top-4 left-4 bg-[#2F89FC] backdrop-blur-md px-3 py-1 rounded-sm text-white text-xs font-bold uppercase shadow-sm"
+          style={{ fontFamily: "'Talina', sans-serif", letterSpacing: '-0.3px' }}
+          className="absolute top-4 left-4 bg-[#144BFF] backdrop-blur-md px-3 py-1 rounded-sm text-[#FFFFFF] text-xs font-bold uppercase shadow-sm"
         >
           {item.category}
         </div>
       )}
 
-      <div className={`absolute top-4 right-4 w-9 h-9 rounded-sm backdrop-blur-md flex items-center justify-center transition-all duration-300 ${isHovered ? 'scale-110 bg-[#2F89FC] text-white shadow-[0_0_15px_#2F89FC]' : 'bg-black/40 text-[#FFFCFB]'}`}>
+      <div className={`absolute top-4 right-4 w-9 h-9 rounded-sm backdrop-blur-md flex items-center justify-center transition-all duration-300 ${isHovered ? 'scale-110 bg-[#144BFF] text-[#FFFFFF] shadow-[0_0_15px_#144BFF]' : 'bg-black/40 text-[#FFFFFF]'}`}>
         {isHovered ? (
-          <span className="w-2.5 h-2.5 bg-white rounded-xs animate-pulse" />
+          <span className="w-2.5 h-2.5 bg-[#FFFFFF] rounded-xs animate-pulse" />
         ) : (
           <svg className="w-4 h-4 fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
         )}
@@ -116,15 +115,15 @@ function VideoCard({ item, aspectRatio = "wide", hoveredId, setHoveredId }) {
 
       <div className="absolute bottom-0 left-0 right-0 p-6 transform transition-transform duration-300 group-hover:translate-y-0">
         <h4 
-          style={{ fontFamily: "'Talina', sans-serif", letterSpacing: '-2px' }}
-          className="text-[#FFFCFB] text-xl sm:text-2xl leading-snug drop-shadow-md mb-1"
+          style={{ fontFamily: "'HelveticaNeue', sans-serif" }}
+          className="text-[#FFFFFF] text-xl sm:text-2xl font-bold leading-snug drop-shadow-md mb-1"
         >
           {item.title}
         </h4>
         {item.brand && (
           <p 
-            style={{ fontFamily: "'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif", letterSpacing: '-2px' }}
-            className="text-[#2F89FC] text-xs font-semibold uppercase bg-black/60 px-2.5 py-1 rounded-xs inline-block"
+            style={{ fontFamily: "'Talina', sans-serif", letterSpacing: '-0.3px' }}
+            className="text-[#144BFF] text-xs font-semibold uppercase bg-black/60 px-2.5 py-1 rounded-xs inline-block"
           >
             {item.brand}
           </p>
@@ -149,7 +148,7 @@ export default function Editing() {
   }, []);
 
   return (
-    <div className="w-full min-h-screen bg-[#FFFCFB] relative overflow-x-hidden pb-0 m-0 text-[#14120e]" style={{ fontFamily: "'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif", letterSpacing: '-2px' }}>
+    <div className="w-full min-h-screen bg-[#FFFCFB] relative overflow-x-hidden pb-0 m-0 text-[#14120e]">
       
       {/* 🎞️ SUBTLE CINEMATIC GRAIN OVERLAY */}
       <div 
@@ -176,19 +175,12 @@ export default function Editing() {
           font-display: swap;
         }
 
-        .blue-stroke-title {
-          color: #FFFCFB !important;
-          -webkit-text-stroke: 1.5px #2F89FC;
-          text-shadow: 2px 2px 0px #2F89FC, 0 4px 25px rgba(47,137,252,0.3);
-          letter-spacing: -2px;
-        }
-
-        .blue-stroke-header {
-          color: #FFFCFB !important;
-          -webkit-text-stroke: 1.2px #2F89FC;
-          text-shadow: 2px 2px 0px #2F89FC, 0 4px 20px rgba(47,137,252,0.25);
-          white-space: nowrap;
-          letter-spacing: -2px;
+        @font-face {
+          font-family: 'HelveticaNeue';
+          src: url('/fonts/HelveticaNeueBold.otf') format('opentype');
+          font-weight: bold;
+          font-style: normal;
+          font-display: swap;
         }
 
         .editing-cutout-mask {
@@ -218,37 +210,37 @@ export default function Editing() {
 
         <div className="relative z-10 flex flex-col justify-center items-center px-4">
           <h1 
-            style={{ fontFamily: "'Talina', sans-serif" }}
-            className="text-[3.2rem] sm:text-[4.5rem] md:text-[5.5rem] uppercase m-0 text-center leading-none blue-stroke-title"
+            style={{ fontFamily: "'HelveticaNeue', sans-serif", letterSpacing: '-5px' }}
+            className="text-[2.5rem] sm:text-[3.8rem] md:text-[4.2rem] font-black text-[#ffffff] m-0 text-center leading-none"
           >
             Editing Work
           </h1>
+          
           <p 
-            style={{ fontFamily: "'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif", letterSpacing: '-2px' }}
-            className="text-[#2F89FC] text-sm sm:text-lg md:text-xl uppercase mt-6 text-center drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)] px-6 py-2 font-bold"
-          >
-            POST-PRODUCTION • RETENTION EDITING • UGC ADS
-          </p>
+  style={{ fontFamily: "'Talina', sans-serif", letterSpacing: '-0.5px' }}
+  className="text-[#144BFF] text-base sm:text-lg md:text-xl first-letter:uppercase mt-4 text-center px-6 py-1 font-semibold"
+>
+  Post - Production <span className="text-[#FFC822] mx-1">•</span> Retention Editing <span className="text-[#FFC822] mx-1">•</span> UGC Ads
+</p>
         </div>
       </div>
 
       {/* HEADER SECTION */}
-      <div className="w-full mx-auto pt-14 sm:pt-24 pb-8 px-4 flex flex-col items-center relative z-20 text-center overflow-x-hidden">
+      <div className="w-full mx-auto pt-10 sm:pt-16 pb-6 px-4 flex flex-col items-center relative z-20 text-center overflow-x-hidden">
         <div className="inline-flex flex-col items-center">
           <h2 
-            style={{ fontFamily: "'Talina', sans-serif" }}
-            className="text-3xl sm:text-5xl md:text-6xl uppercase m-0 blue-stroke-header"
+            style={{ fontFamily: "'HelveticaNeue', sans-serif" , letterSpacing:'-3px' }}
+            className="text-2xl sm:text-4xl md:text-4xl font-black m-0 text-[#144BFF] leading-tight"
           >
-            WELCOME TO EDITING SECTION
+            Welcome To Editing Section
           </h2>
-          <div className="w-16 h-1.5 bg-[#2F89FC] rounded-sm mt-2 shadow-[0_0_10px_#2F89FC]" />
         </div>
 
         <p 
-          style={{ fontFamily: "'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif", letterSpacing: '-2px' }}
-          className="text-[#2F89FC] text-sm sm:text-lg uppercase mt-6 max-w-[800px] leading-relaxed px-4 font-semibold"
+          style={{ fontFamily: "'Talina', sans-serif", letterSpacing: '-0.3px' }}
+          className="text-[#14120e] text-sm sm:text-lg font-medium mt-3 max-w-[700px] leading-relaxed px-4"
         >
-          I CRAFT HIGH-RETENTION VISUAL STORYTELLING, HIGH-FIDELITY EDUTAINMENT LOOPS, AND PERFORMANCE-DRIVEN UGC ADS, SCALING DIGITAL BRANDS ACROSS SOCIAL NETWORKS.
+          I have worked with multiple startups and influencers on various kind of edit like UGC ads
         </p>
       </div>
 
@@ -264,30 +256,29 @@ export default function Editing() {
             playsInline
             className="w-full h-full object-cover outline-none"
           />
-          <div className="absolute top-4 left-4 bg-[#2F89FC] text-white px-3.5 py-1.5 rounded-md text-xs font-bold uppercase shadow-md pointer-events-none" style={{ fontFamily: "'Talina', sans-serif", letterSpacing: '-2px' }}>
+          <div className="absolute top-4 left-4 bg-[#144BFF] text-[#FFFFFF] px-3.5 py-1.5 rounded-md text-xs  uppercase shadow-md pointer-events-none" style={{ fontFamily: "'Talina', sans-serif",  }}>
             Featured Masterpiece
           </div>
         </div>
       </div>
 
       {/* LONG FORMS */}
-      <div className="w-full max-w-full relative overflow-hidden my-14 sm:my-20">
-        <div className="max-w-[1100px] w-full mx-auto px-6 flex flex-col items-center text-center mb-8">
+      <div className="w-full max-w-full relative overflow-hidden my-10 sm:my-16">
+        <div className="max-w-[1100px] w-full mx-auto px-6 flex flex-col items-center text-center mb-6">
           <div className="inline-flex flex-col items-center">
             <h3 
-              style={{ fontFamily: "'Talina', sans-serif" }}
-              className="text-4xl sm:text-5xl md:text-6xl uppercase m-0 blue-stroke-header"
+              style={{ fontFamily: "'HelveticaNeue', sans-serif" , letterSpacing : '-3px' }}
+              className="text-2xl sm:text-4xl md:text-4xl font-black m-0 text-[#144BFF] leading-tight"
             >
-              LONG FORMS
+              Long Forms
             </h3>
-            <div className="w-12 h-1 bg-[#2F89FC] rounded-sm mt-2 shadow-[0_0_8px_#2F89FC]" />
           </div>
 
           <p 
-            style={{ fontFamily: "'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif", letterSpacing: '-2px' }}
-            className="text-[#2F89FC] text-sm sm:text-lg uppercase mt-4 font-semibold"
+            style={{ fontFamily: "'Talina', sans-serif", letterSpacing: '-0.3px' }}
+            className="text-[#14120e] text-sm sm:text-lg font-medium mt-2"
           >
-            PODCASTS • YOUTUBE DOCUMENTARIES • TALKING HEAD • MASTERCLASSES
+            Podcasts, Youtube Documentries, Talking head, Campus film
           </p>
         </div>
 
@@ -308,23 +299,22 @@ export default function Editing() {
       </div>
 
       {/* SHORT FORMS */}
-      <div className="w-full max-w-full relative overflow-hidden my-16 sm:my-24">
-        <div className="max-w-[1100px] w-full mx-auto px-6 flex flex-col items-center text-center mb-8">
+      <div className="w-full max-w-full relative overflow-hidden my-12 sm:my-20">
+        <div className="max-w-[1100px] w-full mx-auto px-6 flex flex-col items-center text-center mb-6">
           <div className="inline-flex flex-col items-center">
             <h3 
-              style={{ fontFamily: "'Talina', sans-serif" }}
-              className="text-4xl sm:text-5xl md:text-6xl uppercase m-0 blue-stroke-header"
+              style={{ fontFamily: "'HelveticaNeue', sans-serif" , letterSpacing : '-3px' }}
+              className="text-2xl sm:text-4xl md:text-4xl font-black m-0 text-[#144BFF] leading-tight"
             >
-              SHORT FORMS
+              Short Forms
             </h3>
-            <div className="w-12 h-1 bg-[#2F89FC] rounded-sm mt-2 shadow-[0_0_8px_#2F89FC]" />
           </div>
 
           <p 
-            style={{ fontFamily: "'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif", letterSpacing: '-2px' }}
-            className="text-[#2F89FC] text-sm sm:text-lg uppercase mt-4 font-semibold"
+            style={{ fontFamily: "'Talina', sans-serif", letterSpacing: '-0.3px' }}
+            className="text-[#14120e] text-sm sm:text-lg font-medium mt-2"
           >
-            UGC ADS • RETENTION HOOKS • PODCAST SHORTS • REELS
+            UGC Ads, Retention Hooks, Podcast Shorts, Reels
           </p>
         </div>
         
@@ -359,7 +349,7 @@ export default function Editing() {
         </div>
       </div>
 
-      {/* 🚀 SOCIAL PROOF (CLEAR GAP FOR FLOATING FOOTER) */}
+      {/* 🚀 SOCIAL PROOF */}
       <div className="m-0 p-0 mb-28 sm:mb-36">
         <SocialProof />
       </div>
@@ -376,7 +366,7 @@ export default function Editing() {
           >
             <button 
               onClick={() => setSelectedVideo(null)}
-              className="absolute top-4 right-4 z-50 w-10 h-10 rounded-sm bg-[#14120e] text-white hover:bg-[#2F89FC] flex items-center justify-center font-bold text-xl transition-all"
+              className="absolute top-4 right-4 z-50 w-10 h-10 rounded-sm bg-[#14120e] text-[#FFFFFF] hover:bg-[#144BFF] flex items-center justify-center font-bold text-xl transition-all"
             >
               ✕
             </button>
@@ -385,14 +375,14 @@ export default function Editing() {
             </div>
             <div className="p-6 bg-[#FFFCFB] text-[#14120e] flex items-center justify-between border-t border-black/10">
               <h3 
-                style={{ fontFamily: "'Talina', sans-serif", letterSpacing: '-2px' }}
-                className="text-xl sm:text-2xl font-bold text-[#2F89FC] uppercase"
+                style={{ fontFamily: "'HelveticaNeue', sans-serif" }}
+                className="text-xl sm:text-2xl font-bold text-[#144BFF]"
               >
                 {selectedVideo.title}
               </h3>
               {selectedVideo.brand && (
                 <span 
-                  style={{ fontFamily: "'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif", letterSpacing: '-2px' }}
+                  style={{ fontFamily: "'Talina', sans-serif", letterSpacing: '-0.3px' }}
                   className="text-xs font-semibold uppercase text-[#554f46] bg-[#f0eae1] px-3 py-1 rounded-sm border border-black/10"
                 >
                   {selectedVideo.brand}
