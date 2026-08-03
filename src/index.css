@@ -25,6 +25,21 @@
   font-display: swap;
 }
 
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('/fonts/HelveticaNeueRoman.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('/fonts/HelveticaNeueBold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
 @theme {
   /* Brand Color Tokens (Updated with Client's requested Blue & Beige/Off-white) */
   --color-brand-blue: #144bff;

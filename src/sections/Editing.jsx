@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import SocialProof from '../components/SocialProof';
-import Footer from './Footer'; // 👈 Animation wala footer yahan properly imported hai
+import Footer from './Footer';
 
 // 🎬 REAL SHOWCASE DATA
 const LONG_FORMS = [
@@ -81,7 +81,8 @@ function VideoCard({ item, aspectRatio = "wide", hoveredId, setHoveredId }) {
       ref={cardRef}
       onMouseEnter={() => setHoveredId(item.id)}
       onMouseLeave={() => setHoveredId(null)}
-      className={`relative group rounded-xl overflow-hidden cursor-pointer bg-[#14120e] border border-[#144bff]/30 shadow-xl transition-all duration-500 ease-out hover:scale-[1.03] hover:border-[#144bff] hover:shadow-[0_0_30px_rgba(20,75,255,0.4)] ${cardDimensions} shrink-0`}
+      /* 🚀 NO BLUE HIGHLIGHT / NO BLUE BORDER / NO OUTLINE GLITCH */
+      className={`relative group rounded-xl overflow-hidden cursor-pointer bg-[#14120e] shadow-xl transition-all duration-500 ease-out hover:scale-[1.03] ${cardDimensions} shrink-0 outline-none focus:outline-none select-none`}
     >
       <video
         ref={videoRef}
@@ -91,21 +92,21 @@ function VideoCard({ item, aspectRatio = "wide", hoveredId, setHoveredId }) {
         loop
         playsInline
         preload="metadata"
-        className="absolute inset-0 w-full h-full object-cover transition-all duration-700 filter brightness-[0.85] group-hover:brightness-100 group-hover:scale-105"
+        className="absolute inset-0 w-full h-full object-cover transition-all duration-700 filter brightness-[0.85] group-hover:brightness-100 group-hover:scale-105 outline-none focus:outline-none pointer-events-none"
       />
 
       <div className="absolute inset-0 bg-gradient-to-t from-[#14120e]/90 via-[#14120e]/30 to-transparent transition-opacity duration-300 group-hover:opacity-75" />
 
       {item.category && (
         <div 
-          style={{ fontFamily: "'RoseryStudio', var(--font-rosery), sans-serif" }}
-          className="absolute top-4 left-4 bg-[#144bff] backdrop-blur-md px-3 py-1 rounded-sm text-white text-xs font-bold uppercase tracking-wide shadow-sm"
+          style={{ fontFamily: "'Talina', sans-serif", letterSpacing: '-2px' }}
+          className="absolute top-4 left-4 bg-[#2F89FC] backdrop-blur-md px-3 py-1 rounded-sm text-white text-xs font-bold uppercase shadow-sm"
         >
           {item.category}
         </div>
       )}
 
-      <div className={`absolute top-4 right-4 w-9 h-9 rounded-sm backdrop-blur-md flex items-center justify-center transition-all duration-300 ${isHovered ? 'scale-110 bg-[#144bff] text-white shadow-[0_0_15px_#144bff]' : 'bg-black/40 text-[#e6dec9]'}`}>
+      <div className={`absolute top-4 right-4 w-9 h-9 rounded-sm backdrop-blur-md flex items-center justify-center transition-all duration-300 ${isHovered ? 'scale-110 bg-[#2F89FC] text-white shadow-[0_0_15px_#2F89FC]' : 'bg-black/40 text-[#FFFCFB]'}`}>
         {isHovered ? (
           <span className="w-2.5 h-2.5 bg-white rounded-xs animate-pulse" />
         ) : (
@@ -115,13 +116,16 @@ function VideoCard({ item, aspectRatio = "wide", hoveredId, setHoveredId }) {
 
       <div className="absolute bottom-0 left-0 right-0 p-6 transform transition-transform duration-300 group-hover:translate-y-0">
         <h4 
-          style={{ fontFamily: "'RoseryStudio', var(--font-rosery), sans-serif" }}
-          className="text-[#e6dec9] text-xl sm:text-2xl leading-snug drop-shadow-md mb-1"
+          style={{ fontFamily: "'Talina', sans-serif", letterSpacing: '-2px' }}
+          className="text-[#FFFCFB] text-xl sm:text-2xl leading-snug drop-shadow-md mb-1"
         >
           {item.title}
         </h4>
         {item.brand && (
-          <p className="text-[#144bff] font-sans text-xs font-semibold uppercase tracking-wider bg-black/60 px-2.5 py-1 rounded-xs inline-block">
+          <p 
+            style={{ fontFamily: "'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif", letterSpacing: '-2px' }}
+            className="text-[#2F89FC] text-xs font-semibold uppercase bg-black/60 px-2.5 py-1 rounded-xs inline-block"
+          >
             {item.brand}
           </p>
         )}
@@ -145,7 +149,7 @@ export default function Editing() {
   }, []);
 
   return (
-    <div className="w-full min-h-screen bg-[#e6dec9] relative overflow-x-hidden pb-32 font-sans tracking-tight text-[#14120e]">
+    <div className="w-full min-h-screen bg-[#FFFCFB] relative overflow-x-hidden pb-0 m-0 text-[#14120e]" style={{ fontFamily: "'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif", letterSpacing: '-2px' }}>
       
       {/* 🎞️ SUBTLE CINEMATIC GRAIN OVERLAY */}
       <div 
@@ -156,27 +160,35 @@ export default function Editing() {
       />
 
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+        @font-face {
+          font-family: 'Talina';
+          src: url('/Talina-Regular.ttf') format('truetype');
+          font-weight: normal;
+          font-style: normal;
+          font-display: swap;
+        }
 
         @font-face {
-          font-family: 'RoseryStudio';
-          src: url('/RoseryStudio-Regular.ttf') format('truetype');
+          font-family: 'HelveticaNeue';
+          src: url('/fonts/HelveticaNeueRoman.otf') format('opentype');
           font-weight: normal;
           font-style: normal;
           font-display: swap;
         }
 
         .blue-stroke-title {
-          color: #e6dec9;
-          -webkit-text-stroke: 1.5px #144bff;
-          text-shadow: 2px 2px 0px #144bff, 0 4px 25px rgba(20,75,255,0.3);
+          color: #FFFCFB !important;
+          -webkit-text-stroke: 1.5px #2F89FC;
+          text-shadow: 2px 2px 0px #2F89FC, 0 4px 25px rgba(47,137,252,0.3);
+          letter-spacing: -2px;
         }
 
         .blue-stroke-header {
-          color: #e6dec9;
-          -webkit-text-stroke: 1.2px #144bff;
-          text-shadow: 2px 2px 0px #144bff, 0 4px 20px rgba(20,75,255,0.25);
+          color: #FFFCFB !important;
+          -webkit-text-stroke: 1.2px #2F89FC;
+          text-shadow: 2px 2px 0px #2F89FC, 0 4px 20px rgba(47,137,252,0.25);
           white-space: nowrap;
+          letter-spacing: -2px;
         }
 
         .editing-cutout-mask {
@@ -206,14 +218,14 @@ export default function Editing() {
 
         <div className="relative z-10 flex flex-col justify-center items-center px-4">
           <h1 
-            style={{ fontFamily: "'RoseryStudio', var(--font-rosery), sans-serif" }}
-            className="text-[3.2rem] sm:text-[4.5rem] md:text-[5.5rem] uppercase m-0 text-center leading-none tracking-tight blue-stroke-title"
+            style={{ fontFamily: "'Talina', sans-serif" }}
+            className="text-[3.2rem] sm:text-[4.5rem] md:text-[5.5rem] uppercase m-0 text-center leading-none blue-stroke-title"
           >
             Editing Work
           </h1>
           <p 
-            style={{ fontFamily: "'Permanent Marker', cursive, sans-serif" }}
-            className="text-[#144bff] text-sm sm:text-lg md:text-xl uppercase tracking-[2px] mt-6 text-center drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)] px-6 py-2"
+            style={{ fontFamily: "'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif", letterSpacing: '-2px' }}
+            className="text-[#2F89FC] text-sm sm:text-lg md:text-xl uppercase mt-6 text-center drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)] px-6 py-2 font-bold"
           >
             POST-PRODUCTION • RETENTION EDITING • UGC ADS
           </p>
@@ -224,17 +236,17 @@ export default function Editing() {
       <div className="w-full mx-auto pt-14 sm:pt-24 pb-8 px-4 flex flex-col items-center relative z-20 text-center overflow-x-hidden">
         <div className="inline-flex flex-col items-center">
           <h2 
-            style={{ fontFamily: "'RoseryStudio', var(--font-rosery), sans-serif" }}
-            className="text-3xl sm:text-5xl md:text-6xl uppercase tracking-wider m-0 blue-stroke-header"
+            style={{ fontFamily: "'Talina', sans-serif" }}
+            className="text-3xl sm:text-5xl md:text-6xl uppercase m-0 blue-stroke-header"
           >
             WELCOME TO EDITING SECTION
           </h2>
-          <div className="w-16 h-1.5 bg-[#144bff] rounded-sm mt-2 shadow-[0_0_10px_#144bff]" />
+          <div className="w-16 h-1.5 bg-[#2F89FC] rounded-sm mt-2 shadow-[0_0_10px_#2F89FC]" />
         </div>
 
         <p 
-          style={{ fontFamily: "'Permanent Marker', cursive, sans-serif" }}
-          className="text-[#144bff] text-sm sm:text-lg tracking-[2px] uppercase mt-6 max-w-[800px] leading-relaxed px-4"
+          style={{ fontFamily: "'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif", letterSpacing: '-2px' }}
+          className="text-[#2F89FC] text-sm sm:text-lg uppercase mt-6 max-w-[800px] leading-relaxed px-4 font-semibold"
         >
           I CRAFT HIGH-RETENTION VISUAL STORYTELLING, HIGH-FIDELITY EDUTAINMENT LOOPS, AND PERFORMANCE-DRIVEN UGC ADS, SCALING DIGITAL BRANDS ACROSS SOCIAL NETWORKS.
         </p>
@@ -242,7 +254,7 @@ export default function Editing() {
 
       {/* FEATURED VIDEO */}
       <div className="max-w-[1100px] w-full mx-auto px-6 mb-16 relative z-20">
-        <div className="relative w-full aspect-video rounded-2xl overflow-hidden bg-[#14120e] border-2 border-[#144bff]/40 shadow-2xl group">
+        <div className="relative w-full aspect-video rounded-2xl overflow-hidden bg-[#14120e] shadow-2xl group border-none outline-none">
           <video 
             src="https://res.cloudinary.com/n1mfkfh4/video/upload/v1785678593/Campus_film_compressed_2_otok6t.mp4" 
             controls
@@ -250,9 +262,9 @@ export default function Editing() {
             muted
             loop
             playsInline
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover outline-none"
           />
-          <div className="absolute top-4 left-4 bg-[#144bff] text-white px-3.5 py-1.5 rounded-md text-xs font-bold uppercase tracking-wider shadow-md pointer-events-none" style={{ fontFamily: "'RoseryStudio', var(--font-rosery), sans-serif" }}>
+          <div className="absolute top-4 left-4 bg-[#2F89FC] text-white px-3.5 py-1.5 rounded-md text-xs font-bold uppercase shadow-md pointer-events-none" style={{ fontFamily: "'Talina', sans-serif", letterSpacing: '-2px' }}>
             Featured Masterpiece
           </div>
         </div>
@@ -263,17 +275,17 @@ export default function Editing() {
         <div className="max-w-[1100px] w-full mx-auto px-6 flex flex-col items-center text-center mb-8">
           <div className="inline-flex flex-col items-center">
             <h3 
-              style={{ fontFamily: "'RoseryStudio', var(--font-rosery), sans-serif" }}
-              className="text-4xl sm:text-5xl md:text-6xl uppercase tracking-wider m-0 blue-stroke-header"
+              style={{ fontFamily: "'Talina', sans-serif" }}
+              className="text-4xl sm:text-5xl md:text-6xl uppercase m-0 blue-stroke-header"
             >
               LONG FORMS
             </h3>
-            <div className="w-12 h-1 bg-[#144bff] rounded-sm mt-2 shadow-[0_0_8px_#144bff]" />
+            <div className="w-12 h-1 bg-[#2F89FC] rounded-sm mt-2 shadow-[0_0_8px_#2F89FC]" />
           </div>
 
           <p 
-            style={{ fontFamily: "'Permanent Marker', cursive, sans-serif" }}
-            className="text-[#144bff] text-sm sm:text-lg tracking-[2px] uppercase mt-4"
+            style={{ fontFamily: "'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif", letterSpacing: '-2px' }}
+            className="text-[#2F89FC] text-sm sm:text-lg uppercase mt-4 font-semibold"
           >
             PODCASTS • YOUTUBE DOCUMENTARIES • TALKING HEAD • MASTERCLASSES
           </p>
@@ -300,17 +312,17 @@ export default function Editing() {
         <div className="max-w-[1100px] w-full mx-auto px-6 flex flex-col items-center text-center mb-8">
           <div className="inline-flex flex-col items-center">
             <h3 
-              style={{ fontFamily: "'RoseryStudio', var(--font-rosery), sans-serif" }}
-              className="text-4xl sm:text-5xl md:text-6xl uppercase tracking-wider m-0 blue-stroke-header"
+              style={{ fontFamily: "'Talina', sans-serif" }}
+              className="text-4xl sm:text-5xl md:text-6xl uppercase m-0 blue-stroke-header"
             >
               SHORT FORMS
             </h3>
-            <div className="w-12 h-1 bg-[#144bff] rounded-sm mt-2 shadow-[0_0_8px_#144bff]" />
+            <div className="w-12 h-1 bg-[#2F89FC] rounded-sm mt-2 shadow-[0_0_8px_#2F89FC]" />
           </div>
 
           <p 
-            style={{ fontFamily: "'Permanent Marker', cursive, sans-serif" }}
-            className="text-[#144bff] text-sm sm:text-lg tracking-[2px] uppercase mt-4"
+            style={{ fontFamily: "'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif", letterSpacing: '-2px' }}
+            className="text-[#2F89FC] text-sm sm:text-lg uppercase mt-4 font-semibold"
           >
             UGC ADS • RETENTION HOOKS • PODCAST SHORTS • REELS
           </p>
@@ -347,8 +359,8 @@ export default function Editing() {
         </div>
       </div>
 
-      {/* SOCIAL PROOF */}
-      <div className="mb-24 sm:mb-32">
+      {/* 🚀 SOCIAL PROOF (CLEAR GAP FOR FLOATING FOOTER) */}
+      <div className="m-0 p-0 mb-28 sm:mb-36">
         <SocialProof />
       </div>
 
@@ -360,26 +372,29 @@ export default function Editing() {
         >
           <div 
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-5xl bg-[#faf8f5] rounded-md overflow-hidden shadow-2xl border border-[#144bff]/30 cursor-default"
+            className="relative w-full max-w-5xl bg-[#FFFCFB] rounded-md overflow-hidden shadow-2xl cursor-default"
           >
             <button 
               onClick={() => setSelectedVideo(null)}
-              className="absolute top-4 right-4 z-50 w-10 h-10 rounded-sm bg-[#14120e] text-white hover:bg-[#144bff] flex items-center justify-center font-bold text-xl transition-all"
+              className="absolute top-4 right-4 z-50 w-10 h-10 rounded-sm bg-[#14120e] text-white hover:bg-[#2F89FC] flex items-center justify-center font-bold text-xl transition-all"
             >
               ✕
             </button>
             <div className="aspect-video w-full bg-black">
               <video src={selectedVideo.videoUrl} controls autoPlay className="w-full h-full object-contain" />
             </div>
-            <div className="p-6 bg-[#faf8f5] text-[#14120e] flex items-center justify-between border-t border-black/10">
+            <div className="p-6 bg-[#FFFCFB] text-[#14120e] flex items-center justify-between border-t border-black/10">
               <h3 
-                style={{ fontFamily: "'RoseryStudio', var(--font-rosery), sans-serif" }}
-                className="text-xl sm:text-2xl font-bold text-[#144bff] uppercase"
+                style={{ fontFamily: "'Talina', sans-serif", letterSpacing: '-2px' }}
+                className="text-xl sm:text-2xl font-bold text-[#2F89FC] uppercase"
               >
                 {selectedVideo.title}
               </h3>
               {selectedVideo.brand && (
-                <span className="text-xs font-semibold uppercase tracking-wider text-[#554f46] bg-[#e8e2d5] px-3 py-1 rounded-sm border border-black/10">
+                <span 
+                  style={{ fontFamily: "'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif", letterSpacing: '-2px' }}
+                  className="text-xs font-semibold uppercase text-[#554f46] bg-[#f0eae1] px-3 py-1 rounded-sm border border-black/10"
+                >
                   {selectedVideo.brand}
                 </span>
               )}

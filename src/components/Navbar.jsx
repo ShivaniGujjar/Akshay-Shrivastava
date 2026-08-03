@@ -37,7 +37,7 @@ export default function Navbar({ onNavigate, activeSection = 'editing' }) {
     >
       <div className="w-full flex items-center justify-between">
         
-        {/* LEFT: NAME LOGO WITH INCREASED SIZE & BLUE STROKE */}
+        {/* LEFT: NAME LOGO */}
         <a 
           href="/"
           onClick={handleHomeClick}
@@ -45,19 +45,21 @@ export default function Navbar({ onNavigate, activeSection = 'editing' }) {
         >
           <span 
             style={{ 
-              fontFamily: "'Permanent Marker', cursive, sans-serif",
-              WebkitTextStroke: '1px #144bff',
-              textShadow: '2px 2px 4px rgba(0,0,0,0.9), 0 0 10px rgba(20,75,255,0.4)'
+              fontFamily: "'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+              fontWeight: 'bold',
+              letterSpacing: '-0.5px',
+              WebkitTextStroke: '1px #2F89FC',
+              textShadow: '2px 2px 4px rgba(0,0,0,0.9), 0 0 10px rgba(47,137,252,0.4)'
             }}
-            className="text-[#e6dec9] text-lg sm:text-xl tracking-wide transition-colors group-hover:text-white"
+            className="text-[#2F89FC] text-base sm:text-lg tracking-wide transition-colors duration-200 hover:text-[#B39322]"
           >
             akshay shrivastav
           </span>
-          <span className="w-1.5 h-1.5 rounded-full bg-[#144bff] inline-block mb-0.5 animate-pulse shadow-[0_0_6px_#144bff]" />
+          <span className="w-1.5 h-1.5 rounded-full bg-[#2F89FC] inline-block mb-0.5 animate-pulse shadow-[0_0_6px_#2F89FC]" />
         </a>
 
-        {/* CENTER: CAPSULE NAVIGATION */}
-        <div className="pointer-events-auto bg-[#144bff] border border-white/20 px-4 h-10 rounded-xl flex items-center justify-center gap-2 shadow-xl">
+        {/* CENTER: CAPSULE NAVIGATION (MATCHED TO HERO LAYOUT) */}
+        <div className="pointer-events-auto bg-[#2F89FC] border border-white/20 px-2.5 h-9 rounded-lg flex items-center justify-center gap-0.5 shadow-xl backdrop-blur-md">
           {NAV_ITEMS.map((item, idx) => {
             const isActive = activeSection === item.id;
 
@@ -69,23 +71,27 @@ export default function Navbar({ onNavigate, activeSection = 'editing' }) {
                     e.preventDefault();
                     if (onNavigate) onNavigate(item.id);
                   }}
-                  style={{ fontFamily: "'Permanent Marker', cursive, sans-serif" }}
-                  className={`relative inline-flex items-center text-xs sm:text-sm tracking-wide transition-all duration-200 cursor-pointer h-full px-1 ${
-                    isActive ? 'text-white font-bold scale-105' : 'text-[#e6dec9] hover:text-white'
+                  style={{ 
+                    fontFamily: "'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif", 
+                    fontWeight: 500,
+                    letterSpacing: '-0.3px'
+                  }}
+                  className={`relative inline-flex items-center text-xs sm:text-sm uppercase transition-all duration-200 cursor-pointer h-full px-2 text-white hover:text-[#B39322] ${
+                    isActive ? 'text-[#B39322] font-bold' : ''
                   }`}
                 >
                   <span className="translate-y-[1px] leading-none">{item.label}</span>
                 </a>
 
                 {idx < NAV_ITEMS.length - 1 && (
-                  <span className="text-[#e6dec9]/40 text-xs leading-none select-none pointer-events-none px-0.5 translate-y-[1px] flex items-center">•</span>
+                  <span className="text-white/40 text-[10px] leading-none select-none pointer-events-none translate-y-[0.5px] flex items-center mx-0.5">•</span>
                 )}
               </React.Fragment>
             );
           })}
         </div>
 
-        {/* RIGHT: CONNECT BUTTON */}
+        {/* RIGHT: CONNECT BUTTON (MATCHED TO HERO LAYOUT) */}
         <div className="pointer-events-auto">
           <a 
             href="#contact"
@@ -93,8 +99,12 @@ export default function Navbar({ onNavigate, activeSection = 'editing' }) {
               e.preventDefault();
               if (onNavigate) onNavigate('connect');
             }}
-            style={{ fontFamily: "'Permanent Marker', cursive, sans-serif" }}
-            className="bg-[#144bff] hover:bg-[#103ce6] text-[#e6dec9] hover:text-white border border-white/20 px-4 h-10 rounded-xl text-xs sm:text-sm font-medium tracking-wide flex items-center gap-1.5 transition-all duration-300 shadow-xl cursor-pointer hover:scale-105"
+            style={{ 
+              fontFamily: "'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif", 
+              fontWeight: 500,
+              letterSpacing: '-0.3px'
+            }}
+            className="bg-[#2F89FC] hover:bg-[#2575dc] text-white hover:text-[#B39322] border border-white/20 px-3.5 h-9 rounded-lg text-xs sm:text-sm flex items-center gap-1.5 transition-all duration-300 shadow-xl cursor-pointer hover:scale-105"
           >
             <span className="translate-y-[1px] leading-none">Let's Connect ↗</span>
           </a>

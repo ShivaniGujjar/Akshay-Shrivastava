@@ -83,12 +83,34 @@ export default function Hero({ onColumnClick }) {
       
       {/* 🎨 FONT DECLARATIONS */}
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
-
         @font-face {
           font-family: 'RoseryStudio';
           src: url('/RoseryStudio-Regular.ttf') format('truetype');
           font-weight: normal;
+          font-style: normal;
+          font-display: swap;
+        }
+
+        @font-face {
+          font-family: 'HelveticaNeue';
+          src: url('/fonts/HelveticaNeueRoman.otf') format('opentype');
+          font-weight: normal;
+          font-style: normal;
+          font-display: swap;
+        }
+
+        @font-face {
+          font-family: 'HelveticaNeue';
+          src: url('/fonts/HelveticaNeueBold.otf') format('opentype');
+          font-weight: bold;
+          font-style: normal;
+          font-display: swap;
+        }
+
+        @font-face {
+          font-family: 'HelveticaNeue';
+          src: url('/fonts/HelveticaNeueMedium.otf') format('opentype');
+          font-weight: 500;
           font-style: normal;
           font-display: swap;
         }
@@ -109,40 +131,36 @@ export default function Hero({ onColumnClick }) {
       {/* 🎬 GLOBAL CORNER VIGNETTE SHADOW */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_45%,_rgba(0,0,0,0.85)_100%)] pointer-events-none z-[12]" />
 
-      {/* 📌 STATIC FIXED NAVBAR WITH EDITING PAGE BLUE/BEIGE THEME */}
+      {/* 📌 STATIC FIXED NAVBAR (HelveticaNeue Font Applied) */}
       <header className="fixed top-4 left-0 w-screen max-w-full box-border z-[9999] px-4 sm:px-8 md:px-12 pointer-events-none flex items-center justify-between">
         
-        {/* Logo / Brand Name (Matching Navbar.jsx size) */}
+        {/* Logo / Brand Name */}
         <div 
           onClick={() => onColumnClick && onColumnClick('home')}
-          className="pointer-events-auto cursor-pointer flex items-center gap-1.5 select-none group transition-transform duration-200 hover:scale-105"
+          className="pointer-events-auto flex items-center gap-1.5 select-none cursor-pointer group transition-transform duration-200 hover:scale-105"
         >
           <span 
-            style={{ 
-              fontFamily: "'Permanent Marker', cursive, sans-serif",
-              WebkitTextStroke: '1px #144bff',
-              textShadow: '2px 2px 4px rgba(0,0,0,0.9), 0 0 10px rgba(20,75,255,0.4)'
-            }}
-            className="text-[#e6dec9] text-base sm:text-lg tracking-wide uppercase transition-colors group-hover:text-white"
+            style={{ fontFamily: "'HelveticaNeue', sans-serif", fontWeight: 'bold' }}
+            className="text-amber-400 text-base sm:text-lg tracking-wide transition-colors group-hover:text-amber-300 drop-shadow-[0_2px_8px_rgba(251,191,36,0.3)]"
           >
             akshay shrivastav
           </span>
-          <span className="w-1.5 h-1.5 rounded-full bg-[#144bff] inline-block mb-0.5 animate-pulse shadow-[0_0_6px_#144bff]" />
+          <span className="w-1.5 h-1.5 rounded-full bg-amber-400 inline-block mb-0.5 shadow-[0_0_8px_#fcd34d]" />
         </div>
 
-        {/* Center Navigation Pill matching Editing Theme (No Gap) */}
-        <nav className="pointer-events-auto bg-[#144bff] border border-white/20 px-4 h-10 rounded-xl flex items-center justify-center gap-2 shadow-xl">
+        {/* Center Navigation Pill (COMPACT GAP FIXED) */}
+        <nav className="pointer-events-none hidden md:flex items-center gap-0.5 bg-[#0a0a0c]/85 border border-white/10 px-2.5 h-9 rounded-lg backdrop-blur-md shadow-xl">
           {COLUMNS.map((col, idx) => (
             <React.Fragment key={col.id}>
               <button
                 onClick={() => onColumnClick && onColumnClick(col.id)}
-                className="pointer-events-auto text-[#e6dec9] hover:text-white transition-all duration-200 cursor-pointer bg-transparent border-none outline-none font-medium text-xs sm:text-sm tracking-wide px-1 h-full flex items-center"
-                style={{ fontFamily: "'Permanent Marker', cursive, sans-serif" }}
+                className="pointer-events-auto text-white hover:text-amber-400 transition-colors duration-200 cursor-pointer bg-transparent border-none outline-none text-xs sm:text-sm h-full flex items-center px-1"
+                style={{ fontFamily: "'HelveticaNeue', sans-serif", fontWeight: 500 }}
               >
-                <span className="translate-y-[1px] leading-none">{col.title}</span>
+                <span className="translate-y-[1.5px] leading-none">{col.title}</span>
               </button>
               {idx < COLUMNS.length - 1 && (
-                <span className="text-[#e6dec9]/40 text-xs leading-none select-none pointer-events-none px-0.5 translate-y-[1px] flex items-center">•</span>
+                <span className="text-white/40 text-[10px] leading-none select-none pointer-events-none mx-0.5 translate-y-[0.5px] flex items-center">•</span>
               )}
             </React.Fragment>
           ))}
@@ -152,8 +170,8 @@ export default function Hero({ onColumnClick }) {
         <div className="pointer-events-auto">
           <a
             href="mailto:client@email.com"
-            className="bg-[#144bff] hover:bg-[#103ce6] text-[#e6dec9] hover:text-white font-medium text-xs sm:text-sm px-4 h-10 rounded-xl border border-white/20 transition-all duration-300 no-underline shadow-xl flex items-center gap-1.5 cursor-pointer hover:scale-105"
-            style={{ fontFamily: "'Permanent Marker', cursive, sans-serif" }}
+            className="bg-[#0a0a0c]/85 border border-white/15 text-amber-400 hover:text-amber-300 hover:border-amber-400/30 px-3.5 h-9 rounded-lg text-xs sm:text-sm tracking-wide flex items-center gap-1.5 backdrop-blur-md transition-all duration-300 shadow-lg cursor-pointer hover:scale-105 no-underline"
+            style={{ fontFamily: "'HelveticaNeue', sans-serif", fontWeight: 500 }}
           >
             <span className="translate-y-[1px] leading-none">Let's Connect ↗</span>
           </a>
@@ -215,10 +233,10 @@ export default function Hero({ onColumnClick }) {
                     {col.title}
                   </h1>
 
-                  {/* Subtitle Description */}
+                  {/* Subtitle Description (HelveticaNeue Font Applied) */}
                   <p 
-                    style={{ fontFamily: "'Permanent Marker', cursive, sans-serif" }}
-                    className="text-neutral-300 text-xs sm:text-sm font-normal max-w-[160px] sm:max-w-[200px] leading-tight transition-colors duration-300 group-hover:text-white"
+                    style={{ fontFamily: "'HelveticaNeue', sans-serif", fontWeight: 'normal' }}
+                    className="text-neutral-300 text-xs sm:text-sm max-w-[160px] sm:max-w-[200px] leading-tight transition-colors duration-300 group-hover:text-white"
                   >
                     {col.subtitle}
                   </p>
@@ -230,23 +248,23 @@ export default function Hero({ onColumnClick }) {
         </div>
       </div>
 
-      {/* 📌 STATIC FIXED FOOTER FOR HOMEPAGE */}
+      {/* 📌 STATIC FIXED FOOTER FOR HOMEPAGE (HelveticaNeue Font Applied) */}
       <footer className="fixed bottom-0 left-0 w-screen max-w-full box-border z-[9999] px-4 sm:px-8 md:px-12 pointer-events-none flex items-end pb-8 sm:pb-10">
         <div className="w-full flex items-center justify-between relative">
           
           {/* 🟢 BOTTOM-LEFT: AVAILABLE FOR WORK BADGE */}
           <div 
-            style={{ fontFamily: "'GourmetEatery', cursive, sans-serif" }}
-            className="pointer-events-auto flex items-center gap-2 px-3.5 h-9 rounded-lg bg-[#144bff] text-white border border-white/20 text-xs sm:text-sm font-medium tracking-wide cursor-pointer origin-left"
+            style={{ fontFamily: "'HelveticaNeue', sans-serif", fontWeight: 'bold' }}
+            className="pointer-events-auto flex items-center gap-2 px-3.5 h-9 rounded-lg bg-[#0a0a0c]/85 text-amber-400 border border-white/15 backdrop-blur-md shadow-xl text-xs sm:text-sm tracking-wide cursor-pointer origin-left"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-            <span className="uppercase text-white translate-y-[1px]">
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse shadow-[0_0_8px_#fcd34d]" />
+            <span className="uppercase text-amber-400 translate-y-[1px]">
               AVAILABLE FOR WORK
             </span>
           </div>
 
           {/* 🌐 BOTTOM-RIGHT: SOCIAL LINKS CONTAINER */}
-          <div className="flex items-center justify-center bg-[#144bff] border border-white/20 px-5 h-11 sm:h-12 rounded-xl pointer-events-auto gap-4 origin-right">
+          <div className="flex items-center justify-center bg-[#0a0a0c]/85 border border-white/15 px-5 h-11 sm:h-12 rounded-xl shadow-xl backdrop-blur-md pointer-events-auto gap-4 origin-right">
             {SOCIAL_LINKS.map((social, idx) => (
               <React.Fragment key={social.id}>
                 <a 
@@ -254,12 +272,12 @@ export default function Hero({ onColumnClick }) {
                   target="_blank" 
                   rel="noopener noreferrer" 
                   aria-label={social.id}
-                  className="text-white flex items-center justify-center no-underline transition-all duration-200 ease-out p-1.5 cursor-pointer hover:scale-125"
+                  className="text-white flex items-center justify-center no-underline transition-all duration-200 ease-out p-1.5 cursor-pointer hover:scale-125 hover:text-amber-400"
                 >
                   {social.icon}
                 </a>
                 {idx < SOCIAL_LINKS.length - 1 && (
-                  <span className="text-xs text-white/50 select-none pointer-events-none">
+                  <span className="text-xs text-white/40 select-none pointer-events-none">
                     •
                   </span>
                 )}
