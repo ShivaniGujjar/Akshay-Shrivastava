@@ -250,44 +250,44 @@ export default function Hero({ onColumnClick }) {
       </div>
 
       {/* 📌 STATIC FIXED FOOTER FOR HOMEPAGE */}
-      <footer className="fixed bottom-0 left-0 w-screen max-w-full box-border z-[9999] px-4 sm:px-8 md:px-12 pointer-events-none flex items-end pb-8 sm:pb-10">
-        <div className="w-full flex items-center justify-between relative">
-          
-          {/* 🟢 BOTTOM-LEFT: AVAILABLE FOR WORK BADGE */}
-          <div 
-            style={{ fontFamily: "'HelveticaNeue', sans-serif", fontWeight: 'bold' }}
-            className="pointer-events-auto flex items-center gap-2 px-3.5 h-9 rounded-lg bg-[#0a0a0c]/85 text-amber-400 border border-white/15 backdrop-blur-md shadow-xl text-xs sm:text-sm tracking-wide cursor-pointer origin-left"
+      {/* 📌 STATIC FIXED FOOTER FOR HOMEPAGE */}
+<footer className="fixed bottom-0 left-0 w-screen max-w-full box-border z-[9999] px-4 sm:px-8 md:px-12 pointer-events-none flex items-end pb-8 sm:pb-10">
+  <div className="w-full flex items-center justify-between relative">
+    
+    {/* 🟢 BOTTOM-LEFT: AVAILABLE FOR WORK BADGE (Increased Size) */}
+<div 
+  className="font-gourmet pointer-events-auto flex items-center gap-2.5 px-4 sm:px-5 h-11 rounded-xl bg-[#0a0a0c]/85 text-[#FFC822] border border-white/15 backdrop-blur-md shadow-xl cursor-pointer origin-left transition-all duration-300"
+>
+  <span className="w-2 h-2 rounded-full bg-[#FFC822] animate-pulse shadow-[0_0_8px_#FFC822]" />
+  <span className="capitalize text-[#FFC822] text-base sm:text-lg leading-none pt-0.5">
+    Available for work
+  </span>
+</div>
+
+    {/* 🌐 BOTTOM-RIGHT: SOCIAL LINKS CONTAINER */}
+    <div className="flex items-center justify-center bg-[#0a0a0c]/85 border border-white/15 px-4 h-11 sm:h-12 rounded-xl shadow-xl backdrop-blur-md pointer-events-auto gap-4 origin-right">
+      {SOCIAL_LINKS.map((social, idx) => (
+        <React.Fragment key={social.id}>
+          <a 
+            href={social.url} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            aria-label={social.id}
+            className="text-white flex items-center justify-center no-underline transition-all duration-200 ease-out p-1.5 cursor-pointer hover:scale-125 hover:text-[#FFC822]"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse shadow-[0_0_8px_#fcd34d]" />
-            <span className="uppercase text-amber-400 translate-y-[1px]">
-              AVAILABLE FOR WORK
+            {social.icon}
+          </a>
+          {idx < SOCIAL_LINKS.length - 1 && (
+            <span className="text-xs text-[#FFC822]/60 select-none pointer-events-none">
+              •
             </span>
-          </div>
+          )}
+        </React.Fragment>
+      ))}
+    </div>
 
-          {/* 🌐 BOTTOM-RIGHT: SOCIAL LINKS CONTAINER */}
-          <div className="flex items-center justify-center bg-[#0a0a0c]/85 border border-white/15 px-4 h-11 sm:h-12 rounded-xl shadow-xl backdrop-blur-md pointer-events-auto gap-4 origin-right">
-            {SOCIAL_LINKS.map((social, idx) => (
-              <React.Fragment key={social.id}>
-                <a 
-                  href={social.url} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  aria-label={social.id}
-                  className="text-white flex items-center justify-center no-underline transition-all duration-200 ease-out p-1.5 cursor-pointer hover:scale-125 hover:text-amber-400"
-                >
-                  {social.icon}
-                </a>
-                {idx < SOCIAL_LINKS.length - 1 && (
-                  <span className="text-xs text-white/40 select-none pointer-events-none">
-                    •
-                  </span>
-                )}
-              </React.Fragment>
-            ))}
-          </div>
-
-        </div>
-      </footer>
+  </div>
+</footer>
 
     </section>
   );
