@@ -11,24 +11,27 @@ if (typeof window !== 'undefined') {
 
 // 🎬 REAL SHOWCASE DATA
 const LONG_FORMS = [
-  { id: 'lf1', title: 'The Founder Journey', category: 'Podcast', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785678593/Campus_film_compressed_2_otok6t.mp4', poster: 'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=600' },
-  { id: 'lf2', title: 'Tech Masterclass Loop', category: 'Edutainment', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785678044/After_effects_compressed_jxplaf.mp4', poster: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600' },
-  { id: 'lf3', title: 'Campus Uncut Documentary', category: 'Documentary', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785678011/Ifolder_with_grade_final_vh9ygb.mp4', poster: 'https://images.unsplash.com/photo-1536240478700-b869070f9279?w=600' },
-  { id: 'lf4', title: 'Talking Head Masterclass', category: 'Vlog', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785674839/Perfectionism_compressed_isgrjo.mp4', poster: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600' },
+  { id: 'lf1', title: 'The Founder Journey', category: 'Podcast', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785862913/Samsara_compressed_qir1st.mp4', poster: 'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=600' },
+  { id: 'lf2', title: 'Tech Masterclass Loop', category: 'Edutainment', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785862169/Moradabad_compressed_4k_jhjpwj.mp4', poster: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600' },
+  { id: 'lf3', title: 'Campus Uncut Documentary', category: 'Documentary', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785862235/Lawyer_oxrjwv.mp4', poster: 'https://images.unsplash.com/photo-1536240478700-b869070f9279?w=600' },
+  { id: 'lf4', title: 'Talking Head Masterclass', category: 'Vlog', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785862292/Copy_of_shamik_trailer_final_with_4k_clipa_bpqrrg.mp4', poster: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600' },
+  { id: 'lf5', title: 'Talking Head Masterclass', category: 'Vlog', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785862460/Clovia_s_final_trailer_buv61c.mp4', poster: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600' },
+
+  { id: 'lf6', title: 'Talking Head Masterclass', category: 'Vlog', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785862524/Aditya_All_in_One_Capital_trailer_bkwxow.mp4', poster: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600' },
 ];
 
 const SHORT_FORMS_ROW1 = [
-  { id: 'sf1', title: 'UGC Retention Hook', brand: 'Waywen', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785674839/Perfectionism_compressed_isgrjo.mp4', poster: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600' },
-  { id: 'sf2', title: '3D Product Reel', brand: "Master's Union", videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785678011/Ifolder_with_grade_final_vh9ygb.mp4', poster: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600' },
-  { id: 'sf3', title: 'Viral Podcast Clip', brand: 'Edutainment', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785678044/After_effects_compressed_jxplaf.mp4', poster: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600' },
-  { id: 'sf4', title: 'App Promo Reel', brand: 'Media Hub', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785678593/Campus_film_compressed_2_otok6t.mp4', poster: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600' },
+  { id: 'sf1', title: 'UGC Retention Hook', brand: 'Waywen', videoUrl: '', poster: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600' },
+  { id: 'sf2', title: '3D Product Reel', brand: "Master's Union", videoUrl: '', poster: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600' },
+  { id: 'sf3', title: 'Viral Podcast Clip', brand: 'Edutainment', videoUrl: '', poster: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600' },
+  { id: 'sf4', title: 'App Promo Reel', brand: 'Media Hub', videoUrl: '', poster: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600' },
 ];
 
 const SHORT_FORMS_ROW2 = [
-  { id: 'sf5', title: 'Brand Story Reel', brand: 'Kolkata Media', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785678044/After_effects_compressed_jxplaf.mp4', poster: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=600' },
-  { id: 'sf6', title: 'High-Retention Ad', brand: 'SaaS Launch', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785678593/Campus_film_compressed_2_otok6t.mp4', poster: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600' },
-  { id: 'sf7', title: 'Fashion Motion Edit', brand: 'Studio Luxe', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785678011/Ifolder_with_grade_final_vh9ygb.mp4', poster: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600' },
-  { id: 'sf8', title: 'Fitness Campaign', brand: 'Fit Tribe', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785674839/Perfectionism_compressed_isgrjo.mp4', poster: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=600' },
+  { id: 'sf5', title: 'Brand Story Reel', brand: 'Kolkata Media', videoUrl: '', poster: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=600' },
+  { id: 'sf6', title: 'High-Retention Ad', brand: 'SaaS Launch', videoUrl: '', poster: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600' },
+  { id: 'sf7', title: 'Fashion Motion Edit', brand: 'Studio Luxe', videoUrl: '', poster: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600' },
+  { id: 'sf8', title: 'Fitness Campaign', brand: 'Fit Tribe', videoUrl: '', poster: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=600' },
 ];
 
 const duplicateList = (arr, count = 4) => {

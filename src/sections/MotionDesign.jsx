@@ -10,16 +10,16 @@ if (typeof window !== 'undefined') {
 
 // 🎬 REAL SHOWCASE DATA (UPDATED WITH NEW CLOUDINARY LINKS)
 const SHORT_FORMS = [
-  { id: 'msf1', title: '3D Kinetic Typography', brand: 'UGC Ad', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785674839/Perfectionism_compressed_isgrjo.mp4' },
-  { id: 'msf2', title: 'Abstract Product Reel', brand: '3D Motion', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785678011/Ifolder_with_grade_final_lzq260.mp4' },
-  { id: 'msf3', title: 'Logo Reveal Loop', brand: 'VFX', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785678044/After_effects_compressed_jxplaf.mp4' },
-  { id: 'msf4', title: 'Character Animation', brand: '2D Motion', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785678593/Campus_film_compressed_2_otok6t.mp4' },
+  { id: 'msf1', title: '3D Kinetic Typography', brand: 'UGC Ad', videoUrl: '' },
+  { id: 'msf2', title: 'Abstract Product Reel', brand: '3D Motion', videoUrl: '' },
+  { id: 'msf3', title: 'Logo Reveal Loop', brand: 'VFX', videoUrl: '' },
+  { id: 'msf4', title: 'Character Animation', brand: '2D Motion', videoUrl: '' },
 ];
 
 const LONG_FORMS = [
-  { id: 'mlf1', title: 'Explainer Film Loop', category: 'Animation', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785678593/Campus_film_compressed_2_otok6t.mp4', poster: 'https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?w=600' },
-  { id: 'mlf2', title: 'Campus Documentary Intro', category: 'Titles', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785678011/Ifolder_with_grade_final_lzq260.mp4', poster: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600' },
-  { id: 'mlf3', title: 'SaaS Platform Walkthrough', category: '3D UI', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785678044/After_effects_compressed_jxplaf.mp4', poster: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600' },
+  { id: 'mlf1', title: 'Explainer Film Loop', category: 'Animation', videoUrl: '', poster: 'https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?w=600' },
+  { id: 'mlf2', title: 'Campus Documentary Intro', category: 'Titles', videoUrl: '', poster: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600' },
+  { id: 'mlf3', title: 'SaaS Platform Walkthrough', category: '3D UI', videoUrl: '', poster: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600' },
 ];
 
 const duplicateList = (arr, count = 4) => {

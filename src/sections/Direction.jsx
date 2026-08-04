@@ -15,7 +15,7 @@ const DIRECTION_PROJECTS = [
     num: '01',
     title: 'Brand Commercial Direction',
     description: 'A high-impact brand campaign focusing on narrative pacing, emotional resonance, and high retention.',
-    videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785678593/Campus_film_compressed_2_otok6t.mp4',
+    videoUrl: '',
     tag: 'Commercial'
   },
   {
@@ -23,7 +23,7 @@ const DIRECTION_PROJECTS = [
     num: '02',
     title: 'Short Film Narrative',
     description: 'Exploratory visual storytelling with structured lighting, precise camera movement, and cinematic color grading.',
-    videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785674839/Perfectionism_compressed_isgrjo.mp4',
+    videoUrl: '',
     tag: 'Narrative'
   },
   {
@@ -31,7 +31,7 @@ const DIRECTION_PROJECTS = [
     num: '03',
     title: 'Startup Launch Film',
     description: 'Directing on-set talent and seamless motion graphics integration for modern tech positioning.',
-    videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785678044/After_effects_compressed_jxplaf.mp4',
+    videoUrl: '',
     tag: 'Promo'
   }
 ];
