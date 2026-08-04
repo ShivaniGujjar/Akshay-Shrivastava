@@ -11,13 +11,12 @@ if (typeof window !== 'undefined') {
 
 // 🎬 REAL SHOWCASE DATA
 const LONG_FORMS = [
-  { id: 'lf1', title: 'The Founder Journey', category: 'Podcast', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785862913/Samsara_compressed_qir1st.mp4', poster: 'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=600' },
-  { id: 'lf2', title: 'Tech Masterclass Loop', category: 'Edutainment', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785862169/Moradabad_compressed_4k_jhjpwj.mp4', poster: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600' },
-  { id: 'lf3', title: 'Campus Uncut Documentary', category: 'Documentary', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785862235/Lawyer_oxrjwv.mp4', poster: 'https://images.unsplash.com/photo-1536240478700-b869070f9279?w=600' },
-  { id: 'lf4', title: 'Talking Head Masterclass', category: 'Vlog', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785862292/Copy_of_shamik_trailer_final_with_4k_clipa_bpqrrg.mp4', poster: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600' },
-  { id: 'lf5', title: 'Talking Head Masterclass', category: 'Vlog', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785862460/Clovia_s_final_trailer_buv61c.mp4', poster: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600' },
-
-  { id: 'lf6', title: 'Talking Head Masterclass', category: 'Vlog', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785862524/Aditya_All_in_One_Capital_trailer_bkwxow.mp4', poster: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600' },
+  { id: 'lf1', title: '1', category: 'Podcast', videoUrl: 'https://cdn.jsdelivr.net/gh/ShivaniGujjar/editingvideos@main/EditingLong2.mp4', poster: 'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=600' },
+  { id: 'lf2', title: '2', category: 'Edutainment', videoUrl: 'https://cdn.jsdelivr.net/gh/ShivaniGujjar/editingvideos@main/EditingLong4.mp4', poster: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600' },
+  { id: 'lf3', title: '3', category: 'Documentary', videoUrl: 'https://cdn.jsdelivr.net/gh/ShivaniGujjar/editingvideos@main/EditingLong2.mp4', poster: 'https://images.unsplash.com/photo-1536240478700-b869070f9279?w=600' },
+  { id: 'lf4', title: 'Talking Head Masterclass', category: 'Vlog', videoUrl: 'https://cdn.jsdelivr.net/gh/ShivaniGujjar/editingvideos@main/EditingLong4.mp4', poster: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600' },
+  { id: 'lf5', title: 'Talking Head Masterclass', category: 'Vlog', videoUrl: 'https://cdn.jsdelivr.net/gh/ShivaniGujjar/editingvideos@main/EditingLong2.mp4', poster: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600' },
+  { id: 'lf6', title: 'Talking Head Masterclass', category: 'Vlog', videoUrl: 'https://cdn.jsdelivr.net/gh/ShivaniGujjar/editingvideos@main/EditingLong4.mp4', poster: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600' },
 ];
 
 const SHORT_FORMS_ROW1 = [
