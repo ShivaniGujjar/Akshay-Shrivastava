@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-// 🟢 MAKE SURE NAVBAR IS IN COMPONENTS AND OTHERS ARE IN SECTIONS
+// 🟢 COMPONENTS & SECTIONS
 import Navbar from './components/Navbar';
 
 import Hero from './sections/Hero';
@@ -33,8 +33,8 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen w-full bg-slate-950 text-slate-100 flex flex-col selection:bg-sky-500 selection:text-white">
-      {/* Navbar sirf tabhi dikhega jab user Home pe nahi hoga, kyunki Home pe Hero.jsx ka apna custom navbar fixed hai */}
+    <div className="min-h-screen w-full bg-slate-950 text-slate-100 flex flex-col selection:bg-sky-500 selection:text-white relative">
+      {/* Navbar (Only visible when not on home section) */}
       {activeSection !== 'home' && (
         <Navbar onNavigate={handleNavigate} activeSection={activeSection} />
       )}

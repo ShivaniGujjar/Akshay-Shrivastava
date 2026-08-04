@@ -1,60 +1,192 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SocialProof from '../components/SocialProof';
+import Footer from './Footer';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export default function AboutMe() {
+  const bioSectionRef = useRef(null);
+  const nameRef = useRef(null);
+  const cardRef = useRef(null);
+
+  // 🔊 HERO VIDEO SOUND STATE & REF
+  const heroVideoRef = useRef(null);
+  const [isMuted, setIsMuted] = useState(true);
+
+  const toggleAudio = () => {
+    if (heroVideoRef.current) {
+      heroVideoRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
+    }
+  };
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.set(nameRef.current, {
+        opacity: 0,
+        y: 60,
+      });
+
+      gsap.set(cardRef.current, {
+        opacity: 0,
+        y: 100,
+        scale: 0.95,
+      });
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: bioSectionRef.current,
+          start: 'top 70%',
+          toggleActions: 'play none none reverse',
+        },
+      });
+
+      tl.to(nameRef.current, {
+        opacity: 1,
+        y: 0,
+        duration: 0.9,
+        ease: 'power3.out',
+      })
+      .to(cardRef.current, {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 1,
+        ease: 'power3.out',
+      }, '-=0.6');
+
+    }, bioSectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <div className="w-full min-h-screen bg-[#fafafa] relative overflow-x-hidden pb-12 font-sans tracking-tight">
+    <div className="w-full min-h-screen bg-[#FFFCFB] relative overflow-x-hidden pb-0 m-0 text-[#14120e]">
       
-      {/* 🎬 100VH CINEMATIC HERO BANNER */}
-      <div className="relative w-full h-screen bg-[#0c0c0e] flex flex-col justify-center items-center overflow-hidden m-0 p-0"> 
-        
-        {/* FLUID BACKDROP VIDEO */}
+      {/* 🎞️ SUBTLE CINEMATIC GRAIN OVERLAY */}
+      <div 
+        className="fixed inset-0 pointer-events-none z-[999] opacity-[0.04]"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+        }}
+      />
+
+      <style>{`
+        @font-face {
+          font-family: 'Telina';
+          src: url('/Talina-Regular.ttf') format('truetype');
+          font-weight: normal;
+          font-style: normal;
+          font-display: swap;
+        }
+
+        @font-face {
+          font-family: 'HelveticaNeue';
+          src: url('/fonts/HelveticaNeueRoman.otf') format('opentype');
+          font-weight: normal;
+          font-style: normal;
+          font-display: swap;
+        }
+
+        @font-face {
+          font-family: 'HelveticaNeue';
+          src: url('/fonts/HelveticaNeueBold.otf') format('opentype');
+          font-weight: bold;
+          font-style: normal;
+          font-display: swap;
+        }
+
+        .editing-cutout-mask {
+          mask-image: url('/editingcutout.svg');
+          -webkit-mask-image: url('/editingcutout.svg');
+          mask-size: 100% 100%;
+          -webkit-mask-size: 100% 100%;
+          mask-repeat: no-repeat;
+          -webkit-mask-repeat: no-repeat;
+          mask-position: bottom center;
+          -webkit-mask-position: bottom center;
+        }
+      `}</style>
+
+      {/* 🎬 HERO BANNER */}
+      <div className="relative w-full h-screen bg-[#14120e] flex flex-col justify-center items-center overflow-hidden m-0 p-0 editing-cutout-mask"> 
         <video 
+          ref={heroVideoRef}
           autoPlay 
           loop 
-          muted 
+          muted={isMuted} 
           playsInline 
-          className="absolute top-0 left-0 w-full h-screen object-cover z-0 filter brightness-[0.65] contrast-105"
+          className="absolute top-0 left-0 w-full h-screen object-cover z-0 filter brightness-[0.55] contrast-105"
         >
           <source src="https://res.cloudinary.com/n1mfkfh4/video/upload/v1785678044/After_effects_compressed_jxplaf.mp4" />
         </video>
 
-        {/* LIGHT GRADIENT VIGNETTE OVERLAY */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30 z-[1] pointer-events-none" />
-        
-        {/* CENTERED BANNER TYPOGRAPHY */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#14120e]/80 via-transparent to-[#14120e]/60 z-[1] pointer-events-none" />
+
+        {/* 🔊 MINIMAL SOUND TOGGLE BUTTON */}
+        <button
+          onClick={toggleAudio}
+          className="absolute bottom-10 left-8 z-30 flex items-center justify-center w-12 h-12 bg-black/60 hover:bg-[#144BFF] backdrop-blur-md text-[#FFFFFF] border border-white/20 rounded-full transition-all duration-300 shadow-xl group cursor-pointer hover:scale-110"
+          aria-label="Toggle Sound"
+        >
+          {isMuted ? (
+            <svg className="w-5 h-5 fill-current text-[#FFC822] group-hover:text-white transition-colors" viewBox="0 0 24 24">
+              <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+            </svg>
+          ) : (
+            <svg className="w-5 h-5 fill-current text-[#FFFFFF] animate-pulse" viewBox="0 0 24 24">
+              <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+            </svg>
+          )}
+        </button>
+
         <div className="relative z-10 flex flex-col justify-center items-center px-4">
-          <h1 className="font-['Comic_Sans_MS','Chalkboard_SE',sans-serif] text-[3.2rem] sm:text-[4.5rem] md:text-[5.5rem] font-[950] uppercase text-white m-0 text-center leading-none tracking-tight drop-shadow-[0_4px_20px_rgba(0,0,0,0.95)]">
+          <h1 
+            style={{ fontFamily: "'HelveticaNeue', sans-serif", fontWeight: 'bold', letterSpacing: '-5px' }}
+            className="text-[2.5rem] sm:text-[3.8rem] md:text-[4.2rem] font-black text-[#ffffff] m-0 text-center leading-none"
+          >
             About Me
           </h1>
-          <p className="font-['Comic_Sans_MS',sans-serif] text-amber-300 font-extrabold text-xs sm:text-sm md:text-base uppercase tracking-[2.5px] mt-3.5 text-center drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)] bg-black/40 backdrop-blur-sm px-4 py-1.5 rounded-full border border-white/10">
-            BIOGRAPHY • EXPERIENCE • CREATIVE VISION
+
+          <p 
+            style={{ fontFamily: "'Telina', sans-serif", letterSpacing: '-0.6px' }}
+            className="flex items-center gap-1 sm:gap-1 mt-4 text-[#144BFF] font-bold text-sm sm:text-base md:text-lg uppercase tracking-wider text-center drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)]"
+          >
+            BIOGRAPHY <span className="text-[#FFC822] mx-1">•</span> EXPERIENCE <span className="text-[#FFC822] mx-1">•</span> CREATIVE VISION
           </p>
         </div>
-
-        {/* Bottom Torn Canvas Divider Layer */}
-        <div className="absolute -bottom-[2px] left-0 w-full h-[70px] sm:h-[90px] z-[15] bg-[url('/bottom.png')] bg-repeat-x bg-[length:auto_100%] bg-bottom" />
       </div>
 
       {/* 🏛️ CORE SHOWCASE CANVAS BODY */}
-      <div className="max-w-[950px] w-full mx-auto pt-16 sm:pt-24 pb-12 px-6 flex flex-col items-start text-left relative">
-        
-        {/* Subtle Brand Color Accent Glow */}
-        <div className="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-80 h-40 bg-[#2b66e3]/10 blur-3xl rounded-full pointer-events-none" />
-
-        {/* Category Chip Badge */}
-        <div className="mb-4 px-4 py-1.5 bg-[#2b66e3]/10 border border-[#2b66e3]/20 rounded-full text-[#2b66e3] font-['Comic_Sans_MS',sans-serif] text-xs sm:text-sm font-extrabold uppercase tracking-widest shadow-sm">
+      <div 
+        ref={bioSectionRef} 
+        className="max-w-[950px] w-full mx-auto pt-16 sm:pt-24 pb-12 px-6 flex flex-col items-center text-center relative z-20"
+      >
+        <div 
+          style={{ fontFamily: "'Telina', sans-serif" }}
+          className="mb-4 px-4 py-1.5 bg-[#144BFF]/10 text-[#144BFF] rounded-sm text-xs sm:text-sm font-bold uppercase tracking-widest"
+        >
           👤 Creative Profile
         </div>
 
-        {/* 🚀 CLEANED & BALANCED NAME TITLE */}
-        <h1 className="font-['Comic_Sans_MS',sans-serif] text-[#2b66e3] text-5xl sm:text-6xl md:text-[4.8rem] font-black leading-[1.1] mb-8 tracking-tight drop-shadow-sm">
-          Akshay<br />
-          <span className="text-[#1a49b8]">Shrivastava</span>
-        </h1>
+        <h2 
+          ref={nameRef}
+          style={{ fontFamily: "'HelveticaNeue', sans-serif", letterSpacing: '-4px' }}
+          className="w-full text-center text-[#144BFF] text-5xl sm:text-6xl md:text-[4.8rem] font-semibold leading-[1.05] mb-8"
+        >
+          Akshay{' '}
+          <span className="text-[#14120e] ml-3 sm:ml-4">Shrivastava</span>
+        </h2>
         
-        {/* Glassmorphic Bio Card */}
-        <div className="bg-white/80 backdrop-blur-md p-6 sm:p-8 rounded-3xl border border-black/5 shadow-sm text-[#2d3748] text-base sm:text-lg md:text-xl leading-relaxed font-medium space-y-6 w-full mb-16 relative z-10">
+        <div 
+          ref={cardRef}
+          style={{ fontFamily: "'Telina', sans-serif", letterSpacing: '-0.3px' }}
+          className="bg-white/80 backdrop-blur-md p-6 sm:p-10 rounded-3xl border border-black/10 shadow-xl text-[#14120e] text-base sm:text-xl md:text-2xl leading-relaxed font-medium space-y-6 w-full mb-16 relative z-10 text-left"
+        >
           <p className="m-0">
             I am a video editor, motion designer, and creative director obsessed with high-retention storytelling and high-fidelity visuals.
           </p>
@@ -67,10 +199,14 @@ export default function AboutMe() {
         </div>
       </div>
 
-      {/* 🚀 REUSABLE SOCIAL PROOF COMPONENT (WORKED WITH + TESTIMONIALS) */}
-      <SocialProof />
+      {/* 🚀 SOCIAL PROOF */}
+      <div className="m-0 p-0 mb-28 sm:mb-36">
+        <SocialProof />
+      </div>
 
-      {/* Embedded Slow Keyframe Animations */}
+      {/* 🚀 FLOATING DOCK FOOTER */}
+      <Footer />
+
       <style>{`
         @keyframes slowMarqueeLeft {
           0% { transform: translate3d(0, 0, 0); }

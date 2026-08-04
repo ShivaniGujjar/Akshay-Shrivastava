@@ -1,18 +1,25 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SocialProof from '../components/SocialProof';
+import Footer from './Footer';
 
-// 🎬 REAL SHOWCASE DATA
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
+// 🎬 REAL SHOWCASE DATA (UPDATED WITH NEW CLOUDINARY LINKS)
 const SHORT_FORMS = [
-  { id: 'msf1', title: '3D Kinetic Typography', brand: 'UGC Ad', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1784024845/motion_gqgmye.mp4' },
-  { id: 'msf2', title: 'Abstract Product Reel', brand: '3D Motion', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1784318460/Learn_AE_in_a_single_day_1_vwktvg.mp4' },
-  { id: 'msf3', title: 'Logo Reveal Loop', brand: 'VFX', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1784312262/editing_ra4d0j.mp4' },
-  { id: 'msf4', title: 'Character Animation', brand: '2D Motion', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1784316399/Ifolder_with_grade_final_vh9ygb.mp4' },
+  { id: 'msf1', title: '3D Kinetic Typography', brand: 'UGC Ad', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785674839/Perfectionism_compressed_isgrjo.mp4' },
+  { id: 'msf2', title: 'Abstract Product Reel', brand: '3D Motion', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785678011/Ifolder_with_grade_final_lzq260.mp4' },
+  { id: 'msf3', title: 'Logo Reveal Loop', brand: 'VFX', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785678044/After_effects_compressed_jxplaf.mp4' },
+  { id: 'msf4', title: 'Character Animation', brand: '2D Motion', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785678593/Campus_film_compressed_2_otok6t.mp4' },
 ];
 
 const LONG_FORMS = [
-  { id: 'mlf1', title: 'Explainer Film Loop', category: 'Animation', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1784024845/motion_gqgmye.mp4', poster: 'https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?w=600' },
-  { id: 'mlf2', title: 'Campus Documentary Intro', category: 'Titles', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1784318460/Learn_AE_in_a_single_day_1_vwktvg.mp4', poster: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600' },
-  { id: 'mlf3', title: 'SaaS Platform Walkthrough', category: '3D UI', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1784316399/Ifolder_with_grade_final_vh9ygb.mp4', poster: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600' },
+  { id: 'mlf1', title: 'Explainer Film Loop', category: 'Animation', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785678593/Campus_film_compressed_2_otok6t.mp4', poster: 'https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?w=600' },
+  { id: 'mlf2', title: 'Campus Documentary Intro', category: 'Titles', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785678011/Ifolder_with_grade_final_lzq260.mp4', poster: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600' },
+  { id: 'mlf3', title: 'SaaS Platform Walkthrough', category: '3D UI', videoUrl: 'https://res.cloudinary.com/n1mfkfh4/video/upload/v1785678044/After_effects_compressed_jxplaf.mp4', poster: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600' },
 ];
 
 const duplicateList = (arr, count = 4) => {
@@ -23,34 +30,56 @@ const duplicateList = (arr, count = 4) => {
   return output;
 };
 
-function VideoCard({ item, aspectRatio = "wide" }) {
+// 🎥 SMART VIDEO CARD WITH VIEWPORT AUTOPLAY & HOVER ISOLATION
+function VideoCard({ item, aspectRatio = "wide", hoveredId, setHoveredId }) {
+  const cardRef = useRef(null);
   const videoRef = useRef(null);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const isHovered = hoveredId === item.id;
+  const isAnyHovered = hoveredId !== null;
 
-  const handleMouseEnter = () => {
-    setIsPlaying(true);
-    if (videoRef.current) {
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.2 }
+    );
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!videoRef.current) return;
+
+    if (!isVisible) {
+      videoRef.current.pause();
+    } else if (isAnyHovered) {
+      if (isHovered) {
+        videoRef.current.play().catch(() => {});
+      } else {
+        videoRef.current.pause();
+      }
+    } else {
       videoRef.current.play().catch(() => {});
     }
-  };
+  }, [isVisible, isHovered, isAnyHovered]);
 
-  const handleMouseLeave = () => {
-    setIsPlaying(false);
-    if (videoRef.current) {
-      videoRef.current.pause();
-      videoRef.current.currentTime = 0;
-    }
-  };
-
+  // 📐 9:16 FOR SHORT FORMS, WIDE LANDSCAPE FOR LONG FORMS
   const cardDimensions = aspectRatio === "wide" 
-    ? "w-[320px] sm:w-[400px] h-[200px] sm:h-[240px]" 
-    : "w-[210px] sm:w-[250px] h-[310px] sm:h-[370px]";
+    ? "w-[340px] sm:w-[420px] h-[210px] sm:h-[260px]" 
+    : "w-[260px] sm:w-[300px] aspect-[9/16]";
 
   return (
     <div 
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      className={`relative group rounded-2xl overflow-hidden cursor-pointer bg-black/90 border border-black/10 shadow-xl transition-all duration-500 ease-out hover:scale-[1.03] hover:shadow-2xl ${cardDimensions} shrink-0`}
+      ref={cardRef}
+      onMouseEnter={() => setHoveredId(item.id)}
+      onMouseLeave={() => setHoveredId(null)}
+      className={`relative group rounded-2xl overflow-hidden cursor-pointer bg-[#14120e] shadow-xl transition-all duration-500 ease-out hover:scale-[1.03] ${cardDimensions} shrink-0 outline-none focus:outline-none select-none border border-black/10`}
     >
       <video
         ref={videoRef}
@@ -60,31 +89,40 @@ function VideoCard({ item, aspectRatio = "wide" }) {
         loop
         playsInline
         preload="metadata"
-        className="absolute inset-0 w-full h-full object-cover transition-all duration-700 filter brightness-90 group-hover:brightness-100 group-hover:scale-105"
+        className="absolute inset-0 w-full h-full object-cover transition-all duration-700 filter brightness-[0.85] group-hover:brightness-100 group-hover:scale-105 outline-none focus:outline-none pointer-events-none"
       />
 
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity duration-300 group-hover:opacity-75" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#14120e]/90 via-[#14120e]/30 to-transparent transition-opacity duration-300 group-hover:opacity-75" />
 
       {item.category && (
-        <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-black font-['Comic_Sans_MS',sans-serif] text-[11px] font-extrabold uppercase tracking-wide shadow-sm">
+        <div 
+          style={{ fontFamily: "'Telina', sans-serif", letterSpacing: '-0.3px' }}
+          className="absolute top-4 left-4 bg-[#144BFF] backdrop-blur-md px-3 py-1 rounded-sm text-[#FFFFFF] text-xs font-bold uppercase shadow-sm"
+        >
           {item.category}
         </div>
       )}
 
-      <div className={`absolute top-3 right-3 w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center transition-all duration-300 ${isPlaying ? 'scale-110 bg-amber-300 text-black' : 'text-white'}`}>
-        {isPlaying ? (
-          <span className="w-2.5 h-2.5 bg-black rounded-sm animate-pulse" />
+      <div className={`absolute top-4 right-4 w-9 h-9 rounded-sm backdrop-blur-md flex items-center justify-center transition-all duration-300 ${isHovered ? 'scale-110 bg-[#144BFF] text-[#FFFFFF] shadow-[0_0_15px_#144BFF]' : 'bg-black/40 text-[#FFFFFF]'}`}>
+        {isHovered ? (
+          <span className="w-2.5 h-2.5 bg-[#FFFFFF] rounded-xs animate-pulse" />
         ) : (
           <svg className="w-4 h-4 fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
         )}
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 p-4 transform transition-transform duration-300 group-hover:translate-y-0">
-        <h4 className="text-white font-['Comic_Sans_MS',sans-serif] font-bold text-base sm:text-lg leading-snug drop-shadow-md">
+      <div className="absolute bottom-0 left-0 right-0 p-6 transform transition-transform duration-300 group-hover:translate-y-0">
+        <h4 
+          style={{ fontFamily: "'HelveticaNeue', sans-serif" }}
+          className="text-[#FFFFFF] text-xl sm:text-2xl font-bold leading-snug drop-shadow-md mb-1"
+        >
           {item.title}
         </h4>
         {item.brand && (
-          <p className="text-amber-300 font-sans text-xs font-semibold uppercase tracking-wider mt-0.5">
+          <p 
+            style={{ fontFamily: "'Telina', sans-serif", letterSpacing: '-0.3px' }}
+            className="text-[#144BFF] text-xs font-semibold uppercase bg-black/60 px-2.5 py-1 rounded-xs inline-block"
+          >
             {item.brand}
           </p>
         )}
@@ -95,145 +133,350 @@ function VideoCard({ item, aspectRatio = "wide" }) {
 
 export default function MotionDesign() {
   const [selectedVideo, setSelectedVideo] = useState(null);
+  const [hoveredShortId, setHoveredShortId] = useState(null);
+  const [hoveredLongId, setHoveredLongId] = useState(null);
+
+  // 🔊 HERO VIDEO SOUND STATE & REF
+  const heroVideoRef = useRef(null);
+  const featuredVideoRef = useRef(null);
+  const [isMuted, setIsMuted] = useState(true);
+
+  const toggleAudio = () => {
+    if (heroVideoRef.current) {
+      heroVideoRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
+    }
+  };
+
+  // Animation Refs
+  const featuredSectionRef = useRef(null);
+  const videoWrapperRef = useRef(null);
+  const paragraphRef = useRef(null);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') setSelectedVideo(null);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const isMobile = window.innerWidth < 768;
+
+      gsap.set(paragraphRef.current, {
+        opacity: 0,
+        x: isMobile ? 0 : -80,
+        y: isMobile ? 40 : 0,
+        scale: 0.9,
+      });
+
+      gsap.set(videoWrapperRef.current, {
+        x: 0,
+      });
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: featuredSectionRef.current,
+          start: 'top 65%',
+          toggleActions: 'play none none reverse',
+        },
+      });
+
+      tl.to(videoWrapperRef.current, {
+        x: isMobile ? 0 : -120,
+        duration: 1,
+        ease: 'power3.inOut',
+      })
+      .to(paragraphRef.current, {
+        opacity: 1,
+        x: isMobile ? 0 : 40,
+        y: 0,
+        scale: 1,
+        duration: 0.9,
+        ease: 'power3.out',
+      }, '-=0.7');
+
+    }, featuredSectionRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <div className="w-full min-h-screen bg-[#fafafa] relative overflow-x-hidden pb-12 font-sans tracking-tight">
+    <div className="w-full min-h-screen bg-[#FFFCFB] relative overflow-x-hidden pb-0 m-0 text-[#14120e]">
       
-      {/* 🎬 100VH CINEMATIC HERO BANNER */}
-      <div className="relative w-full h-screen bg-[#0c0c0e] flex flex-col justify-center items-center overflow-hidden m-0 p-0"> 
-        
-        {/* FLUID BACKDROP VIDEO */}
+      {/* 🎞️ SUBTLE CINEMATIC GRAIN OVERLAY */}
+      <div 
+        className="fixed inset-0 pointer-events-none z-[999] opacity-[0.04]"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+        }}
+      />
+
+      <style>{`
+        @font-face {
+          font-family: 'Telina';
+          src: url('/Talina-Regular.ttf') format('truetype');
+          font-weight: normal;
+          font-style: normal;
+          font-display: swap;
+        }
+
+        @font-face {
+          font-family: 'HelveticaNeue';
+          src: url('/fonts/HelveticaNeueRoman.otf') format('opentype');
+          font-weight: normal;
+          font-style: normal;
+          font-display: swap;
+        }
+
+        @font-face {
+          font-family: 'HelveticaNeue';
+          src: url('/fonts/HelveticaNeueBold.otf') format('opentype');
+          font-weight: bold;
+          font-style: normal;
+          font-display: swap;
+        }
+
+        .editing-cutout-mask {
+          mask-image: url('/editingcutout.svg');
+          -webkit-mask-image: url('/editingcutout.svg');
+          mask-size: 100% 100%;
+          -webkit-mask-size: 100% 100%;
+          mask-repeat: no-repeat;
+          -webkit-mask-repeat: no-repeat;
+          mask-position: bottom center;
+          -webkit-mask-position: bottom center;
+        }
+      `}</style>
+
+      {/* 🎬 HERO BANNER */}
+      <div className="relative w-full h-screen bg-[#14120e] flex flex-col justify-center items-center overflow-hidden m-0 p-0 editing-cutout-mask"> 
         <video 
+          ref={heroVideoRef}
           autoPlay 
           loop 
-          muted 
+          muted={isMuted} 
           playsInline 
-          className="absolute top-0 left-0 w-full h-screen object-cover z-0 filter brightness-[0.65] contrast-105"
+          preload="metadata"
+          className="absolute top-0 left-0 w-full h-screen object-cover z-0 filter brightness-[0.55] contrast-105"
         >
           <source src="https://res.cloudinary.com/n1mfkfh4/video/upload/v1785674839/Perfectionism_compressed_isgrjo.mp4" />
         </video>
 
-        {/* LIGHT GRADIENT VIGNETTE OVERLAY */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30 z-[1] pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#14120e]/80 via-transparent to-[#14120e]/60 z-[1] pointer-events-none" />
 
-        {/* CENTERED BANNER TYPOGRAPHY */}
+        {/* 🔊 MINIMAL SOUND TOGGLE BUTTON */}
+        <button
+          onClick={toggleAudio}
+          className="absolute bottom-20 left-8 z-30 flex items-center justify-center w-12 h-12 bg-black/60 hover:bg-[#144BFF] backdrop-blur-md text-[#FFFFFF] border border-white/20 rounded-full transition-all duration-300 shadow-xl group cursor-pointer hover:scale-110"
+          aria-label="Toggle Sound"
+        >
+          {isMuted ? (
+            <svg className="w-5 h-5 fill-current text-[#FFC822] group-hover:text-white transition-colors" viewBox="0 0 24 24">
+              <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+            </svg>
+          ) : (
+            <svg className="w-5 h-5 fill-current text-[#FFFFFF] animate-pulse" viewBox="0 0 24 24">
+              <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+            </svg>
+          )}
+        </button>
+
         <div className="relative z-10 flex flex-col justify-center items-center px-4">
-          <h1 className="font-['Comic_Sans_MS','Chalkboard_SE',sans-serif] text-[3.2rem] sm:text-[4.5rem] md:text-[5.5rem] font-[950] uppercase text-white m-0 text-center leading-none tracking-tight drop-shadow-[0_4px_20px_rgba(0,0,0,0.95)]">
+          <h1 
+            style={{ fontFamily: "'HelveticaNeue', sans-serif", fontWeight: 'bold', letterSpacing: '-5px' }}
+            className="text-[2.5rem] sm:text-[3.8rem] md:text-[4.2rem] font-black text-[#ffffff] m-0 text-center leading-none"
+          >
             Motion Work
           </h1>
-          <p className="font-['Comic_Sans_MS',sans-serif] text-amber-300 font-extrabold text-xs sm:text-sm md:text-base uppercase tracking-[2.5px] mt-3.5 text-center drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)] bg-black/40 backdrop-blur-sm px-4 py-1.5 rounded-full border border-white/10">
-            2D & 3D ANIMATION • VFX • KINETIC TITLES
+
+          <p 
+            style={{ fontFamily: "'Telina', sans-serif", letterSpacing: '-0.6px' }}
+            className="flex items-center gap-1 sm:gap-1 mt-4 text-[#144BFF] font-bold text-sm sm:text-base md:text-lg uppercase tracking-wider text-center drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)]"
+          >
+            2D & 3D ANIMATION <span className="text-[#FFC822] mx-1">•</span> VFX <span className="text-[#FFC822] mx-1">•</span> KINETIC TITLES
           </p>
         </div>
-
-        {/* Bottom Torn Canvas Divider Layer */}
-        <div className="absolute -bottom-[2px] left-0 w-full h-[70px] sm:h-[90px] z-[15] bg-[url('/bottom.png')] bg-repeat-x bg-[length:auto_100%] bg-bottom" />
       </div>
 
-      {/* 🏛️ CORE SHOWCASE CANVAS HEADER (WITH ENHANCED STYLING) */}
-      <div className="max-w-[1200px] w-full mx-auto pt-16 sm:pt-24 pb-8 px-6 flex flex-col items-center relative">
-        
-        {/* Subtle Brand Color Accent Glow Behind Title */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-32 bg-[#2b66e3]/10 blur-3xl rounded-full pointer-events-none" />
+      {/* 🏛️ HEADER SECTION */}
+      <div className="w-full mx-auto pt-10 sm:pt-16 pb-4 px-4 flex flex-col items-center relative z-20 text-center overflow-x-hidden">
+        <h2 
+          style={{ fontFamily: "'HelveticaNeue', sans-serif", letterSpacing: '-5px' }}
+          className="text-3xl sm:text-5xl md:text-5xl font-semibold m-0 text-[#144BFF] leading-tight"
+        >
+          Welcome to Motion Design section
+        </h2>
+      </div>
 
-        {/* Category Chip Badge */}
-        <div className="mb-4 px-4 py-1.5 bg-[#2b66e3]/10 border border-[#2b66e3]/20 rounded-full text-[#2b66e3] font-['Comic_Sans_MS',sans-serif] text-xs sm:text-sm font-extrabold uppercase tracking-widest shadow-sm">
-          ✨ Motion & Animation
+      {/* 📱 FEATURED SHORT + ANIMATED PARAGRAPH SECTION */}
+      <div 
+        ref={featuredSectionRef} 
+        className="max-w-[1100px] w-full mx-auto py-8 sm:py-12 px-6 flex flex-col md:flex-row items-center justify-center relative z-20 overflow-hidden gap-6 md:gap-4"
+      >
+        <div ref={videoWrapperRef} className="relative z-20 shrink-0">
+          <div className="relative w-[280px] sm:w-[320px] aspect-[9/16] rounded-2xl overflow-hidden bg-[#14120e] shadow-2xl border border-black/10">
+            <video 
+              ref={featuredVideoRef}
+              src="https://res.cloudinary.com/n1mfkfh4/video/upload/v1785674839/Perfectionism_compressed_isgrjo.mp4" 
+              controls
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              className="w-full h-full object-cover outline-none"
+            />
+            <div 
+              style={{ fontFamily: "'Telina', sans-serif" }}
+              className="absolute top-4 left-4 bg-[#144BFF] text-[#FFFFFF] px-3.5 py-1.5 rounded-md text-xs uppercase shadow-md pointer-events-none font-bold"
+            >
+              Featured Short
+            </div>
+          </div>
         </div>
 
-        {/* Main Title */}
-        <h2 className="font-['Comic_Sans_MS',sans-serif] text-[#2b66e3] text-4xl sm:text-5xl md:text-[3.6rem] font-black tracking-tight text-center relative z-10 leading-tight drop-shadow-sm">
-          Welcome to Motion design section
-        </h2>
-
-        {/* Subtitle Card Wrapper */}
-        <div className="mt-5 max-w-[680px] bg-white/80 backdrop-blur-md px-6 py-4 rounded-2xl border border-black/5 shadow-sm text-center">
-          <p className="text-[#4a5568] text-base sm:text-lg font-medium leading-relaxed m-0">
+        <div ref={paragraphRef} className="relative z-10 flex flex-col text-center md:text-left max-w-[450px]">
+          <p 
+            style={{ fontFamily: "'Telina', sans-serif", letterSpacing: '-0.3px' }}
+            className="text-[#14120e] text-lg sm:text-2xl font-medium leading-relaxed"
+          >
             I craft dynamic 2D/3D motion graphics, kinetic typography, and fluid visual effects that elevate brand campaigns and digital storytelling.
           </p>
         </div>
       </div>
 
-      {/* ⚡️ SHORT FORMS TICKER */}
-      <div className="w-full max-w-full relative overflow-hidden my-10 sm:my-16">
-        <div className="max-w-[1100px] w-full mx-auto px-6 text-center">
-          {/* Section Tag */}
-          <span className="inline-block px-3 py-1 bg-amber-300/20 text-amber-700 font-extrabold text-[11px] uppercase tracking-wider rounded-md mb-2 font-['Comic_Sans_MS',sans-serif]">
-            01. Short Form
-          </span>
+      {/* ⚡️ SHORT FORMS */}
+      <div className="w-full max-w-full relative overflow-hidden my-12 sm:my-20">
+        <div className="max-w-[1100px] w-full mx-auto px-6 flex flex-col items-center text-center mb-6">
+          <div className="inline-flex flex-col items-center">
+            <h3 
+              style={{ fontFamily: "'HelveticaNeue', sans-serif", letterSpacing: '-3px' }}
+              className="text-2xl sm:text-4xl md:text-4xl font-semibold m-0 text-[#144BFF] leading-tight"
+            >
+              Short Forms
+            </h3>
+          </div>
 
-          <h3 className="font-['Comic_Sans_MS',sans-serif] text-[#2b66e3] text-3xl sm:text-4xl font-black m-0 tracking-tight">
-            Short Forms
-          </h3>
-
-          <p className="text-[#718096] text-xs sm:text-sm md:text-base mt-2 mb-8 font-sans font-semibold tracking-wide uppercase opacity-80">
-            3D Motion • Logo Reveals • UGC Ads • Kinetic Loops
-          </p>
+          <div 
+            style={{ fontFamily: "'Telina', sans-serif", letterSpacing: '-0.3px' }}
+            className="flex items-center justify-center gap-1.5 sm:gap-2 mt-3 text-[#14120e] font-bold text-xs sm:text-base uppercase tracking-wider text-center"
+          >
+            <span>3D MOTION</span>
+            <span className="text-[#FFC822] text-xs font-black">•</span>
+            <span>LOGO REVEALS</span>
+            <span className="text-[#FFC822] text-xs font-black">•</span>
+            <span>UGC ADS</span>
+            <span className="text-[#FFC822] text-xs font-black">•</span>
+            <span>KINETIC LOOPS</span>
+          </div>
         </div>
 
         <div className="w-full max-w-full overflow-hidden py-4 group">
           <div className="inline-flex whitespace-nowrap gap-6 sm:gap-10 w-max will-change-transform animate-[slowMarqueeLeft_85s_linear_infinite] group-hover:[animation-play-state:paused]">
             {duplicateList(SHORT_FORMS).map((item, idx) => (
               <div key={`short-${idx}`} onClick={() => setSelectedVideo(item)}>
-                <VideoCard item={item} aspectRatio="tall" />
+                <VideoCard 
+                  item={item} 
+                  aspectRatio="tall" 
+                  hoveredId={hoveredShortId} 
+                  setHoveredId={setHoveredShortId} 
+                />
               </div>
             ))}
           </div>
         </div>
       </div>
 
-      {/* 🎬 LONG FORMS TICKER */}
-      <div className="w-full max-w-full relative overflow-hidden my-14 sm:my-20">
-        <div className="max-w-[1100px] w-full mx-auto px-6 text-center">
-          {/* Section Tag */}
-          <span className="inline-block px-3 py-1 bg-amber-300/20 text-amber-700 font-extrabold text-[11px] uppercase tracking-wider rounded-md mb-2 font-['Comic_Sans_MS',sans-serif]">
-            02. Long Form
-          </span>
+      {/* 🎬 LONG FORMS */}
+      <div className="w-full max-w-full relative overflow-hidden my-12 sm:my-20">
+        <div className="max-w-[1100px] w-full mx-auto px-6 flex flex-col items-center text-center mb-6">
+          <div className="inline-flex flex-col items-center">
+            <h3 
+              style={{ fontFamily: "'HelveticaNeue', sans-serif", letterSpacing: '-3px' }}
+              className="text-2xl sm:text-4xl md:text-4xl font-semibold m-0 text-[#144BFF] leading-tight"
+            >
+              Long Forms
+            </h3>
+          </div>
 
-          <h3 className="font-['Comic_Sans_MS',sans-serif] text-[#2b66e3] text-3xl sm:text-4xl font-black m-0 tracking-tight">
-            Long Forms
-          </h3>
-
-          <p className="text-[#718096] text-xs sm:text-sm md:text-base mt-2 mb-8 font-sans font-semibold tracking-wide uppercase opacity-80">
-            Animated Explainers • Title Sequences • 3D Visuals
-          </p>
+          <div 
+            style={{ fontFamily: "'Telina', sans-serif", letterSpacing: '-0.3px' }}
+            className="flex items-center justify-center gap-1.5 sm:gap-2 mt-3 text-[#14120e] font-bold text-xs sm:text-base uppercase tracking-wider text-center"
+          >
+            <span>ANIMATED EXPLAINERS</span>
+            <span className="text-[#FFC822] text-xs font-black">•</span>
+            <span>TITLE SEQUENCES</span>
+            <span className="text-[#FFC822] text-xs font-black">•</span>
+            <span>3D VISUALS</span>
+          </div>
         </div>
 
         <div className="w-full max-w-full overflow-hidden py-4 group">
           <div className="inline-flex whitespace-nowrap gap-6 sm:gap-10 w-max will-change-transform animate-[slowMarqueeRight_85s_linear_infinite] group-hover:[animation-play-state:paused]">
             {duplicateList(LONG_FORMS).map((item, idx) => (
               <div key={`long-${idx}`} onClick={() => setSelectedVideo(item)}>
-                <VideoCard item={item} aspectRatio="wide" />
+                <VideoCard 
+                  item={item} 
+                  aspectRatio="wide" 
+                  hoveredId={hoveredLongId} 
+                  setHoveredId={setHoveredLongId} 
+                />
               </div>
             ))}
           </div>
         </div>
       </div>
 
-      {/* 🚀 REUSABLE SOCIAL PROOF COMPONENT (WORKED WITH + TESTIMONIALS) */}
-      <SocialProof />
+      {/* 🚀 SOCIAL PROOF */}
+      <div className="m-0 p-0 mb-28 sm:mb-36">
+        <SocialProof />
+      </div>
 
       {/* 🍿 FULLSCREEN VIDEO MODAL POPUP */}
       {selectedVideo && (
-        <div className="fixed inset-0 z-[99999] bg-black/90 backdrop-blur-xl flex items-center justify-center p-4 sm:p-8">
-          <div className="relative w-full max-w-5xl bg-black rounded-3xl overflow-hidden shadow-2xl border border-white/20">
+        <div 
+          onClick={() => setSelectedVideo(null)}
+          className="fixed inset-0 z-[99999] bg-black/85 backdrop-blur-xl flex items-center justify-center p-4 sm:p-8 cursor-pointer"
+        >
+          <div 
+            onClick={(e) => e.stopPropagation()}
+            className="relative w-full max-w-5xl bg-[#FFFCFB] rounded-md overflow-hidden shadow-2xl cursor-default"
+          >
             <button 
               onClick={() => setSelectedVideo(null)}
-              className="absolute top-4 right-4 z-50 w-10 h-10 rounded-full bg-white/20 text-white hover:bg-white hover:text-black flex items-center justify-center font-bold text-xl transition-all"
+              className="absolute top-4 right-4 z-50 w-10 h-10 rounded-sm bg-[#14120e] text-[#FFFFFF] hover:bg-[#144BFF] flex items-center justify-center font-bold text-xl transition-all"
             >
               ✕
             </button>
-            <div className="aspect-video w-full">
+            <div className="aspect-video w-full bg-black">
               <video src={selectedVideo.videoUrl} controls autoPlay className="w-full h-full object-contain" />
             </div>
-            <div className="p-6 bg-[#0c0c0e] text-white">
-              <h3 className="font-['Comic_Sans_MS',sans-serif] text-xl sm:text-2xl font-bold">{selectedVideo.title}</h3>
+            <div className="p-6 bg-[#FFFCFB] text-[#14120e] flex items-center justify-between border-t border-black/10">
+              <h3 
+                style={{ fontFamily: "'HelveticaNeue', sans-serif" }}
+                className="text-xl sm:text-2xl font-bold text-[#144BFF]"
+              >
+                {selectedVideo.title}
+              </h3>
+              {selectedVideo.brand && (
+                <span 
+                  style={{ fontFamily: "'Telina', sans-serif", letterSpacing: '-0.3px' }}
+                  className="text-xs font-semibold uppercase text-[#554f46] bg-[#f0eae1] px-3 py-1 rounded-sm border border-black/10"
+                >
+                  {selectedVideo.brand}
+                </span>
+              )}
             </div>
           </div>
         </div>
       )}
 
-      {/* Embedded Slow Keyframe Animations */}
+      {/* 🚀 ANIMATED SCROLL FOOTER */}
+      <Footer />
+
       <style>{`
         @keyframes slowMarqueeLeft {
           0% { transform: translate3d(0, 0, 0); }
