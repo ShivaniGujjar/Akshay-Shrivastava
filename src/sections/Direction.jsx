@@ -117,8 +117,8 @@ function ScrapbookGallery() {
       
       {/* 🏷️ TOP BADGE */}
       <div 
-        style={{ fontFamily: "'Telina', sans-serif" }}
-        className="relative z-40 mb-6 px-6 py-2 bg-[#144BFF] text-white text-xs sm:text-sm font-bold uppercase tracking-widest shadow-md rounded-sm rotate-[-1deg] border border-white/20"
+        style={{ fontFamily: "'HelveticaNeue', sans-serif", fontWeight: 300, letterSpacing: '1px' }}
+        className="relative z-40 mb-6 px-6 py-2 bg-[#144BFF] text-white text-xs sm:text-sm uppercase shadow-md rounded-sm rotate-[-1deg] border border-white/20"
       >
         🎬 DIRECTOR'S CUT • BTS & STORYBOARD
       </div>
@@ -157,8 +157,8 @@ function ScrapbookGallery() {
                   className="w-full h-full object-cover filter brightness-95 group-hover:brightness-100 transition-all"
                 />
                 <span 
-                  style={{ fontFamily: "'Telina', sans-serif" }}
-                  className={`absolute bottom-2 left-2 bg-black/80 ${card.textColor} px-2 py-0.5 rounded text-[10px] sm:text-xs font-bold uppercase z-30`}
+                  style={{ fontFamily: "'HelveticaNeue', sans-serif", fontWeight: 300 }}
+                  className={`absolute bottom-2 left-2 bg-black/80 ${card.textColor} px-2 py-0.5 rounded text-[10px] sm:text-xs uppercase z-30`}
                 >
                   {card.title}
                 </span>
@@ -228,8 +228,8 @@ function DirectionShortCard({ project, isHovered, onHover, onLeave }) {
         className="w-full h-full object-cover outline-none" 
       />
       <span 
-        style={{ fontFamily: "'Telina', sans-serif" }}
-        className="absolute top-4 left-4 bg-[#144BFF] text-white px-3.5 py-1 rounded-md text-xs font-bold uppercase tracking-wider shadow-sm pointer-events-none z-10"
+        style={{ fontFamily: "'HelveticaNeue', sans-serif", fontWeight: 300 }}
+        className="absolute top-4 left-4 bg-[#144BFF] text-white px-3.5 py-1 rounded-md text-xs uppercase tracking-wider shadow-sm pointer-events-none z-10"
       >
         {project.tag}
       </span>
@@ -250,8 +250,6 @@ function DirectionProjectRow({ project, index, activeHoverId, setActiveHoverId }
     const ctx = gsap.context(() => {
       const isMobile = window.innerWidth < 768;
       
-      // Dono elements animation se pehle virtually center mein stacked rahenge
-      // Agar row reversed hai toh movement directions flip ho jayengi.
       const videoInitialX = isMobile ? 0 : (isReverse ? -120 : 120);
       const textInitialX = isMobile ? 0 : (isReverse ? 80 : -80);
       
@@ -277,13 +275,11 @@ function DirectionProjectRow({ project, index, activeHoverId, setActiveHoverId }
         },
       });
 
-      // Video Slides Left (or Right if reversed)
       tl.to(videoWrapperRef.current, {
         x: videoFinalX,
         duration: 1.1,
         ease: 'power3.inOut',
       })
-      // Text Slides Right (or Left if reversed) from behind video
       .to(textColRef.current, {
         opacity: 1,
         x: textFinalX,
@@ -303,7 +299,7 @@ function DirectionProjectRow({ project, index, activeHoverId, setActiveHoverId }
       ref={rowRef}
       className={`flex flex-col ${isReverse ? 'md:flex-row-reverse' : 'md:flex-row'} items-center justify-center gap-6 md:gap-12 w-full group py-4 relative min-h-[550px]`}
     >
-      {/* 📱 9:16 Vertical Short Form Video Card (Slides Left) */}
+      {/* 📱 9:16 Vertical Short Form Video Card */}
       <div ref={videoWrapperRef} className="shrink-0 relative z-20">
         <DirectionShortCard 
           project={project} 
@@ -313,25 +309,21 @@ function DirectionProjectRow({ project, index, activeHoverId, setActiveHoverId }
         />
       </div>
 
-      {/* 📝 Text Content Side (Emerges Right) */}
+      {/* 📝 Text Content Side */}
       <div 
         ref={textColRef} 
         className="w-full md:max-w-[480px] flex flex-col justify-center text-center md:text-left shrink-0 relative z-10"
       >
-        <div className="inline-flex items-center justify-center md:justify-start gap-2 mb-3">
-         
-        </div>
-
         <h3 
-          style={{ fontFamily: "'HelveticaNeue', sans-serif", letterSpacing: '-2px' }}
-          className={`text-[#144BFF] text-2xl sm:text-3xl md:text-[2.2rem] font-semibold m-0 leading-tight relative md:px-4 ${isReverse ? 'md:border-r-4' : 'md:border-l-4'} md:border-[#144BFF]`}
+          style={{ fontFamily: "'HelveticaNeue', sans-serif", letterSpacing: '-2px', fontWeight: 300 }}
+          className={`text-[#144BFF] text-2xl sm:text-3xl md:text-[2.2rem] m-0 leading-tight relative md:px-4 ${isReverse ? 'md:border-r-4' : 'md:border-l-4'} md:border-[#144BFF]`}
         >
           {project.title}
         </h3>
 
         <p 
-          style={{ fontFamily: "'Telina', sans-serif", letterSpacing: '-0.3px' }}
-          className="text-[#14120e] text-base sm:text-lg mt-4 m-0 leading-relaxed font-medium md:px-4"
+          style={{ fontFamily: "'HelveticaNeue', sans-serif", letterSpacing: '-0.2px', fontWeight: 300 }}
+          className="text-[#14120e] text-base sm:text-lg mt-4 m-0 leading-relaxed font-light md:px-4"
         >
           {project.description}
         </p>
@@ -398,7 +390,7 @@ export default function Direction() {
 
       <style>{`
         @font-face {
-          font-family: 'Telina';
+          font-family: 'Talina';
           src: url('/Talina-Regular.ttf') format('truetype');
           font-weight: normal;
           font-style: normal;
@@ -414,7 +406,7 @@ export default function Direction() {
         }
 
         @font-face {
-          font-family: 'HelveticaNeue';
+          font-family: 'HelveticaNeueBold';
           src: url('/fonts/HelveticaNeueBold.otf') format('opentype');
           font-weight: bold;
           font-style: normal;
@@ -468,17 +460,18 @@ export default function Direction() {
 
         <div className="relative z-10 flex flex-col justify-center items-center px-4">
           <h1 
-            style={{ fontFamily: "'HelveticaNeue', sans-serif", fontWeight: 'bold', letterSpacing: '-5px' }}
-            className="text-[2.5rem] sm:text-[3.8rem] md:text-[4.2rem] font-black text-[#ffffff] m-0 text-center leading-none"
+            style={{ fontFamily: "'HelveticaNeue', sans-serif", letterSpacing: '-5px', fontWeight: 300 }}
+            className="text-[2.5rem] sm:text-[3.8rem] md:text-[4.2rem] font-light text-[#ffffff] m-0 text-center leading-none"
           >
             Direction Work
           </h1>
 
-          <p 
-            style={{ fontFamily: "'Telina', sans-serif", letterSpacing: '-0.6px' }}
-            className="flex items-center gap-1 sm:gap-1 mt-4 text-[#144BFF] font-bold text-sm sm:text-base md:text-lg uppercase tracking-wider text-center drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)]"
-          >
-            STORYBOARDING <span className="text-[#FFC822] mx-1">•</span> FILMMAKING <span className="text-[#FFC822] mx-1">•</span> CREATIVE DIRECTION
+          <p className="flex items-center justify-center gap-1.5 sm:gap-2 mt-4 text-[#144BFF] text-xs sm:text-sm md:text-base uppercase tracking-widest text-center drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)]" style={{ fontFamily: "'HelveticaNeue', sans-serif", fontWeight: 300 }}>
+            <span>STORYBOARDING</span> 
+            <span className="text-[#FFC822] mx-1">•</span> 
+            <span>FILMMAKING</span> 
+            <span className="text-[#FFC822] mx-1">•</span> 
+            <span>CREATIVE DIRECTION</span>
           </p>
         </div>
       </div>
@@ -487,8 +480,8 @@ export default function Direction() {
       <div ref={featuredSectionRef} className="w-full mx-auto pt-10 sm:pt-16 pb-6 px-4 flex flex-col items-center relative z-20 text-center overflow-hidden">
         <div className="inline-flex flex-col items-center z-20">
           <h2 
-            style={{ fontFamily: "'HelveticaNeue', sans-serif", letterSpacing: '-5px' }}
-            className="text-3xl sm:text-5xl md:text-5xl font-semibold m-0 text-[#144BFF] leading-tight"
+            style={{ fontFamily: "'HelveticaNeue', sans-serif", letterSpacing: '-2px', fontWeight: 300 }}
+            className="text-2xl sm:text-4xl md:text-4xl m-0 text-[#144BFF] leading-tight"
           >
             Welcome to Direction section
           </h2>
@@ -496,8 +489,8 @@ export default function Direction() {
 
         <div ref={paragraphRef} className="relative z-10 mt-3 mb-6 max-w-[700px] px-4">
           <p 
-            style={{ fontFamily: "'Telina', sans-serif", letterSpacing: '-0.3px' }}
-            className="text-[#14120e] text-base sm:text-xl font-medium leading-relaxed"
+            style={{ fontFamily: "'HelveticaNeue', sans-serif", letterSpacing: '-0.2px', fontWeight: 300 }}
+            className="text-[#14120e] text-base sm:text-lg leading-relaxed font-light text-center"
           >
             I craft compelling visual narratives, combining script analysis, intentional blocking, and precise post-direction to build high-converting brand stories.
           </p>

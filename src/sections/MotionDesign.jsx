@@ -96,8 +96,8 @@ function VideoCard({ item, aspectRatio = "wide", hoveredId, setHoveredId }) {
 
       {item.category && (
         <div 
-          style={{ fontFamily: "'Telina', sans-serif", letterSpacing: '-0.3px' }}
-          className="absolute top-4 left-4 bg-[#144BFF] backdrop-blur-md px-3 py-1 rounded-sm text-[#FFFFFF] text-xs font-bold uppercase shadow-sm"
+          style={{ fontFamily: "'HelveticaNeue', sans-serif", letterSpacing: '0.5px', fontWeight: 300 }}
+          className="absolute top-4 left-4 bg-[#144BFF] backdrop-blur-md px-3 py-1 rounded-sm text-[#FFFFFF] text-xs uppercase shadow-sm"
         >
           {item.category}
         </div>
@@ -113,15 +113,15 @@ function VideoCard({ item, aspectRatio = "wide", hoveredId, setHoveredId }) {
 
       <div className="absolute bottom-0 left-0 right-0 p-6 transform transition-transform duration-300 group-hover:translate-y-0">
         <h4 
-          style={{ fontFamily: "'HelveticaNeue', sans-serif" }}
-          className="text-[#FFFFFF] text-xl sm:text-2xl font-bold leading-snug drop-shadow-md mb-1"
+          style={{ fontFamily: "'HelveticaNeue', sans-serif", fontWeight: 300 }}
+          className="text-[#FFFFFF] text-xl sm:text-2xl leading-snug drop-shadow-md mb-1"
         >
           {item.title}
         </h4>
         {item.brand && (
           <p 
-            style={{ fontFamily: "'Telina', sans-serif", letterSpacing: '-0.3px' }}
-            className="text-[#144BFF] text-xs font-semibold uppercase bg-black/60 px-2.5 py-1 rounded-xs inline-block"
+            style={{ fontFamily: "'HelveticaNeue', sans-serif", letterSpacing: '0.3px', fontWeight: 300 }}
+            className="text-[#144BFF] text-xs uppercase bg-black/60 px-2.5 py-1 rounded-xs inline-block"
           >
             {item.brand}
           </p>
@@ -216,7 +216,7 @@ export default function MotionDesign() {
 
       <style>{`
         @font-face {
-          font-family: 'Telina';
+          font-family: 'Talina';
           src: url('/Talina-Regular.ttf') format('truetype');
           font-weight: normal;
           font-style: normal;
@@ -232,7 +232,7 @@ export default function MotionDesign() {
         }
 
         @font-face {
-          font-family: 'HelveticaNeue';
+          font-family: 'HelveticaNeueBold';
           src: url('/fonts/HelveticaNeueBold.otf') format('opentype');
           font-weight: bold;
           font-style: normal;
@@ -286,17 +286,18 @@ export default function MotionDesign() {
 
         <div className="relative z-10 flex flex-col justify-center items-center px-4">
           <h1 
-            style={{ fontFamily: "'HelveticaNeue', sans-serif", fontWeight: 'bold', letterSpacing: '-5px' }}
-            className="text-[2.5rem] sm:text-[3.8rem] md:text-[4.2rem] font-black text-[#ffffff] m-0 text-center leading-none"
+            style={{ fontFamily: "'HelveticaNeue', sans-serif", letterSpacing: '-5px', fontWeight: 400 }}
+            className="text-[2.5rem] sm:text-[3.8rem] md:text-[4.2rem] text-[#ffffff] m-0 text-center leading-none"
           >
             Motion Work
           </h1>
 
-          <p 
-            style={{ fontFamily: "'Telina', sans-serif", letterSpacing: '-0.6px' }}
-            className="flex items-center gap-1 sm:gap-1 mt-4 text-[#144BFF] font-bold text-sm sm:text-base md:text-lg uppercase tracking-wider text-center drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)]"
-          >
-            2D & 3D ANIMATION <span className="text-[#FFC822] mx-1">•</span> VFX <span className="text-[#FFC822] mx-1">•</span> KINETIC TITLES
+          <p className="flex items-center justify-center gap-1.5 sm:gap-2 mt-4 text-[#144BFF] text-xs sm:text-sm md:text-base uppercase tracking-widest text-center drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)]" style={{ fontFamily: "'HelveticaNeue', sans-serif", fontWeight: 400 , letterSpacing : '-1px' }}>
+            <span>2D & 3D ANIMATION</span> 
+            <span className="text-[#FFC822] mx-1">•</span> 
+            <span>VFX</span> 
+            <span className="text-[#FFC822] mx-1">•</span> 
+            <span>KINETIC TITLES</span>
           </p>
         </div>
       </div>
@@ -304,8 +305,8 @@ export default function MotionDesign() {
       {/* 🏛️ HEADER SECTION */}
       <div className="w-full mx-auto pt-10 sm:pt-16 pb-4 px-4 flex flex-col items-center relative z-20 text-center overflow-x-hidden">
         <h2 
-          style={{ fontFamily: "'HelveticaNeue', sans-serif", letterSpacing: '-5px' }}
-          className="text-3xl sm:text-5xl md:text-5xl font-semibold m-0 text-[#144BFF] leading-tight"
+          style={{ fontFamily: "'HelveticaNeue', sans-serif", letterSpacing: '-3px', fontWeight: 300 }}
+          className="text-2xl sm:text-4xl md:text-4xl m-0 text-[#144BFF] leading-tight"
         >
           Welcome to Motion Design section
         </h2>
@@ -330,8 +331,8 @@ export default function MotionDesign() {
               className="w-full h-full object-cover outline-none"
             />
             <div 
-              style={{ fontFamily: "'Telina', sans-serif" }}
-              className="absolute top-4 left-4 bg-[#144BFF] text-[#FFFFFF] px-3.5 py-1.5 rounded-md text-xs uppercase shadow-md pointer-events-none font-bold"
+              style={{ fontFamily: "'HelveticaNeue', sans-serif", fontWeight: 300 }}
+              className="absolute top-4 left-4 bg-[#144BFF] text-[#FFFFFF] px-3.5 py-1.5 rounded-md text-xs uppercase shadow-md pointer-events-none"
             >
               Featured Short
             </div>
@@ -340,8 +341,8 @@ export default function MotionDesign() {
 
         <div ref={paragraphRef} className="relative z-10 flex flex-col text-center md:text-left max-w-[450px]">
           <p 
-            style={{ fontFamily: "'Telina', sans-serif", letterSpacing: '-0.3px' }}
-            className="text-[#14120e] text-lg sm:text-2xl font-medium leading-relaxed"
+            style={{ fontFamily: "'HelveticaNeue', sans-serif", letterSpacing: '-1px', fontWeight: 300 }}
+            className="text-[#14120e] text-base sm:text-xl leading-relaxed font-light"
           >
             I craft dynamic 2D/3D motion graphics, kinetic typography, and fluid visual effects that elevate brand campaigns and digital storytelling.
           </p>
@@ -353,23 +354,23 @@ export default function MotionDesign() {
         <div className="max-w-[1100px] w-full mx-auto px-6 flex flex-col items-center text-center mb-6">
           <div className="inline-flex flex-col items-center">
             <h3 
-              style={{ fontFamily: "'HelveticaNeue', sans-serif", letterSpacing: '-3px' }}
-              className="text-2xl sm:text-4xl md:text-4xl font-semibold m-0 text-[#144BFF] leading-tight"
+              style={{ fontFamily: "'HelveticaNeue', sans-serif", letterSpacing: '-3px', fontWeight: 400 }}
+              className="text-2xl sm:text-4xl md:text-4xl m-0 text-[#144BFF] leading-tight"
             >
               Short Forms
             </h3>
           </div>
 
           <div 
-            style={{ fontFamily: "'Telina', sans-serif", letterSpacing: '-0.3px' }}
-            className="flex items-center justify-center gap-1.5 sm:gap-2 mt-3 text-[#14120e] font-bold text-xs sm:text-base uppercase tracking-wider text-center"
+            style={{ fontFamily: "'HelveticaNeue', sans-serif", letterSpacing: '-1px', fontWeight: 300 }}
+            className="flex items-center justify-center gap-1.5 sm:gap-2 mt-3 text-[#14120e] text-xs sm:text-base uppercase tracking-wider text-center"
           >
             <span>3D MOTION</span>
-            <span className="text-[#FFC822] text-xs font-black">•</span>
+            <span className="text-[#FFC822] text-xs">•</span>
             <span>LOGO REVEALS</span>
-            <span className="text-[#FFC822] text-xs font-black">•</span>
+            <span className="text-[#FFC822] text-xs">•</span>
             <span>UGC ADS</span>
-            <span className="text-[#FFC822] text-xs font-black">•</span>
+            <span className="text-[#FFC822] text-xs">•</span>
             <span>KINETIC LOOPS</span>
           </div>
         </div>
@@ -395,21 +396,21 @@ export default function MotionDesign() {
         <div className="max-w-[1100px] w-full mx-auto px-6 flex flex-col items-center text-center mb-6">
           <div className="inline-flex flex-col items-center">
             <h3 
-              style={{ fontFamily: "'HelveticaNeue', sans-serif", letterSpacing: '-3px' }}
-              className="text-2xl sm:text-4xl md:text-4xl font-semibold m-0 text-[#144BFF] leading-tight"
+              style={{ fontFamily: "'HelveticaNeue', sans-serif", letterSpacing: '-3px', fontWeight: 300 }}
+              className="text-2xl sm:text-4xl md:text-4xl m-0 text-[#144BFF] leading-tight"
             >
               Long Forms
             </h3>
           </div>
 
           <div 
-            style={{ fontFamily: "'Telina', sans-serif", letterSpacing: '-0.3px' }}
-            className="flex items-center justify-center gap-1.5 sm:gap-2 mt-3 text-[#14120e] font-bold text-xs sm:text-base uppercase tracking-wider text-center"
+            style={{ fontFamily: "'HelveticaNeue', sans-serif", letterSpacing: '-1px', fontWeight: 300 }}
+            className="flex items-center justify-center gap-1.5 sm:gap-2 mt-3 text-[#14120e] text-xs sm:text-base uppercase tracking-wider text-center"
           >
             <span>ANIMATED EXPLAINERS</span>
-            <span className="text-[#FFC822] text-xs font-black">•</span>
+            <span className="text-[#FFC822] text-xs">•</span>
             <span>TITLE SEQUENCES</span>
-            <span className="text-[#FFC822] text-xs font-black">•</span>
+            <span className="text-[#FFC822] text-xs">•</span>
             <span>3D VISUALS</span>
           </div>
         </div>
@@ -456,15 +457,15 @@ export default function MotionDesign() {
             </div>
             <div className="p-6 bg-[#FFFCFB] text-[#14120e] flex items-center justify-between border-t border-black/10">
               <h3 
-                style={{ fontFamily: "'HelveticaNeue', sans-serif" }}
-                className="text-xl sm:text-2xl font-bold text-[#144BFF]"
+                style={{ fontFamily: "'HelveticaNeue', sans-serif", fontWeight: 300 }}
+                className="text-xl sm:text-2xl text-[#144BFF]"
               >
                 {selectedVideo.title}
               </h3>
               {selectedVideo.brand && (
                 <span 
-                  style={{ fontFamily: "'Telina', sans-serif", letterSpacing: '-0.3px' }}
-                  className="text-xs font-semibold uppercase text-[#554f46] bg-[#f0eae1] px-3 py-1 rounded-sm border border-black/10"
+                  style={{ fontFamily: "'HelveticaNeue', sans-serif", letterSpacing: '0.3px', fontWeight: 300 }}
+                  className="text-xs uppercase text-[#554f46] bg-[#f0eae1] px-3 py-1 rounded-sm border border-black/10"
                 >
                   {selectedVideo.brand}
                 </span>

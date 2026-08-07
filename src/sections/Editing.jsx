@@ -11,26 +11,26 @@ if (typeof window !== 'undefined') {
 
 // 🎬 REAL SHOWCASE DATA
 const LONG_FORMS = [
-  { id: 'lf1', title: '1', category: 'Podcast', videoUrl: 'https://cdn.jsdelivr.net/gh/ShivaniGujjar/editingvideos@main/EditingLong2.mp4', poster: 'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=600' },
-  { id: 'lf2', title: '2', category: 'Edutainment', videoUrl: 'https://cdn.jsdelivr.net/gh/ShivaniGujjar/editingvideos@main/EditingLong4.mp4', poster: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600' },
-  { id: 'lf3', title: '3', category: 'Documentary', videoUrl: 'https://cdn.jsdelivr.net/gh/ShivaniGujjar/editingvideos@main/EditingLong2.mp4', poster: 'https://images.unsplash.com/photo-1536240478700-b869070f9279?w=600' },
-  { id: 'lf4', title: 'Talking Head Masterclass', category: 'Vlog', videoUrl: 'https://cdn.jsdelivr.net/gh/ShivaniGujjar/editingvideos@main/EditingLong4.mp4', poster: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600' },
-  { id: 'lf5', title: 'Talking Head Masterclass', category: 'Vlog', videoUrl: 'https://cdn.jsdelivr.net/gh/ShivaniGujjar/editingvideos@main/EditingLong2.mp4', poster: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600' },
-  { id: 'lf6', title: 'Talking Head Masterclass', category: 'Vlog', videoUrl: 'https://cdn.jsdelivr.net/gh/ShivaniGujjar/editingvideos@main/EditingLong4.mp4', poster: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600' },
+  { id: 'lf1', title: '1', category: 'Podcast', videoUrl: './EditingLong1.mp4', poster: 'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=600' },
+  { id: 'lf2', title: '2', category: 'Edutainment', videoUrl: './EditingLong2.mp4', poster: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600' },
+  { id: 'lf3', title: '3', category: 'Documentary', videoUrl: './EditingLong3.mp4', poster: 'https://images.unsplash.com/photo-1536240478700-b869070f9279?w=600' },
+  { id: 'lf4', title: 'Talking Head Masterclass', category: 'Vlog', videoUrl: './EditingLong4.mp4', poster: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600' },
+  { id: 'lf5', title: 'Talking Head Masterclass', category: 'Vlog', videoUrl: './EditingLong5.mp4', poster: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600' },
+  { id: 'lf6', title: 'Talking Head Masterclass', category: 'Vlog', videoUrl: './EditingLong6.mp4', poster: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600' },
 ];
 
 const SHORT_FORMS_ROW1 = [
-  { id: 'sf1', title: 'UGC Retention Hook', brand: 'Waywen', videoUrl: '', poster: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600' },
-  { id: 'sf2', title: '3D Product Reel', brand: "Master's Union", videoUrl: '', poster: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600' },
-  { id: 'sf3', title: 'Viral Podcast Clip', brand: 'Edutainment', videoUrl: '', poster: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600' },
-  { id: 'sf4', title: 'App Promo Reel', brand: 'Media Hub', videoUrl: '', poster: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600' },
+  { id: 'sf1', title: 'UGC Retention Hook', brand: 'Waywen', videoUrl: './EditingShort1.mp4', poster: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600' },
+  { id: 'sf2', title: '3D Product Reel', brand: "Master's Union", videoUrl: './EditingShort2.mp4', poster: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600' },
+  { id: 'sf3', title: 'Viral Podcast Clip', brand: 'Edutainment', videoUrl: './EditingShort3.mp4', poster: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600' },
+  { id: 'sf4', title: 'App Promo Reel', brand: 'Media Hub', videoUrl: './EditingShort4.mp4', poster: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600' },
 ];
 
 const SHORT_FORMS_ROW2 = [
-  { id: 'sf5', title: 'Brand Story Reel', brand: 'Kolkata Media', videoUrl: '', poster: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=600' },
-  { id: 'sf6', title: 'High-Retention Ad', brand: 'SaaS Launch', videoUrl: '', poster: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600' },
-  { id: 'sf7', title: 'Fashion Motion Edit', brand: 'Studio Luxe', videoUrl: '', poster: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600' },
-  { id: 'sf8', title: 'Fitness Campaign', brand: 'Fit Tribe', videoUrl: '', poster: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=600' },
+  { id: 'sf5', title: 'Brand Story Reel', brand: 'Kolkata Media', videoUrl: './EditingShort5.mp4', poster: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=600' },
+  { id: 'sf6', title: 'High-Retention Ad', brand: 'SaaS Launch', videoUrl: './EditingShort6.mp4', poster: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600' },
+  { id: 'sf7', title: 'Fashion Motion Edit', brand: 'Studio Luxe', videoUrl: './EditingShort7.mp4', poster: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600' },
+  { id: 'sf8', title: 'Fitness Campaign', brand: 'Fit Tribe', videoUrl: './EditingShort8.mp4', poster: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=600' },
 ];
 
 const duplicateList = (arr, count = 4) => {
@@ -108,8 +108,8 @@ function VideoCard({ item, aspectRatio = "wide", hoveredId, setHoveredId }) {
 
       {item.category && (
         <div 
-          style={{ fontFamily: "'Talina', sans-serif", letterSpacing: '-0.3px' }}
-          className="absolute top-4 left-4 bg-[#144BFF] backdrop-blur-md px-3 py-1 rounded-sm text-[#FFFFFF] text-xs font-bold uppercase shadow-sm"
+          style={{ fontFamily: "'Talina', sans-serif", letterSpacing: '-0.3px', fontWeight: 300 }}
+          className="absolute top-4 left-4 bg-[#144BFF] backdrop-blur-md px-3 py-1 rounded-sm text-[#FFFFFF] text-xs uppercase shadow-sm"
         >
           {item.category}
         </div>
@@ -125,15 +125,15 @@ function VideoCard({ item, aspectRatio = "wide", hoveredId, setHoveredId }) {
 
       <div className="absolute bottom-0 left-0 right-0 p-6 transform transition-transform duration-300 group-hover:translate-y-0">
         <h4 
-          style={{ fontFamily: "'HelveticaNeue', sans-serif" }}
-          className="text-[#FFFFFF] text-xl sm:text-2xl font-bold leading-snug drop-shadow-md mb-1"
+          style={{ fontFamily: "'Talina', sans-serif", fontWeight: 300 }}
+          className="text-[#FFFFFF] text-xl sm:text-2xl leading-snug drop-shadow-md mb-1"
         >
           {item.title}
         </h4>
         {item.brand && (
           <p 
-            style={{ fontFamily: "'Talina', sans-serif", letterSpacing: '-0.3px' }}
-            className="text-[#144BFF] text-xs font-semibold uppercase bg-black/60 px-2.5 py-1 rounded-xs inline-block"
+            style={{ fontFamily: "'HelveticaNeue', sans-serif", letterSpacing: '-0.3px', fontWeight: 300 }}
+            className="text-[#144BFF] text-xs uppercase bg-black/60 px-2.5 py-1 rounded-xs inline-block"
           >
             {item.brand}
           </p>
@@ -148,9 +148,20 @@ export default function Editing() {
   const [hoveredLongId, setHoveredLongId] = useState(null);
   const [hoveredShort1Id, setHoveredShort1Id] = useState(null);
   const [hoveredShort2Id, setHoveredShort2Id] = useState(null);
+  
+  // 🔊 HERO VIDEO SOUND STATE & REF
+  const [isHeroMuted, setIsHeroMuted] = useState(true);
+  const heroVideoRef = useRef(null);
 
   const featuredSectionRef = useRef(null);
   const paragraphRef = useRef(null);
+
+  const toggleHeroSound = () => {
+    if (heroVideoRef.current) {
+      heroVideoRef.current.muted = !isHeroMuted;
+      setIsHeroMuted(!isHeroMuted);
+    }
+  };
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -234,29 +245,55 @@ export default function Editing() {
       {/* HERO BANNER */}
       <div className="relative w-full h-screen bg-[#14120e] flex flex-col justify-center items-center overflow-hidden m-0 p-0 editing-cutout-mask"> 
         <video 
+          ref={heroVideoRef}
           src="https://res.cloudinary.com/n1mfkfh4/video/upload/v1785678593/Campus_film_compressed_2_otok6t.mp4" 
           autoPlay 
           loop 
-          muted 
+          muted={isHeroMuted} 
           playsInline 
           className="absolute top-0 left-0 w-full h-screen object-cover z-0 filter brightness-[0.55] contrast-105"
         />
+
+        {/* 🔊 SOUND TOGGLE BUTTON */}
+        <button
+          onClick={toggleHeroSound}
+          className="absolute bottom-24 left-6 sm:bottom-28 sm:left-10 z-20 w-11 h-11 rounded-full bg-black/60 hover:bg-black/80 backdrop-blur-md border border-white/10 flex items-center justify-center text-[#FFC822] hover:scale-110 transition-all duration-300 shadow-xl cursor-pointer group"
+          title={isHeroMuted ? "Unmute Sound" : "Mute Sound"}
+        >
+          {isHeroMuted ? (
+            <svg className="w-5 h-5 fill-current text-[#FFC822]" viewBox="0 0 24 24">
+              <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+            </svg>
+          ) : (
+            <svg className="w-5 h-5 fill-current text-[#144BFF]" viewBox="0 0 24 24">
+              <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+            </svg>
+          )}
+        </button>
 
         <div className="absolute inset-0 bg-gradient-to-t from-[#14120e]/80 via-transparent to-[#14120e]/60 z-[1] pointer-events-none" />
 
         <div className="relative z-10 flex flex-col justify-center items-center px-4">
           <h1 
-            style={{ fontFamily: "'HelveticaNeue', sans-serif", fontWeight: 'bold' ,letterSpacing : '-5px' }}
-            className="text-[2.5rem] sm:text-[3.8rem] md:text-[4.2rem] font-black text-[#ffffff] m-0 text-center leading-none"
+            style={{ 
+              fontFamily: "'Talina', sans-serif", 
+              letterSpacing: '-1.2px', 
+              fontWeight: 300 
+            }}
+            className="text-[2.5rem] sm:text-[3.8rem] md:text-[4.2rem] text-[#ffffff] m-0 text-center leading-none"
           >
             Editing Work
           </h1>
           
           <p 
-            style={{ fontFamily: "'Talina', sans-serif" , letterSpacing : '-0.6px' }}
-            className="flex items-center gap-1 sm:gap-1.5 mt-4 text-[#144BFF] font-bold text-sm sm:text-base md:text-lg uppercase tracking-wider text-center drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)]"
+            style={{ fontFamily: "'HelveticaNeue', sans-serif", fontWeight: 800, letterSpacing : '-1px' }}
+            className="flex items-center justify-center gap-1.5 sm:gap-2 mt-4 text-[#144BFF] text-xs sm:text-sm md:text-base uppercase  tracking-widest  text-center drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)]"
           >
-            Post - Production <span className="text-[#FFC822] text-sm sm:text-base font-black mx-1">•</span> Retention Editing <span className="text-[#FFC822] text-sm sm:text-base font-black mx-1">•</span> UGC Ads
+            <span>Post - Production</span> 
+            <span className="text-[#FFC822] mx-1">•</span> 
+            <span>Retention Editing</span> 
+            <span className="text-[#FFC822] mx-1">•</span> 
+            <span>UGC Ads</span>
           </p>
         </div>
       </div>
@@ -266,8 +303,12 @@ export default function Editing() {
         
         <div className="inline-flex flex-col items-center z-20">
           <h2 
-            style={{ fontFamily: "'HelveticaNeue', sans-serif" , letterSpacing:'-3px' }}
-            className="text-2xl sm:text-4xl md:text-4xl font-black m-0 text-[#144BFF] leading-tight"
+            style={{ 
+              fontFamily: "'Talina', sans-serif", 
+              letterSpacing:'-1px', 
+              fontWeight: 400 
+            }}
+            className="text-2xl sm:text-4xl md:text-4xl m-0 text-[#144BFF] leading-tight"
           >
             Welcome To Editing Section
           </h2>
@@ -275,19 +316,24 @@ export default function Editing() {
 
         <div ref={paragraphRef} className="relative z-10 mt-3 mb-6 max-w-[700px] px-4">
           <p 
-            style={{ fontFamily: "'Talina', sans-serif", letterSpacing: '-0.3px' }}
-            className="text-[#14120e] text-sm sm:text-lg font-medium leading-relaxed"
+            style={{ 
+              fontFamily: "'HelveticaNeue', sans-serif", 
+              fontWeight: 600,
+              letterSpacing : '-1px'
+            }}
+            className="text-[#14120e] text-sm sm:text-lg leading-relaxed text-center font-light tracking-wide"
           >
             I have worked with multiple startups and influencers on various kind of edit like UGC ads
           </p>
         </div>
 
-        {/* 🍿 FULL WIDE FEATURED MASTERPIECE */}
+        {/* 🍿 FULL WIDE FEATURED MASTERPIECE - DEFAULT MUTED */}
         <div className="max-w-[1100px] w-full px-2 sm:px-6 mb-10 relative z-20">
           <CustomVideoPlayer 
             src="https://res.cloudinary.com/n1mfkfh4/video/upload/v1785678593/Campus_film_compressed_2_otok6t.mp4"
             badgeText="Featured Masterpiece"
             className="w-full aspect-video rounded-2xl overflow-hidden shadow-2xl border border-black/10"
+            muted={true}
           />
         </div>
       </div>
@@ -296,22 +342,26 @@ export default function Editing() {
       <div className="w-full max-w-full relative overflow-hidden my-10 sm:my-16">
         <div className="max-w-[1100px] w-full mx-auto px-6 flex flex-col items-center text-center mb-6">
           <h3 
-            style={{ fontFamily: "'HelveticaNeue', sans-serif" , letterSpacing : '-3px' }}
-            className="text-2xl sm:text-4xl md:text-4xl font-black m-0 text-[#144BFF] leading-tight"
+            style={{ 
+              fontFamily: "'Talina', sans-serif", 
+              letterSpacing : '-2px',
+              fontWeight: 400 
+            }}
+            className="text-2xl sm:text-4xl md:text-4xl m-0 text-[#144BFF] leading-tight"
           >
             Long Forms
           </h3>
 
           <div 
-            style={{ fontFamily: "'Talina', sans-serif", letterSpacing: '-0.3px' }}
-            className="flex items-center justify-center gap-2 sm:gap-2.5 mt-3 text-[#14120e] font-bold text-xs sm:text-base uppercase tracking-wider text-center"
+            style={{ fontFamily: "'HelveticaNeue', sans-serif", letterSpacing: '-1px', fontWeight: 600 }}
+            className="flex items-center justify-center gap-2 sm:gap-2.5 mt-3 text-[#14120e] text-xs sm:text-base uppercase tracking-wider text-center"
           >
             <span>PODCASTS</span>
-            <span className="text-[#FFC822] text-sm sm:text-lg font-black">•</span>
+            <span className="text-[#FFC822] text-sm sm:text-lg">•</span>
             <span>YOUTUBE DOCUMENTARIES</span>
-            <span className="text-[#FFC822] text-sm sm:text-lg font-black">•</span>
+            <span className="text-[#FFC822] text-sm sm:text-lg">•</span>
             <span>TALKING HEAD</span>
-            <span className="text-[#FFC822] text-sm sm:text-lg font-black">•</span>
+            <span className="text-[#FFC822] text-sm sm:text-lg">•</span>
             <span>CAMPUS FILM</span>
           </div>
         </div>
@@ -336,22 +386,26 @@ export default function Editing() {
       <div className="w-full max-w-full relative overflow-hidden my-12 sm:my-20">
         <div className="max-w-[1100px] w-full mx-auto px-6 flex flex-col items-center text-center mb-6">
           <h3 
-            style={{ fontFamily: "'HelveticaNeue', sans-serif" , letterSpacing : '-3px' }}
-            className="text-2xl sm:text-4xl md:text-4xl font-black m-0 text-[#144BFF] leading-tight"
+            style={{ 
+              fontFamily: "'Talina', sans-serif", 
+              letterSpacing : '-2px',
+              fontWeight: 400 
+            }}
+            className="text-2xl sm:text-4xl md:text-4xl m-0 text-[#144BFF] leading-tight"
           >
             Short Forms
           </h3>
 
           <div 
-            style={{ fontFamily: "'Talina', sans-serif", letterSpacing: '-0.3px' }}
-            className="flex items-center justify-center gap-2 sm:gap-2.5 mt-3 text-[#14120e] font-bold text-xs sm:text-base uppercase tracking-wider text-center"
+            style={{ fontFamily: "'HelveticaNeue', sans-serif", letterSpacing: '-1px', fontWeight: 600 }}
+            className="flex items-center justify-center gap-2 sm:gap-2.5 mt-3 text-[#14120e] text-xs sm:text-base uppercase tracking-wider text-center"
           >
             <span>UGC ADS</span>
-            <span className="text-[#FFC822] text-sm sm:text-lg font-black">•</span>
+            <span className="text-[#FFC822] text-sm sm:text-lg">•</span>
             <span>RETENTION HOOKS</span>
-            <span className="text-[#FFC822] text-sm sm:text-lg font-black">•</span>
+            <span className="text-[#FFC822] text-sm sm:text-lg">•</span>
             <span>PODCAST SHORTS</span>
-            <span className="text-[#FFC822] text-sm sm:text-lg font-black">•</span>
+            <span className="text-[#FFC822] text-sm sm:text-lg">•</span>
             <span>REELS</span>
           </div>
         </div>
@@ -392,7 +446,7 @@ export default function Editing() {
         <SocialProof />
       </div>
 
-      {/* FULLSCREEN MUTED VIDEO PREVIEW */}
+      {/* FULLSCREEN PREVIEW WITH CUSTOM VIDEO PLAYER - UNMUTED ON CLICK */}
       {selectedVideo && (
         <div 
           onClick={() => setSelectedVideo(null)}
@@ -400,28 +454,34 @@ export default function Editing() {
         >
           <div 
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-5xl bg-[#FFFCFB] rounded-md overflow-hidden shadow-2xl cursor-default"
+            className="relative w-full max-w-5xl bg-[#FFFCFB] rounded-xl overflow-hidden shadow-2xl cursor-default"
           >
             <button 
               onClick={() => setSelectedVideo(null)}
-              className="absolute top-4 right-4 z-50 w-10 h-10 rounded-sm bg-[#14120e] text-[#FFFFFF] hover:bg-[#144BFF] flex items-center justify-center font-bold text-xl transition-all"
+              className="absolute top-4 right-4 z-[1000] w-10 h-10 rounded-sm bg-[#14120e] text-[#FFFFFF] hover:bg-[#144BFF] flex items-center justify-center font-bold text-xl transition-all shadow-lg cursor-pointer"
             >
               ✕
             </button>
             <div className="aspect-video w-full bg-black">
-              <video src={selectedVideo.videoUrl} controls autoPlay className="w-full h-full object-contain" />
+              <CustomVideoPlayer 
+                src={selectedVideo.videoUrl} 
+                badgeText={selectedVideo.category || selectedVideo.brand || "Preview"} 
+                className="w-full h-full"
+                autoPlay={true}
+                muted={false}
+              />
             </div>
             <div className="p-6 bg-[#FFFCFB] text-[#14120e] flex items-center justify-between border-t border-black/10">
               <h3 
-                style={{ fontFamily: "'HelveticaNeue', sans-serif" }}
-                className="text-xl sm:text-2xl font-bold text-[#144BFF]"
+                style={{ fontFamily: "'Talina', sans-serif", fontWeight: 300 }}
+                className="text-xl sm:text-2xl text-[#144BFF]"
               >
                 {selectedVideo.title}
               </h3>
               {selectedVideo.brand && (
                 <span 
-                  style={{ fontFamily: "'Talina', sans-serif", letterSpacing: '-0.3px' }}
-                  className="text-xs font-semibold uppercase text-[#554f46] bg-[#f0eae1] px-3 py-1 rounded-sm border border-black/10"
+                  style={{ fontFamily: "'HelveticaNeue', sans-serif", letterSpacing: '-0.3px', fontWeight: 300 }}
+                  className="text-xs uppercase text-[#554f46] bg-[#f0eae1] px-3 py-1 rounded-sm border border-black/10"
                 >
                   {selectedVideo.brand}
                 </span>

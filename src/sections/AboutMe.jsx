@@ -77,7 +77,7 @@ export default function AboutMe() {
 
       <style>{`
         @font-face {
-          font-family: 'Telina';
+          font-family: 'Talina';
           src: url('/Talina-Regular.ttf') format('truetype');
           font-weight: normal;
           font-style: normal;
@@ -93,7 +93,7 @@ export default function AboutMe() {
         }
 
         @font-face {
-          font-family: 'HelveticaNeue';
+          font-family: 'HelveticaNeueBold';
           src: url('/fonts/HelveticaNeueBold.otf') format('opentype');
           font-weight: bold;
           font-style: normal;
@@ -146,17 +146,21 @@ export default function AboutMe() {
 
         <div className="relative z-10 flex flex-col justify-center items-center px-4">
           <h1 
-            style={{ fontFamily: "'HelveticaNeue', sans-serif", fontWeight: 'bold', letterSpacing: '-5px' }}
-            className="text-[2.5rem] sm:text-[3.8rem] md:text-[4.2rem] font-black text-[#ffffff] m-0 text-center leading-none"
+            style={{ fontFamily: "'HelveticaNeue', sans-serif", letterSpacing: '-5px', fontWeight: 300 }}
+            className="text-[2.5rem] sm:text-[3.8rem] md:text-[4.2rem] font-light text-[#ffffff] m-0 text-center leading-none"
           >
             About Me
           </h1>
 
           <p 
-            style={{ fontFamily: "'Telina', sans-serif", letterSpacing: '-0.6px' }}
-            className="flex items-center gap-1 sm:gap-1 mt-4 text-[#144BFF] font-bold text-sm sm:text-base md:text-lg uppercase tracking-wider text-center drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)]"
+            style={{ fontFamily: "'HelveticaNeue', sans-serif", fontWeight: 300 }}
+            className="flex items-center justify-center gap-1.5 sm:gap-2 mt-4 text-[#144BFF] text-xs sm:text-sm md:text-base uppercase tracking-widest text-center drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)]"
           >
-            BIOGRAPHY <span className="text-[#FFC822] mx-1">•</span> EXPERIENCE <span className="text-[#FFC822] mx-1">•</span> CREATIVE VISION
+            <span>BIOGRAPHY</span> 
+            <span className="text-[#FFC822] mx-1">•</span> 
+            <span>EXPERIENCE</span> 
+            <span className="text-[#FFC822] mx-1">•</span> 
+            <span>CREATIVE VISION</span>
           </p>
         </div>
       </div>
@@ -167,16 +171,16 @@ export default function AboutMe() {
         className="max-w-[950px] w-full mx-auto pt-16 sm:pt-24 pb-12 px-6 flex flex-col items-center text-center relative z-20"
       >
         <div 
-          style={{ fontFamily: "'Telina', sans-serif" }}
-          className="mb-4 px-4 py-1.5 bg-[#144BFF]/10 text-[#144BFF] rounded-sm text-xs sm:text-sm font-bold uppercase tracking-widest"
+          style={{ fontFamily: "'HelveticaNeue', sans-serif", fontWeight: 300 }}
+          className="mb-4 px-4 py-1.5 bg-[#144BFF]/10 text-[#144BFF] rounded-sm text-xs sm:text-sm uppercase tracking-widest"
         >
           👤 Creative Profile
         </div>
 
         <h2 
           ref={nameRef}
-          style={{ fontFamily: "'HelveticaNeue', sans-serif", letterSpacing: '-4px' }}
-          className="w-full text-center text-[#144BFF] text-5xl sm:text-6xl md:text-[4.8rem] font-semibold leading-[1.05] mb-8"
+          style={{ fontFamily: "'HelveticaNeue', sans-serif", letterSpacing: '-3px', fontWeight: 300 }}
+          className="w-full text-center text-[#144BFF] text-5xl sm:text-6xl md:text-[4.8rem] leading-[1.05] mb-8"
         >
           Akshay{' '}
           <span className="text-[#14120e] ml-3 sm:ml-4">Shrivastava</span>
@@ -184,8 +188,8 @@ export default function AboutMe() {
         
         <div 
           ref={cardRef}
-          style={{ fontFamily: "'Telina', sans-serif", letterSpacing: '-0.3px' }}
-          className="bg-white/80 backdrop-blur-md p-6 sm:p-10 rounded-3xl border border-black/10 shadow-xl text-[#14120e] text-base sm:text-xl md:text-2xl leading-relaxed font-medium space-y-6 w-full mb-16 relative z-10 text-left"
+          style={{ fontFamily: "'HelveticaNeue', sans-serif", letterSpacing: '-0.2px', fontWeight: 300 }}
+          className="bg-white/80 backdrop-blur-md p-6 sm:p-10 rounded-3xl border border-black/10 shadow-xl text-[#14120e] text-base sm:text-xl md:text-2xl leading-relaxed font-light space-y-6 w-full mb-16 relative z-10 text-left"
         >
           <p className="m-0">
             I am a video editor, motion designer, and creative director obsessed with high-retention storytelling and high-fidelity visuals.

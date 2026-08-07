@@ -74,11 +74,11 @@ export default function SocialProof({ brands = DEFAULT_BRANDS, testimonials = DE
       {/* ────────────────── 1. WORKED WITH SECTION ────────────────── */}
       <div className="w-full relative overflow-hidden mb-12 sm:mb-16 text-center">
         
-        {/* Section Heading */}
+        {/* Section Heading - TALINA */}
         <div className="inline-flex flex-col items-center mb-6">
           <h3 
-            style={{ fontFamily: "'HelveticaNeue', 'HelveticaNeueBold', sans-serif" , letterSpacing :'-3px' }}
-            className="text-2xl sm:text-4xl md:text-4xl font-black m-0 text-[#144BFF] leading-tight tracking-tight"
+            style={{ fontFamily: "'Talina', sans-serif", letterSpacing: '-1.2px', fontWeight: 400 }}
+            className="text-2xl sm:text-4xl md:text-4xl m-0 text-[#144BFF] leading-tight"
           >
             Worked With
           </h3>
@@ -90,10 +90,10 @@ export default function SocialProof({ brands = DEFAULT_BRANDS, testimonials = DE
             {duplicateList(brands).map((brand, idx) => (
               <div 
                 key={`brand-${idx}`} 
-                style={{ fontFamily: "'Talina', sans-serif", letterSpacing: '-0.3px' }}
+                style={{ fontFamily: "'HelveticaNeue', sans-serif", letterSpacing: '0.5px', fontWeight: 300 }}
                 className="px-7 py-3 bg-[#FFFCFB] text-[#14120e] rounded-md inline-flex items-center justify-center shrink-0 shadow-md text-xs sm:text-sm border border-[#144BFF]/20 backdrop-blur-md hover:border-[#144BFF] hover:text-[#144BFF] hover:scale-105 transition-all duration-300 cursor-default"
               >
-                <span className="text-[#FFC822] mr-2.5">✦</span>
+                <span className="text-[#FFC822] mr-2.5">•</span>
                 {brand}
               </div>
             ))}
@@ -123,12 +123,15 @@ export default function SocialProof({ brands = DEFAULT_BRANDS, testimonials = DE
         {/* Header */}
         <div className="relative z-[15] text-center mb-8 px-4 pt-2">
           <h2 
-            style={{ fontFamily: "'HelveticaNeue', 'HelveticaNeueBold', sans-serif" , letterSpacing : '-3px' }}
-            className="text-2xl sm:text-4xl md:text-4xl font-black m-0 text-[#FFFFFF] leading-tight tracking-tight drop-shadow-md"
+            style={{ fontFamily: "'Talina', sans-serif", letterSpacing: '-0.8px', fontWeight: 400 }}
+            className="text-2xl sm:text-4xl md:text-4xl m-0 text-[#FFFFFF] leading-tight drop-shadow-md"
           >
             Testimonial
           </h2>
-          <p style={{ fontFamily: "'Talina', sans-serif", letterSpacing : '-0.2px' }} className="text-[#FFFFFF]/95 text-xs sm:text-sm font-medium mt-1.5">
+          <p 
+            style={{ fontFamily: "'HelveticaNeue', sans-serif", letterSpacing: '-0.5px', fontWeight: 600 }} 
+            className="text-[#FFFFFF]/95 text-xs sm:text-sm mt-1.5"
+          >
             What clients say about my work
           </p>
         </div>
@@ -147,19 +150,25 @@ export default function SocialProof({ brands = DEFAULT_BRANDS, testimonials = DE
                 </span>
 
                 <p 
-                  style={{ fontFamily: "'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif", letterSpacing: '-0.4px' }}
-                  className="text-[#14120e] text-xs sm:text-sm leading-relaxed m-0 relative z-10 font-medium"
+                  style={{ fontFamily: "'HelveticaNeue', sans-serif", letterSpacing: '-0.2px', fontWeight: 300 }}
+                  className="text-[#14120e] text-xs sm:text-sm leading-relaxed m-0 relative z-10"
                 >
                   "{testi.quote}"
                 </p>
 
                 <div className="mt-4 pt-3 border-t border-black/10 flex items-center justify-between">
                   <div>
-                    <p style={{ letterSpacing: '0.3px' }} className="text-[#144BFF] font-sans font-black text-[11px] sm:text-xs uppercase m-0">
+                    <p 
+                      style={{ fontFamily: "'Talina', sans-serif", letterSpacing: '0.3px', fontWeight: 400 }} 
+                      className="text-[#144BFF] text-[11px] sm:text-xs uppercase m-0"
+                    >
                       — {testi.client}
                     </p>
                     {testi.company && (
-                      <p style={{ letterSpacing: '0.3px' }} className="text-neutral-500 text-[10px] font-semibold uppercase mt-0.5 m-0">
+                      <p 
+                        style={{ fontFamily: "'HelveticaNeue', sans-serif", letterSpacing: '0.3px', fontWeight: 300 }} 
+                        className="text-neutral-500 text-[10px] uppercase mt-0.5 m-0"
+                      >
                         {testi.company}
                       </p>
                     )}
